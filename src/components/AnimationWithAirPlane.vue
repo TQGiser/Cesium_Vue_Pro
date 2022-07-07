@@ -84,8 +84,9 @@ export default {
         position: positionProperty,
         model: { 
           // uri: 'three官网glb模型\\Stork.glb',
-          uri: 'wrj2.glb',
-          minimumPixelSize: 3
+          uri: '\\模型\\wrj2_AnimationTest.glb',
+          // minimumPixelSize: 3
+          scale: 25
            },
         orientation: new Cesium.VelocityOrientationProperty(positionProperty),    
 
