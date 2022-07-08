@@ -26,7 +26,7 @@ export default {
       });
       var JSONLength;
       const positionProperty = new Cesium.SampledPositionProperty();
-      const promise = Cesium.GeoJsonDataSource.load("仁达沟三维公里桩.json");
+      const promise = Cesium.GeoJsonDataSource.load("\\仁达沟\\仁达沟三维公里桩.json");
       promise.then(function (dataSource) {
         const entitys = dataSource.entities.values;
         JSONLength = dataSource.entities.values.length;

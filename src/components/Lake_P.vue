@@ -189,10 +189,6 @@ export default {
           30.490733777,
           4105.0
         ),
-        // model: {
-        //   uri: "\\模型\\卡丁车.glb",
-        //   scale:10,
-        // },
         box: {
           dimensions: new Cesium.Cartesian3(10.0, 10.0, 40.0),
           material: Cesium.Color.RED.withAlpha(0.5),
