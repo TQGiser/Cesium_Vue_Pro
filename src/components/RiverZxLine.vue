@@ -34,7 +34,7 @@ export default {
           console.log(entity);
           const zb_c3 =
             state.viewer.scene.globe.ellipsoid.cartesianToCartographic(
-              entity.position._valueW
+              entity.position._value
             );
           const zb_e = Cesium.Math.toDegrees(zb_c3.latitude);
           const zb_n = Cesium.Math.toDegrees(zb_c3.longitude);
