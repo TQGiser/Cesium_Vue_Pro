@@ -20,10 +20,15 @@ export default {
         // timeline: false,
         // vrButton: false,
         // animation: false,
-        terrainProvider: Cesium.createWorldTerrain({
-          requestWaterMask: true,
-          requestVertexNormals: true,
-        }),
+        //   terrainProvider: Cesium.createWorldTerrain({
+        //   requestWaterMask: true,
+        //   requestVertexNormals: true,
+        // }),
+         terrainProvider: new Cesium.CesiumTerrainProvider({
+                    url: "http://localhost:8083/terrain2",
+                    minimumLevel: 0,
+                    maximumLevel: 15,
+                }),
       });
       /*加载hyda，生成湖面 */
       const b = new Array();
@@ -110,41 +115,7 @@ export default {
           },
         });
       });
-      /*生成动画线property变量*/
-      const positionProperty = new Cesium.SampledPositionProperty();
-      const promise3 = Cesium.GeoJsonDataSource.load("\\措普\\百米桩三维点.json");
-      promise3.then(function (dataSource) {
-        const entitys = dataSource.entities.values;
-        for (let i = 0; i < entitys.length; i++) {
-          const entity = dataSource.entities.values[i];
-          const zb_c3 =
-            state.viewer.scene.globe.ellipsoid.cartesianToCartographic(
-              entity.position._value
-            );
-          const zb_n = Cesium.Math.toDegrees(zb_c3.latitude);
-          const zb_e = Cesium.Math.toDegrees(zb_c3.longitude);
-          const zb_h = Number(zb_c3.height);
-          const zb_h2 = Number(zb_c3.height) + 100 /*提高点高度100米 */
-          /*是否生成地面百米桩点 */
-          // state.viewer.entities.add({
-          //   position: Cesium.Cartesian3.fromDegrees(zb_e, zb_n, zb_h),                      
-          //   point: {
-          //     pixelSize: 10,
-          //     color: Cesium.Color.RED,
-          //     outlineColor: Cesium.Color.BLUE,
-          //     outlineWidth: 2,
-          //     // heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,   /*贴地选项*/
-          //   },
-          // });
-          const time = Cesium.JulianDate.addSeconds(
-            start,
-            i * timeStepInSeconds,
-            new Cesium.JulianDate()
-          );
-          const position = Cesium.Cartesian3.fromDegrees(zb_e, zb_n, zb_h2);
-          positionProperty.addSample(time, position);
-        }
-      });
+
       /*静态加载DMAP，后期改 */
       state.viewer.entities.add({
         name: "管理线桩",
@@ -189,6 +160,10 @@ export default {
           30.490733777,
           4105.0
         ),
+        // model: {
+        //   uri: "\\模型\\卡丁车.glb",
+        //   scale:10,
+        // },
         box: {
           dimensions: new Cesium.Cartesian3(10.0, 10.0, 40.0),
           material: Cesium.Color.RED.withAlpha(0.5),
@@ -214,7 +189,7 @@ export default {
           outlineColor: Cesium.Color.BLACK,
         },
       });
-
+      /*视觉调整 */
       // state.viewer.camera.flyTo({
       //   destination: Cesium.Cartesian3.fromDegrees(
       //     99.54714582,
@@ -226,6 +201,44 @@ export default {
       //     pitch: Cesium.Math.toRadians(-20.0),
       //   },
       // });
+
+      /*生成动画线property变量*/
+      const positionProperty = new Cesium.SampledPositionProperty();
+      const promise3 = Cesium.GeoJsonDataSource.load("\\措普\\百米桩三维点.json");
+      promise3.then(function (dataSource) {
+        const entitys = dataSource.entities.values;
+        for (let i = 0; i < entitys.length; i++) {
+          const entity = dataSource.entities.values[i];
+          const zb_c3 =
+            state.viewer.scene.globe.ellipsoid.cartesianToCartographic(
+              entity.position._value
+            );
+          const zb_n = Cesium.Math.toDegrees(zb_c3.latitude);
+          const zb_e = Cesium.Math.toDegrees(zb_c3.longitude);
+          const zb_h = Number(zb_c3.height);
+          const zb_h2 = Number(zb_c3.height) + 100 /*提高点高度100米 */
+          /*是否生成地面百米桩点 */
+          // state.viewer.entities.add({
+          //   position: Cesium.Cartesian3.fromDegrees(zb_e, zb_n, zb_h),                      
+          //   point: {
+          //     pixelSize: 10,
+          //     color: Cesium.Color.RED,
+          //     outlineColor: Cesium.Color.BLUE,
+          //     outlineWidth: 2,
+          //     // heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,   /*贴地选项*/
+          //   },
+          // });
+          const time = Cesium.JulianDate.addSeconds(
+            start,
+            i * timeStepInSeconds,
+            new Cesium.JulianDate()
+          );
+          const position = Cesium.Cartesian3.fromDegrees(zb_e, zb_n, zb_h2);
+          positionProperty.addSample(time, position);
+        }
+      });
+
+
 
       /*加载模型，生成动画线 */
       const timeStepInSeconds = 1;
@@ -275,6 +288,7 @@ export default {
       });
       // Make the camera track this moving entity.
       state.viewer.trackedEntity = airplaneEntity;
+
     });
     return {
       ...toRefs(state),

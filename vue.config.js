@@ -12,19 +12,20 @@ function resolve(dir) {
 module.exports = {
   devServer: {
     // host:'192.168.0.171',
-    host:'localhost',
+    host:'0.0.0.0',
     port: 8080,
     open: false,
-    proxy: {
-      //配置代理服务器来解决跨域问题
-      "/api": {
-        target: "http://localhost:80/api/", //配置要替换的后台接口地址
-        changOrigin: true, //配置允许改变Origin
-        pathRewrite: {
-          "^/api/": "/",
-        },
-      },
-    },
+    hot: true,
+    // proxy: {
+    //   //配置代理服务器来解决跨域问题
+    //   "/api": {
+    //     target: "http://localhost:80/api/", //配置要替换的后台接口地址
+    //     changOrigin: true, //配置允许改变Origin
+    //     pathRewrite: {
+    //       "^/api/": "/",
+    //     },
+    //   },
+    // },
   },
   lintOnSave: false,
   configureWebpack: {
