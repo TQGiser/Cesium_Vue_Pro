@@ -3,6 +3,7 @@
 </template>
 <script>
 // import MainMap from './components/Lake_P.vue'
+// import MainMap from './components/Test/PolygonT.vue'
 import MainMap from './components/Test/ResaT.vue'
 
 export default {

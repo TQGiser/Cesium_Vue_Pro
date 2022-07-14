@@ -40,7 +40,7 @@ export default {
                     c.push(Number(zb_e));
                     c.push(Number(zb_n));
                 }
-                state.viewer.entities.add({
+                const e = state.viewer.entities.add({
                     // polyline: {
                     //     positions: Cesium.Cartesian3.fromDegreesArray(c),
                     //     clampToGround: true,
@@ -57,11 +57,17 @@ export default {
                         hierarchy: {
                             positions: Cesium.Cartesian3.fromDegreesArray(c),
                         },
-                        material: Cesium.Color.BLACK
+                        /*网格材质*/
+                        // material: new  Cesium.GridMaterialProperty({
+                        //     color:Cesium.Color.AQUA
+                        // }),
+                        /*图片材质（JPG慢）*/        
+                        material: new   Cesium.ImageMaterialProperty({
+                            image:'\\pic\\g.jpg'
+                        }),
                       
                     },
                 });
-                console.log(state.viewer.entities)
                 state.viewer.camera.flyTo({
                     destination: Cesium.Cartesian3.fromDegrees(
                         99.54714582,
@@ -73,6 +79,7 @@ export default {
                         pitch: Cesium.Math.toRadians(-20.0),
                     },
                 });
+                // state.viewer.zoomTo(e);
             });
 
         }

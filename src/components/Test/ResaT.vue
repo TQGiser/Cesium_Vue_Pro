@@ -24,11 +24,11 @@ export default {
         //   requestWaterMask: true,
         //   requestVertexNormals: true,
         // }),
-        // terrainProvider: new Cesium.CesiumTerrainProvider({
-        //   url: "http://localhost:8083/CsLabT9",
-        //   minimumLevel: 0,
-        //   maximumLevel: 15,
-        // }),
+        terrainProvider: new Cesium.CesiumTerrainProvider({
+          url: "http://localhost:8083/terrain/甘孜地形切片/巴塘县",
+          minimumLevel: 0,
+          maximumLevel: 15,
+        }),
         // imageryProvider: new Cesium.UrlTemplateImageryProvider({
         //   url: "http://localhost:8083/dom/{z}/{x}/{y}.png",
         //   tilingScheme: new Cesium.WebMercatorTilingScheme(),
@@ -94,7 +94,7 @@ export default {
                 polygonHierarchy: new Cesium.PolygonHierarchy(
                   Cesium.Cartesian3.fromDegreesArray(b)
                 ),
-                // height: 4110,
+                height: 4110,
                   // perPositionHeight:true,
                 // extrudedHeight: 4090,
               }),
@@ -136,6 +136,7 @@ export default {
           pitch: Cesium.Math.toRadians(-20.0),
         },
       });
+      /*增加DOM于默认DOM上*/
       state.viewer.scene.imageryLayers.addImageryProvider(
         new Cesium.UrlTemplateImageryProvider({
           url: "http://localhost:8083/dom/{z}/{x}/{y}.png",
@@ -145,6 +146,7 @@ export default {
         }),
       )
     });
+    
     return {
       ...toRefs(state),
     };
