@@ -45,6 +45,7 @@ export default {
                     pitch: Cesium.Math.toRadians(-20.0),
                 },
             });
+            /*鼠标移动事件显示&camera.pickEllipsoid坐标及高程，平面时使用 */
             // var handler = new Cesium.ScreenSpaceEventHandler(state.viewer.scene.canvas);
             // handler.setInputAction(function (movement) {
             //     const cartesian = state.viewer.camera.pickEllipsoid(
@@ -79,13 +80,7 @@ export default {
                 state.sjg = (state.viewer.camera.positionCartographic.height).toFixed(0)
                 state.jd = jd
                 state.wd = wd
-                /*视角问题会导致大地高不准，除非一直是俯视
-                  用查询点位方式表达点位大地高*/
-                // state.ddg = state.viewer.scene.globe.getHeight(cartographic).toFixed(2)
             }, Cesium.ScreenSpaceEventType.LEFT_CLICK)
-
-
-
         });
         return {
             ...toRefs(state),
