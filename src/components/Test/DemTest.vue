@@ -25,7 +25,7 @@ export default {
                 //     requestVertexNormals: true,
                 // }),
                 terrainProvider: new Cesium.CesiumTerrainProvider({
-                    url: "http://localhost:8083/terrain2",
+                    url: "http://localhost:8083/terrain/甘孜地形切片/巴塘县",
                     minimumLevel: 0,
                     maximumLevel: 15,
                 }),
