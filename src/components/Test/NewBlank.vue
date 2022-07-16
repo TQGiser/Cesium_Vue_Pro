@@ -4,15 +4,23 @@
         <el-tag size="large" effect="dark">纬度：{{ wd }}</el-tag>
         <el-tag size="large" effect="dark">大地高：{{ ddg }}</el-tag>
         <el-tag size="large" effect="dark">视角高：{{ sjg }}</el-tag>
-        <el-select id='dem' v-model="value" class="m-2" placeholder="Select" size="small">
-            <el-option v-for="item in op" :key="item.value" :label="item.label" :value="item.value" />
-        </el-select>
+    <el-select  v-model="value" class="m-2" placeholder="Select" size="small">
+        <el-option id="dem" 
+        v-for="item in op" 
+        :key="item.value" 
+        :label="item.label" 
+        :value="item.value" 
+        ref='选择区县'/>
+    </el-select>
+    <el-button type="primary" @click="test">Primary</el-button>
+      {{value}}
     </div>
+     
 </template>
 <script>
 import * as Cesium from "cesium/Cesium";
 import * as widgets from "cesium\\Build\\Cesium\\Widgets\\widgets.css";
-import { onMounted, toRefs, reactive } from "vue";
+import { onMounted, toRefs, reactive, ref} from "vue";
 import { ElButton } from "element-plus";
 
 export default {
@@ -25,31 +33,39 @@ export default {
             sjg: null,
             ddg: null,
             op: null,
+            value:null
         });
-
+        const test =()=>{
+            console.log(state.value)
+        }
         Cesium.Ion.defaultAccessToken =
             "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0MjczNDgzMy1hYzE1LTRjNWYtODZhMS01MjZkNWRiMDc2MmUiLCJpZCI6ODIxMzAsImlhdCI6MTY0NDU0ODc0M30.LpGXXWsbQXucV5MTeC2g8BCAQWiZp612gosWcK-7ocE";
         onMounted(() => {
-            state.op = [
+          state.op = [
                 {
-                    value: "巴塘",
-                    label: "巴塘",
+                    value: "巴塘县",
+                    label: "巴塘县",
+                },
+                   {
+                    value: "丹巴县",
+                    label: "丹巴县",
                 },
             ],
-                state.viewer = new Cesium.Viewer("map", {
-                    timeline: false,
-                    vrButton: false,
-                    animation: false,
-                    // terrainProvider: Cesium.createWorldTerrain({
-                    //     requestWaterMask: true,
-                    //     requestVertexNormals: true,
-                    // }),
-                    terrainProvider: new Cesium.CesiumTerrainProvider({
-                        url: "http://localhost:8083/terrain/甘孜地形切片/巴塘县",
-                        minimumLevel: 0,
-                        maximumLevel: 15,
-                    }),
-                });
+            state.value = ref(''),
+            state.viewer = new Cesium.Viewer("map", {
+                timeline: false,
+                vrButton: false,
+                animation: false,
+                // terrainProvider: Cesium.createWorldTerrain({
+                //     requestWaterMask: true,
+                //     requestVertexNormals: true,
+                // }),
+                terrainProvider: new Cesium.CesiumTerrainProvider({
+                    url: "http://localhost:8083/terrain/甘孜地形切片/巴塘县",
+                    minimumLevel: 0,
+                    maximumLevel: 15,
+                }),
+            });
             state.viewer.camera.flyTo({
                 destination: Cesium.Cartesian3.fromDegrees(
                     99.54714582,
@@ -106,6 +122,7 @@ export default {
             }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
         });
         return {
+            test,
             ...toRefs(state),
         };
     },
