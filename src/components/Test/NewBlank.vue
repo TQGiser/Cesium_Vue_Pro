@@ -5,15 +5,22 @@
         <el-tag size="large" effect="dark">大地高：{{ ddg }}</el-tag>
         <el-tag size="large" effect="dark">视角高：{{ sjg }}</el-tag>
     <el-select  v-model="value" class="m-2" placeholder="Select" size="small">
-        <el-option id="dem" 
+        <el-option 
         v-for="item in op" 
         :key="item.value" 
         :label="item.label" 
         :value="item.value" 
-        ref='选择区县'/>
+        />
+    </el-select>
+        <el-select  v-model="value2" class="m-2" placeholder="Select" size="small">
+        <el-option  
+        v-for="item in op2" 
+        :key="item.value" 
+        :label="item.label" 
+        :value="item.value" 
+        />
     </el-select>
     <el-button type="primary" @click="test">Primary</el-button>
-      {{value}}
     </div>
      
 </template>
@@ -33,10 +40,13 @@ export default {
             sjg: null,
             ddg: null,
             op: null,
-            value:null
+            op2:null,
+            value:null,
+            value2:null
         });
         const test =()=>{
             console.log(state.value)
+            console.log(state.value2)
         }
         Cesium.Ion.defaultAccessToken =
             "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0MjczNDgzMy1hYzE1LTRjNWYtODZhMS01MjZkNWRiMDc2MmUiLCJpZCI6ODIxMzAsImlhdCI6MTY0NDU0ODc0M30.LpGXXWsbQXucV5MTeC2g8BCAQWiZp612gosWcK-7ocE";
@@ -49,6 +59,16 @@ export default {
                    {
                     value: "丹巴县",
                     label: "丹巴县",
+                },
+            ],
+            state.op2 = [
+                {
+                    value: "乡1",
+                    label: "乡1",
+                },
+                   {
+                    value: "乡2",
+                    label: "乡2",
                 },
             ],
             state.value = ref(''),
