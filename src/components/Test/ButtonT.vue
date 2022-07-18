@@ -1,6 +1,7 @@
 <template>
     <div id="map">
         <el-button type="primary" @click="test">Primary</el-button>
+        <el-button type="primary" @click="test2">Primary</el-button>
     </div>
 </template>
 <script>
@@ -17,6 +18,13 @@ export default {
         const test = () => {
             state.viewer.terrainProvider =  new Cesium.CesiumTerrainProvider({
                     url: "http://localhost:8083/terrain/甘孜地形切片/巴塘县",
+                    minimumLevel: 0,
+                    maximumLevel: 15,
+                })
+        }
+            const test2 = () => {
+            state.viewer.terrainProvider =  new Cesium.CesiumTerrainProvider({
+                    url: "http://localhost:8083/terrain/甘孜地形切片/白玉县",
                     minimumLevel: 0,
                     maximumLevel: 15,
                 })
@@ -47,6 +55,7 @@ export default {
         });
         return {
             test,
+            test2,
             ...toRefs(state),
         };
     },

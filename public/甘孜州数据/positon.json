@@ -1,0 +1,4226 @@
+{
+    "type": "FeatureCollection",
+    "crs": {
+        "type": "name",
+        "properties": {
+            "name": "EPSG:4326"
+        }
+    },
+    "features": [
+        {
+            "type": "Feature",
+            "id": 0,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.29165109900003,
+                    30.402790022000033
+                ]
+            },
+            "properties": {
+                "FID": 0,
+                "所属河": "忆比措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 1,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.62518906300005,
+                    30.426127290000068
+                ]
+            },
+            "properties": {
+                "FID": 1,
+                "所属河": "亚拉友措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 2,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.23787538400006,
+                    31.072020111000029
+                ]
+            },
+            "properties": {
+                "FID": 2,
+                "所属河": "云祝措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 3,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.71531761400007,
+                    32.175569849000055
+                ]
+            },
+            "properties": {
+                "FID": 3,
+                "所属河": "五色海"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 4,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.29448568100008,
+                    29.132400680000046
+                ]
+            },
+            "properties": {
+                "FID": 4,
+                "所属河": "黑海"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 5,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.09084962700007,
+                    29.369198511000036
+                ]
+            },
+            "properties": {
+                "FID": 5,
+                "所属河": "须俄叠湖2#"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 6,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.11219602400007,
+                    29.346103569000036
+                ]
+            },
+            "properties": {
+                "FID": 6,
+                "所属河": "须俄叠湖1#"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 7,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.05280730800007,
+                    29.416311775000054
+                ]
+            },
+            "properties": {
+                "FID": 7,
+                "所属河": "辛开措附属湖"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 8,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.05573647600005,
+                    29.418905723000023
+                ]
+            },
+            "properties": {
+                "FID": 8,
+                "所属河": "辛开措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 9,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.30708077600008,
+                    28.692503406000071
+                ]
+            },
+            "properties": {
+                "FID": 9,
+                "所属河": "神鱼湖"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 10,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.34798855100007,
+                    28.37502240300006
+                ]
+            },
+            "properties": {
+                "FID": 10,
+                "所属河": "牛奶海"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 11,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.09498402000008,
+                    29.443953793000048
+                ]
+            },
+            "properties": {
+                "FID": 11,
+                "所属河": "热达河木错"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 12,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.10851386900003,
+                    29.454147728000066
+                ]
+            },
+            "properties": {
+                "FID": 12,
+                "所属河": "热达光木错"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 13,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.10158563000005,
+                    29.434574841000028
+                ]
+            },
+            "properties": {
+                "FID": 13,
+                "所属河": "浪错"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 14,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.28102012600004,
+                    28.896205379000037
+                ]
+            },
+            "properties": {
+                "FID": 14,
+                "所属河": "波瓦湖"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 15,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.16999932600004,
+                    29.435347377000028
+                ]
+            },
+            "properties": {
+                "FID": 15,
+                "所属河": "无名湖4#"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 16,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.14727991400008,
+                    29.432325133000063
+                ]
+            },
+            "properties": {
+                "FID": 16,
+                "所属河": "无名湖3#"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 17,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.14492735200008,
+                    29.434259692000069
+                ]
+            },
+            "properties": {
+                "FID": 17,
+                "所属河": "无名湖2#"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 18,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.15064491500004,
+                    29.444076121000023
+                ]
+            },
+            "properties": {
+                "FID": 18,
+                "所属河": "无名湖1#"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 19,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.11209580300005,
+                    29.258865055000058
+                ]
+            },
+            "properties": {
+                "FID": 19,
+                "所属河": "扎朗措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 20,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.11696761200005,
+                    29.229663964000054
+                ]
+            },
+            "properties": {
+                "FID": 20,
+                "所属河": "峡如措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 21,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.13798230200007,
+                    29.38421997100005
+                ]
+            },
+            "properties": {
+                "FID": 21,
+                "所属河": "夏如措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 22,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.12906758200006,
+                    29.457673475000036
+                ]
+            },
+            "properties": {
+                "FID": 22,
+                "所属河": "吧松措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 23,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.35202172000004,
+                    28.426178021000055
+                ]
+            },
+            "properties": {
+                "FID": 23,
+                "所属河": "卓玛拉措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 24,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.05294857800004,
+                    29.374816088000046
+                ]
+            },
+            "properties": {
+                "FID": 24,
+                "所属河": "兴伊措附属3#湖"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 25,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.08163699700003,
+                    29.416993375000061
+                ]
+            },
+            "properties": {
+                "FID": 25,
+                "所属河": "兴伊措附属2#湖"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 26,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.10595507200009,
+                    29.392384341000025
+                ]
+            },
+            "properties": {
+                "FID": 26,
+                "所属河": "兴伊措附属1#湖"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 27,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.18913321700006,
+                    29.437079982000057
+                ]
+            },
+            "properties": {
+                "FID": 27,
+                "所属河": "假山人工湖"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 28,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.05699668700004,
+                    29.400119929000027
+                ]
+            },
+            "properties": {
+                "FID": 28,
+                "所属河": "从前措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 29,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.35331455300008,
+                    28.379781272000059
+                ]
+            },
+            "properties": {
+                "FID": 29,
+                "所属河": "五色海"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 30,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    97.877519889000041,
+                    32.775341535000052
+                ]
+            },
+            "properties": {
+                "FID": 30,
+                "所属河": "阿东措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 31,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    98.127867692000052,
+                    32.466106380000042
+                ]
+            },
+            "properties": {
+                "FID": 31,
+                "所属河": "格居措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 32,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    97.989667626000085,
+                    32.723919582000065
+                ]
+            },
+            "properties": {
+                "FID": 32,
+                "所属河": "措琼湖"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 33,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    98.014381322000077,
+                    32.703222895000067
+                ]
+            },
+            "properties": {
+                "FID": 33,
+                "所属河": "措庆湖"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 34,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    98.991681933000052,
+                    33.044061928000076
+                ]
+            },
+            "properties": {
+                "FID": 34,
+                "所属河": "措卡童湖"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 35,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    98.902863509000042,
+                    32.692297795000059
+                ]
+            },
+            "properties": {
+                "FID": 35,
+                "所属河": "呷清措湖"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 36,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    98.172289460000059,
+                    32.449949874000026
+                ]
+            },
+            "properties": {
+                "FID": 36,
+                "所属河": "克日错朗玛"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 37,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.589189293000061,
+                    30.813233377000074
+                ]
+            },
+            "properties": {
+                "FID": 37,
+                "所属河": "麦拉降措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 38,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.045973866000054,
+                    30.659794521000038
+                ]
+            },
+            "properties": {
+                "FID": 38,
+                "所属河": "绿石湖"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 39,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.721916624000073,
+                    31.275340928000048
+                ]
+            },
+            "properties": {
+                "FID": 39,
+                "所属河": "绒咪措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 40,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.770175615000085,
+                    31.241314700000032
+                ]
+            },
+            "properties": {
+                "FID": 40,
+                "所属河": "瓦金措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 41,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.098628770000062,
+                    31.248310953000043
+                ]
+            },
+            "properties": {
+                "FID": 41,
+                "所属河": "珠尼措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 42,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    98.793380243000058,
+                    31.172028658000045
+                ]
+            },
+            "properties": {
+                "FID": 42,
+                "所属河": "月亮湖"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 43,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.606435092000083,
+                    31.388924296000027
+                ]
+            },
+            "properties": {
+                "FID": 43,
+                "所属河": "措朗玛"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 44,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    98.804272406000052,
+                    30.896733888000028
+                ]
+            },
+            "properties": {
+                "FID": 44,
+                "所属河": "措拉"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 45,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.099370645000079,
+                    30.63375704200007
+                ]
+            },
+            "properties": {
+                "FID": 45,
+                "所属河": "巴巴措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 46,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    98.91562771100007,
+                    31.177907809000033
+                ]
+            },
+            "properties": {
+                "FID": 46,
+                "所属河": "多布措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 47,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    98.912191286000052,
+                    31.181140592000077
+                ]
+            },
+            "properties": {
+                "FID": 47,
+                "所属河": "夏希措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 48,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.800491495000074,
+                    31.584810950000076
+                ]
+            },
+            "properties": {
+                "FID": 48,
+                "所属河": "玉措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 49,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.49489473200003,
+                    29.54666411200003
+                ]
+            },
+            "properties": {
+                "FID": 49,
+                "所属河": "马弄错"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 50,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.36118837100008,
+                    29.52998320100005
+                ]
+            },
+            "properties": {
+                "FID": 50,
+                "所属河": "错纳"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 51,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.28040454100005,
+                    29.409478534000073
+                ]
+            },
+            "properties": {
+                "FID": 51,
+                "所属河": "错根隆"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 52,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.20654452200006,
+                    30.204378115000054
+                ]
+            },
+            "properties": {
+                "FID": 52,
+                "所属河": "达弄错"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 53,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.12664851500006,
+                    29.615383997000038
+                ]
+            },
+            "properties": {
+                "FID": 53,
+                "所属河": "贝斗措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 54,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.738157701000034,
+                    30.155494432000069
+                ]
+            },
+            "properties": {
+                "FID": 54,
+                "所属河": "若根措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 55,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.75142368000007,
+                    29.507646756000042
+                ]
+            },
+            "properties": {
+                "FID": 55,
+                "所属河": "舍额错"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 56,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.986517418000062,
+                    29.81354813300004
+                ]
+            },
+            "properties": {
+                "FID": 56,
+                "所属河": "胡巴希则"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 57,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.646787429000085,
+                    30.370969134000063
+                ]
+            },
+            "properties": {
+                "FID": 57,
+                "所属河": "渣弄措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 58,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.46161957500004,
+                    29.197022784000069
+                ]
+            },
+            "properties": {
+                "FID": 58,
+                "所属河": "波尼庞措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 59,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.19339574300005,
+                    30.271940972000039
+                ]
+            },
+            "properties": {
+                "FID": 59,
+                "所属河": "汉音错"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 60,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.03028374700006,
+                    30.614559404000033
+                ]
+            },
+            "properties": {
+                "FID": 60,
+                "所属河": "格拉措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 61,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.989236456000071,
+                    30.389513057000045
+                ]
+            },
+            "properties": {
+                "FID": 61,
+                "所属河": "措松措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 62,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.985202026000081,
+                    30.363614247000044
+                ]
+            },
+            "properties": {
+                "FID": 62,
+                "所属河": "措拉玛"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 63,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.957263114000057,
+                    29.81685802800007
+                ]
+            },
+            "properties": {
+                "FID": 63,
+                "所属河": "拉合错尼"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 64,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.963410475000046,
+                    29.810726355000043
+                ]
+            },
+            "properties": {
+                "FID": 64,
+                "所属河": "拉合错尼2"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 65,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.14869821400004,
+                    29.825544786000023
+                ]
+            },
+            "properties": {
+                "FID": 65,
+                "所属河": "扎拉措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 66,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.03313260000004,
+                    29.886510089000069
+                ]
+            },
+            "properties": {
+                "FID": 66,
+                "所属河": "心海"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 67,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.50946172200008,
+                    29.462301119000074
+                ]
+            },
+            "properties": {
+                "FID": 67,
+                "所属河": "德巫错扎卡"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 68,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.05859866900005,
+                    29.922946621000051
+                ]
+            },
+            "properties": {
+                "FID": 68,
+                "所属河": "尼郎错"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 69,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.05576813900007,
+                    29.908985787000063
+                ]
+            },
+            "properties": {
+                "FID": 69,
+                "所属河": "尼郎错2"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 70,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.78573945700003,
+                    29.458241281000028
+                ]
+            },
+            "properties": {
+                "FID": 70,
+                "所属河": "寿木措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 71,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.669681173000072,
+                    30.138228993000041
+                ]
+            },
+            "properties": {
+                "FID": 71,
+                "所属河": "哈日翁青措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 72,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.76193303300005,
+                    29.501051288000042
+                ]
+            },
+            "properties": {
+                "FID": 72,
+                "所属河": "包巫措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 73,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.988389371000039,
+                    30.428728584000055
+                ]
+            },
+            "properties": {
+                "FID": 73,
+                "所属河": "侯查措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 74,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.02070532000005,
+                    29.818960476000029
+                ]
+            },
+            "properties": {
+                "FID": 74,
+                "所属河": "一卡错"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 75,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.62594608300009,
+                    31.323364512000069
+                ]
+            },
+            "properties": {
+                "FID": 75,
+                "所属河": "阿拉措果"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 76,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.62596858200004,
+                    31.331828231000031
+                ]
+            },
+            "properties": {
+                "FID": 76,
+                "所属河": "措琼"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 77,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.64527534600006,
+                    31.314114068000038
+                ]
+            },
+            "properties": {
+                "FID": 77,
+                "所属河": "勒达措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 78,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    102.03041922300008,
+                    29.860392207000075
+                ]
+            },
+            "properties": {
+                "FID": 78,
+                "所属河": "雅家情海"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 79,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    102.22606092100006,
+                    29.747081512000079
+                ]
+            },
+            "properties": {
+                "FID": 79,
+                "所属河": "兴隆海子"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 80,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.831519040000046,
+                    31.388118749000057
+                ]
+            },
+            "properties": {
+                "FID": 80,
+                "所属河": "梁炯措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 81,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.11334300500005,
+                    31.077611412000067
+                ]
+            },
+            "properties": {
+                "FID": 81,
+                "所属河": "措鲁哈"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 82,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.13430189400003,
+                    30.736242103000052
+                ]
+            },
+            "properties": {
+                "FID": 82,
+                "所属河": "措卡湖"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 83,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.963569157000052,
+                    30.825957073000041
+                ]
+            },
+            "properties": {
+                "FID": 83,
+                "所属河": "扎格措2"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 84,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.947725001000038,
+                    30.846339678000049
+                ]
+            },
+            "properties": {
+                "FID": 84,
+                "所属河": "扎格措1"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 85,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.957227290000048,
+                    30.734803372000044
+                ]
+            },
+            "properties": {
+                "FID": 85,
+                "所属河": "多绒麻措湖"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 86,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.060120420000032,
+                    32.003296985000077
+                ]
+            },
+            "properties": {
+                "FID": 86,
+                "所属河": "木日措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 87,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.009044051000046,
+                    32.007013124000025
+                ]
+            },
+            "properties": {
+                "FID": 87,
+                "所属河": "昂措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 88,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    98.925974439000072,
+                    32.072624491000056
+                ]
+            },
+            "properties": {
+                "FID": 88,
+                "所属河": "挡子措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 89,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.390124679000053,
+                    28.327816542000051
+                ]
+            },
+            "properties": {
+                "FID": 89,
+                "所属河": "泽加措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 90,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.376286863000075,
+                    28.349590149000051
+                ]
+            },
+            "properties": {
+                "FID": 90,
+                "所属河": "次仁措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 91,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.397864847000051,
+                    28.33059118400007
+                ]
+            },
+            "properties": {
+                "FID": 91,
+                "所属河": "措南措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 92,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.390332237000052,
+                    28.356934577000061
+                ]
+            },
+            "properties": {
+                "FID": 92,
+                "所属河": "孟扎措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 93,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.34047471700006,
+                    29.270186342000045
+                ]
+            },
+            "properties": {
+                "FID": 93,
+                "所属河": "莲花湖"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 94,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.77762760100006,
+                    30.183998464000069
+                ]
+            },
+            "properties": {
+                "FID": 94,
+                "所属河": "红海子"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 95,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.33147969900006,
+                    29.328230845000064
+                ]
+            },
+            "properties": {
+                "FID": 95,
+                "所属河": "月亮湖"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 96,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.563098503000049,
+                    30.548799217000067
+                ]
+            },
+            "properties": {
+                "FID": 96,
+                "所属河": "闷措湖"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 97,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.482847993000064,
+                    30.548920480000049
+                ]
+            },
+            "properties": {
+                "FID": 97,
+                "所属河": "觉木措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 98,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.533764157000064,
+                    29.631739110000069
+                ]
+            },
+            "properties": {
+                "FID": 98,
+                "所属河": "罗措仁"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 99,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.330145376000075,
+                    29.971663049000028
+                ]
+            },
+            "properties": {
+                "FID": 99,
+                "所属河": "朱杰扎然措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 100,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.382380150000074,
+                    30.046955972000035
+                ]
+            },
+            "properties": {
+                "FID": 100,
+                "所属河": "措转"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 101,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.381488501000035,
+                    30.051370257000031
+                ]
+            },
+            "properties": {
+                "FID": 101,
+                "所属河": "措格达"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 102,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.574530846000073,
+                    30.525400283000067
+                ]
+            },
+            "properties": {
+                "FID": 102,
+                "所属河": "措普上湖"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 103,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.304585903000032,
+                    29.998787065000045
+                ]
+            },
+            "properties": {
+                "FID": 103,
+                "所属河": "扎瓦杰龙"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 104,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.280254702000036,
+                    29.513317101000041
+                ]
+            },
+            "properties": {
+                "FID": 104,
+                "所属河": "如措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 105,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.532818127000041,
+                    29.610665766000068
+                ]
+            },
+            "properties": {
+                "FID": 105,
+                "所属河": "夏窝格扎"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 106,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.18176625600006,
+                    29.748651031000065
+                ]
+            },
+            "properties": {
+                "FID": 106,
+                "所属河": "伦多错"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 107,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.294447258000048,
+                    29.997728897000059
+                ]
+            },
+            "properties": {
+                "FID": 107,
+                "所属河": "亚切格顶措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 108,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.00024512200008,
+                    28.894415175000063
+                ]
+            },
+            "properties": {
+                "FID": 108,
+                "所属河": "泽仁措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 109,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.972571609000056,
+                    28.754453659000035
+                ]
+            },
+            "properties": {
+                "FID": 109,
+                "所属河": "沙绕措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 110,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.03824953000009,
+                    29.090681053000026
+                ]
+            },
+            "properties": {
+                "FID": 110,
+                "所属河": "次拥措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 111,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.950255201000061,
+                    28.601276145000043
+                ]
+            },
+            "properties": {
+                "FID": 111,
+                "所属河": "查呈措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 112,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.951697681000041,
+                    28.909991096000056
+                ]
+            },
+            "properties": {
+                "FID": 112,
+                "所属河": "松措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 113,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.968188880000071,
+                    28.899031444000059
+                ]
+            },
+            "properties": {
+                "FID": 113,
+                "所属河": "巴姆七湖"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 114,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.999047682000082,
+                    28.857638458000054
+                ]
+            },
+            "properties": {
+                "FID": 114,
+                "所属河": "吾年措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 115,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.57346717200005,
+                    29.092203152000025
+                ]
+            },
+            "properties": {
+                "FID": 115,
+                "所属河": "猎塔湖"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 116,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.40842114100008,
+                    29.154667405000055
+                ]
+            },
+            "properties": {
+                "FID": 116,
+                "所属河": "伍须海"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 117,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.60081592300008,
+                    28.567803312000024
+                ]
+            },
+            "properties": {
+                "FID": 117,
+                "所属河": "仙女湖"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 118,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.36467876600005,
+                    31.064061313000025
+                ]
+            },
+            "properties": {
+                "FID": 118,
+                "所属河": "葫芦海"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 119,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.35879845500006,
+                    31.051350071000059
+                ]
+            },
+            "properties": {
+                "FID": 119,
+                "所属河": "卓尤母措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 120,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.14652223300004,
+                    30.828588301000025
+                ]
+            },
+            "properties": {
+                "FID": 120,
+                "所属河": "呷拉西"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 121,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.26570765500009,
+                    29.922701054000072
+                ]
+            },
+            "properties": {
+                "FID": 121,
+                "所属河": "多曲"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 122,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.114090605000058,
+                    29.193167885000037
+                ]
+            },
+            "properties": {
+                "FID": 122,
+                "所属河": "中心绒沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 123,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.197709031000045,
+                    29.934893878000025
+                ]
+            },
+            "properties": {
+                "FID": 123,
+                "所属河": "亚切拉沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 124,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.172398918000056,
+                    30.109492568000064
+                ]
+            },
+            "properties": {
+                "FID": 124,
+                "所属河": "党巴河"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 125,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.054157082000074,
+                    29.905188485000053
+                ]
+            },
+            "properties": {
+                "FID": 125,
+                "所属河": "兰多曲"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 126,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.464082330000053,
+                    29.999633150000079
+                ]
+            },
+            "properties": {
+                "FID": 126,
+                "所属河": "冬苟沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 127,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.269217720000086,
+                    30.199762391000036
+                ]
+            },
+            "properties": {
+                "FID": 127,
+                "所属河": "桑曲"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 128,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.255662898000082,
+                    30.277721623000048
+                ]
+            },
+            "properties": {
+                "FID": 128,
+                "所属河": "欧帕柯"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 129,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.531186834000039,
+                    29.756782222000027
+                ]
+            },
+            "properties": {
+                "FID": 129,
+                "所属河": "哈隆巴沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 130,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.471233908000045,
+                    30.51490334500005
+                ]
+            },
+            "properties": {
+                "FID": 130,
+                "所属河": "夏色沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 131,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.326951139000073,
+                    29.651059995000026
+                ]
+            },
+            "properties": {
+                "FID": 131,
+                "所属河": "夺雪沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 132,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.017947849000052,
+                    29.616237109000053
+                ]
+            },
+            "properties": {
+                "FID": 132,
+                "所属河": "尼曲"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 133,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.216064407000033,
+                    30.297702238000056
+                ]
+            },
+            "properties": {
+                "FID": 133,
+                "所属河": "岗通隆沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 134,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.205505909000067,
+                    30.343939582000075
+                ]
+            },
+            "properties": {
+                "FID": 134,
+                "所属河": "岗通隆沟右支河"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 135,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.52653986200005,
+                    30.472367758000075
+                ]
+            },
+            "properties": {
+                "FID": 135,
+                "所属河": "张堆沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 136,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.046545778000052,
+                    29.579666389000067
+                ]
+            },
+            "properties": {
+                "FID": 136,
+                "所属河": "归洼曲"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 137,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.390103225000075,
+                    30.177616250000028
+                ]
+            },
+            "properties": {
+                "FID": 137,
+                "所属河": "扛日隆沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 138,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.424980648000087,
+                    29.902912393000065
+                ]
+            },
+            "properties": {
+                "FID": 138,
+                "所属河": "拉普沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 139,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.307360794000033,
+                    29.274618051000061
+                ]
+            },
+            "properties": {
+                "FID": 139,
+                "所属河": "日测西"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 140,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.042892742000049,
+                    29.870992153000032
+                ]
+            },
+            "properties": {
+                "FID": 140,
+                "所属河": "朗达曲嘎"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 141,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.234942682000053,
+                    29.330384896000055
+                ]
+            },
+            "properties": {
+                "FID": 141,
+                "所属河": "松甫沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 142,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.000513930000068,
+                    29.699464706000072
+                ]
+            },
+            "properties": {
+                "FID": 142,
+                "所属河": "曾哇沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 143,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.308451689000037,
+                    29.331819984000049
+                ]
+            },
+            "properties": {
+                "FID": 143,
+                "所属河": "月日西沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 144,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    98.991588840000077,
+                    30.281042935000073
+                ]
+            },
+            "properties": {
+                "FID": 144,
+                "所属河": "甲英沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 145,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.329232654000066,
+                    29.586014900000066
+                ]
+            },
+            "properties": {
+                "FID": 145,
+                "所属河": "红东沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 146,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.354961246000073,
+                    29.569078094000076
+                ]
+            },
+            "properties": {
+                "FID": 146,
+                "所属河": "纳纳公沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 147,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.499321427000041,
+                    29.580548862000057
+                ]
+            },
+            "properties": {
+                "FID": 147,
+                "所属河": "结绒溪右支河"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 148,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.074697507000053,
+                    29.32268416200003
+                ]
+            },
+            "properties": {
+                "FID": 148,
+                "所属河": "罗绒西沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 149,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.031153480000057,
+                    30.110221310000043
+                ]
+            },
+            "properties": {
+                "FID": 149,
+                "所属河": "毕英曲"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 150,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.439871983000046,
+                    29.695464174000051
+                ]
+            },
+            "properties": {
+                "FID": 150,
+                "所属河": "波密河"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 151,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.11738772700005,
+                    29.091857526000069
+                ]
+            },
+            "properties": {
+                "FID": 151,
+                "所属河": "热思沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 152,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.320890816000087,
+                    30.217735207000032
+                ]
+            },
+            "properties": {
+                "FID": 152,
+                "所属河": "错纳柯"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 153,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.504895784000041,
+                    30.289664323000068
+                ]
+            },
+            "properties": {
+                "FID": 153,
+                "所属河": "羽且柯"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 154,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.249408272000039,
+                    29.936735940000062
+                ]
+            },
+            "properties": {
+                "FID": 154,
+                "所属河": "阔达曲沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 155,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    98.971262716000069,
+                    30.374356745000057
+                ]
+            },
+            "properties": {
+                "FID": 155,
+                "所属河": "随查略曲"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 156,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.320860328000037,
+                    29.274486791000072
+                ]
+            },
+            "properties": {
+                "FID": 156,
+                "所属河": "雄达西"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 157,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.175493577000054,
+                    30.118123144000037
+                ]
+            },
+            "properties": {
+                "FID": 157,
+                "所属河": "麻顶沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 158,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    102.44318266500005,
+                    30.686137264000024
+                ]
+            },
+            "properties": {
+                "FID": 158,
+                "所属河": "鹅咀沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 159,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.54929774700008,
+                    30.043936515000041
+                ]
+            },
+            "properties": {
+                "FID": 159,
+                "所属河": "鱼子西沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 160,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.96899632300006,
+                    29.395413349000023
+                ]
+            },
+            "properties": {
+                "FID": 160,
+                "所属河": "环河"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 161,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    102.10766450400007,
+                    30.447391535000065
+                ]
+            },
+            "properties": {
+                "FID": 161,
+                "所属河": "俄日沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 162,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.26274432300005,
+                    30.192440401000056
+                ]
+            },
+            "properties": {
+                "FID": 162,
+                "所属河": "日阿沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 163,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.51900939900008,
+                    29.753279851000059
+                ]
+            },
+            "properties": {
+                "FID": 163,
+                "所属河": "拉兹隆巴沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 164,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.58013965300006,
+                    30.067117630000041
+                ]
+            },
+            "properties": {
+                "FID": 164,
+                "所属河": "多日阿嘎莫沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 165,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.69435303800009,
+                    30.089953078000065
+                ]
+            },
+            "properties": {
+                "FID": 165,
+                "所属河": "拉西沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 166,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.49538583600008,
+                    30.046797764000075
+                ]
+            },
+            "properties": {
+                "FID": 166,
+                "所属河": "呷以隆巴沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 167,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.58623488700005,
+                    29.920465809000063
+                ]
+            },
+            "properties": {
+                "FID": 167,
+                "所属河": "木弄"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 168,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.52065772600008,
+                    30.316819078000037
+                ]
+            },
+            "properties": {
+                "FID": 168,
+                "所属河": "甘居柯"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 169,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.53494025000003,
+                    30.012333897000076
+                ]
+            },
+            "properties": {
+                "FID": 169,
+                "所属河": "多日啊嘎沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 170,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    102.05268024200006,
+                    30.532985115000031
+                ]
+            },
+            "properties": {
+                "FID": 170,
+                "所属河": "大里沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 171,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.58912068000006,
+                    29.456922156000076
+                ]
+            },
+            "properties": {
+                "FID": 171,
+                "所属河": "城子隆巴沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 172,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    102.05115980300008,
+                    30.665508535000072
+                ]
+            },
+            "properties": {
+                "FID": 172,
+                "所属河": "门子沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 173,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.30537251400006,
+                    29.430239716000074
+                ]
+            },
+            "properties": {
+                "FID": 173,
+                "所属河": "苦西绒沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 174,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    102.17860462000004,
+                    30.279573237000079
+                ]
+            },
+            "properties": {
+                "FID": 174,
+                "所属河": "响水沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 175,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.52973678400008,
+                    30.32839860100006
+                ]
+            },
+            "properties": {
+                "FID": 175,
+                "所属河": "扎拉贡玛"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 176,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    102.11843353400008,
+                    30.423187222000024
+                ]
+            },
+            "properties": {
+                "FID": 176,
+                "所属河": "野牛沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 177,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.62636395300007,
+                    30.11960349800006
+                ]
+            },
+            "properties": {
+                "FID": 177,
+                "所属河": "贡巴西沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 178,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.10554524000008,
+                    29.137256614000023
+                ]
+            },
+            "properties": {
+                "FID": 178,
+                "所属河": "赖子沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 179,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.44849215400006,
+                    29.450401037000063
+                ]
+            },
+            "properties": {
+                "FID": 179,
+                "所属河": "久库沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 180,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.53186108100005,
+                    30.336179446000074
+                ]
+            },
+            "properties": {
+                "FID": 180,
+                "所属河": "额达柯"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 181,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.44469247000006,
+                    29.677502396000079
+                ]
+            },
+            "properties": {
+                "FID": 181,
+                "所属河": "赤吉西隆巴沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 182,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.55426759800008,
+                    29.852522174000057
+                ]
+            },
+            "properties": {
+                "FID": 182,
+                "所属河": "甲根垻沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 183,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.92447528100007,
+                    30.408280246000061
+                ]
+            },
+            "properties": {
+                "FID": 183,
+                "所属河": "高尔沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 184,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    102.27741672200005,
+                    30.369671704000041
+                ]
+            },
+            "properties": {
+                "FID": 184,
+                "所属河": "汤坝沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 185,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.95006709100005,
+                    29.99573498500007
+                ]
+            },
+            "properties": {
+                "FID": 185,
+                "所属河": "折多塘沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 186,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.56672369900008,
+                    29.966686047000053
+                ]
+            },
+            "properties": {
+                "FID": 186,
+                "所属河": "布恰巴沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 187,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.06888363600007,
+                    29.363757892000024
+                ]
+            },
+            "properties": {
+                "FID": 187,
+                "所属河": "夹贺沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 188,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.58459383700006,
+                    29.947329991000061
+                ]
+            },
+            "properties": {
+                "FID": 188,
+                "所属河": "塔拉沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 189,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.54803184200006,
+                    29.651100185000075
+                ]
+            },
+            "properties": {
+                "FID": 189,
+                "所属河": "吉如西沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 190,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    102.18683229400006,
+                    30.184910064000064
+                ]
+            },
+            "properties": {
+                "FID": 190,
+                "所属河": "前溪沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 191,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.44795466600004,
+                    29.685186653000073
+                ]
+            },
+            "properties": {
+                "FID": 191,
+                "所属河": "俄巴绒隆巴沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 192,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.63202077200003,
+                    29.831109283000046
+                ]
+            },
+            "properties": {
+                "FID": 192,
+                "所属河": "亚拢沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 193,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.56670030600009,
+                    30.386632141000064
+                ]
+            },
+            "properties": {
+                "FID": 193,
+                "所属河": "乾宁沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 194,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.24246429500005,
+                    30.221667526000033
+                ]
+            },
+            "properties": {
+                "FID": 194,
+                "所属河": "苦乐沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 195,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    102.13646503800004,
+                    30.355128644000047
+                ]
+            },
+            "properties": {
+                "FID": 195,
+                "所属河": "下索子沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 196,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.22828696200008,
+                    29.417274985000063
+                ]
+            },
+            "properties": {
+                "FID": 196,
+                "所属河": "罗让沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 197,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.79146960000008,
+                    29.509708829000033
+                ]
+            },
+            "properties": {
+                "FID": 197,
+                "所属河": "滕增沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 198,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.40986907600006,
+                    29.673610416000031
+                ]
+            },
+            "properties": {
+                "FID": 198,
+                "所属河": "索德隆巴沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 199,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    102.19906513100005,
+                    30.220407273000035
+                ]
+            },
+            "properties": {
+                "FID": 199,
+                "所属河": "磨子沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 200,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.48990942700004,
+                    29.644165531000056
+                ]
+            },
+            "properties": {
+                "FID": 200,
+                "所属河": "兄罗隆巴沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 201,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.35077927600008,
+                    30.186519760000067
+                ]
+            },
+            "properties": {
+                "FID": 201,
+                "所属河": "王呷河"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 202,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.91798310300004,
+                    30.403358066000067
+                ]
+            },
+            "properties": {
+                "FID": 202,
+                "所属河": "烂庄子沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 203,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.91385152900006,
+                    30.184877991000064
+                ]
+            },
+            "properties": {
+                "FID": 203,
+                "所属河": "木格错沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 204,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    102.06124548700006,
+                    30.298670273000027
+                ]
+            },
+            "properties": {
+                "FID": 204,
+                "所属河": "文昌沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 205,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.88057291500007,
+                    29.991971316000047
+                ]
+            },
+            "properties": {
+                "FID": 205,
+                "所属河": "折多河"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 206,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.96117016000005,
+                    30.057328540000071
+                ]
+            },
+            "properties": {
+                "FID": 206,
+                "所属河": "子耳沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 207,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    102.29560041200006,
+                    30.497448672000075
+                ]
+            },
+            "properties": {
+                "FID": 207,
+                "所属河": "打枪棚沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 208,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.96536062200005,
+                    30.400577453000039
+                ]
+            },
+            "properties": {
+                "FID": 208,
+                "所属河": "山埂子沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 209,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    102.06149829200007,
+                    30.603127073000053
+                ]
+            },
+            "properties": {
+                "FID": 209,
+                "所属河": "孔泥坝沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 210,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    102.39538875100004,
+                    30.623501662000024
+                ]
+            },
+            "properties": {
+                "FID": 210,
+                "所属河": "子龙沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 211,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.84105529900006,
+                    30.279640475000065
+                ]
+            },
+            "properties": {
+                "FID": 211,
+                "所属河": "大龙布沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 212,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.32099608900006,
+                    29.544673321000062
+                ]
+            },
+            "properties": {
+                "FID": 212,
+                "所属河": "哲鲁库沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 213,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    102.16776087800008,
+                    30.074805382000079
+                ]
+            },
+            "properties": {
+                "FID": 213,
+                "所属河": "康定河"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 214,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.346421065000072,
+                    30.317129102000024
+                ]
+            },
+            "properties": {
+                "FID": 214,
+                "所属河": "德曲"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 215,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.57011755000008,
+                    29.385236003000045
+                ]
+            },
+            "properties": {
+                "FID": 215,
+                "所属河": "合德沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 216,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.85707969600008,
+                    29.841798685000072
+                ]
+            },
+            "properties": {
+                "FID": 216,
+                "所属河": "加则拉"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 217,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.05039766300007,
+                    29.250080213000047
+                ]
+            },
+            "properties": {
+                "FID": 217,
+                "所属河": "冷子沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 218,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    102.29103866500009,
+                    30.495674910000048
+                ]
+            },
+            "properties": {
+                "FID": 218,
+                "所属河": "公地沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 219,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.85845458600005,
+                    29.340051244000051
+                ]
+            },
+            "properties": {
+                "FID": 219,
+                "所属河": "五省庙沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 220,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.58767692900005,
+                    29.361043365000057
+                ]
+            },
+            "properties": {
+                "FID": 220,
+                "所属河": "上程子沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 221,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.778063236000037,
+                    29.759343336000029
+                ]
+            },
+            "properties": {
+                "FID": 221,
+                "所属河": "格则沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 222,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.08218135900006,
+                    29.618339411000079
+                ]
+            },
+            "properties": {
+                "FID": 222,
+                "所属河": "恶古沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 223,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.49065055700004,
+                    29.295973906000029
+                ]
+            },
+            "properties": {
+                "FID": 223,
+                "所属河": "拉曲左支河"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 224,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.18662831300009,
+                    30.738404650000064
+                ]
+            },
+            "properties": {
+                "FID": 224,
+                "所属河": "日里隆巴"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 225,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    105.73534004600003,
+                    31.925517724000031
+                ]
+            },
+            "properties": {
+                "FID": 225,
+                "所属河": "巩河"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 226,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    105.95893687400007,
+                    32.375943892000066
+                ]
+            },
+            "properties": {
+                "FID": 226,
+                "所属河": "长滩河"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 227,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    105.80784164600004,
+                    31.947052556000074
+                ]
+            },
+            "properties": {
+                "FID": 227,
+                "所属河": "嘉陵江"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 228,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    105.77252110400008,
+                    31.935747004000063
+                ]
+            },
+            "properties": {
+                "FID": 228,
+                "所属河": "嘉陵江"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 229,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.95800660700007,
+                    29.796318189000033
+                ]
+            },
+            "properties": {
+                "FID": 229,
+                "所属河": "智村沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 230,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.51122371000008,
+                    30.880811906000076
+                ]
+            },
+            "properties": {
+                "FID": 230,
+                "所属河": "木马柯"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 231,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.21058797900008,
+                    29.968160708000028
+                ]
+            },
+            "properties": {
+                "FID": 231,
+                "所属河": "擦岗隆洼"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 232,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.17013468500005,
+                    29.983131055000058
+                ]
+            },
+            "properties": {
+                "FID": 232,
+                "所属河": "曲登沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 233,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.013911097000062,
+                    29.780729919000066
+                ]
+            },
+            "properties": {
+                "FID": 233,
+                "所属河": "竹巴龙沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 234,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.12552868100005,
+                    29.565268414000059
+                ]
+            },
+            "properties": {
+                "FID": 234,
+                "所属河": "格日沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 235,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.00856493000003,
+                    29.361431075000041
+                ]
+            },
+            "properties": {
+                "FID": 235,
+                "所属河": "江益西沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 236,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.30831810800004,
+                    31.143264514000066
+                ]
+            },
+            "properties": {
+                "FID": 236,
+                "所属河": "沙朗沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 237,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    98.339716811000073,
+                    34.097149868000031
+                ]
+            },
+            "properties": {
+                "FID": 237,
+                "所属河": "热曲"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 238,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.825659230000042,
+                    28.787452115000065
+                ]
+            },
+            "properties": {
+                "FID": 238,
+                "所属河": "然乌沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 239,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.61011373700006,
+                    29.047554689000037
+                ]
+            },
+            "properties": {
+                "FID": 239,
+                "所属河": "拉曲"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 240,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    102.23237840600007,
+                    29.912136825000061
+                ]
+            },
+            "properties": {
+                "FID": 240,
+                "所属河": "羊圈沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 241,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.32902424800005,
+                    29.553977757000041
+                ]
+            },
+            "properties": {
+                "FID": 241,
+                "所属河": "色乌绒沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 242,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    98.587589470000069,
+                    31.635133240000073
+                ]
+            },
+            "properties": {
+                "FID": 242,
+                "所属河": "色曲河"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 243,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.232090731000085,
+                    28.358272186000079
+                ]
+            },
+            "properties": {
+                "FID": 243,
+                "所属河": "许曲"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 244,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.68516832400007,
+                    31.40381734500005
+                ]
+            },
+            "properties": {
+                "FID": 244,
+                "所属河": "达曲"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 245,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.03824310500005,
+                    29.232249656000079
+                ]
+            },
+            "properties": {
+                "FID": 245,
+                "所属河": "邓夏沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 246,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.30464896500007,
+                    29.23618543300006
+                ]
+            },
+            "properties": {
+                "FID": 246,
+                "所属河": "冬措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 247,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.09629448900006,
+                    29.60830792400003
+                ]
+            },
+            "properties": {
+                "FID": 247,
+                "所属河": "哲如措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 248,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    98.913748681000072,
+                    32.022681474000024
+                ]
+            },
+            "properties": {
+                "FID": 248,
+                "所属河": "尕柯错玛"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 249,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.22111939500007,
+                    29.312596946000042
+                ]
+            },
+            "properties": {
+                "FID": 249,
+                "所属河": "希措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 250,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.757469214000082,
+                    31.101026069000056
+                ]
+            },
+            "properties": {
+                "FID": 250,
+                "所属河": "拉龙措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 251,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.563381829000036,
+                    30.32230891200004
+                ]
+            },
+            "properties": {
+                "FID": 251,
+                "所属河": "措尼巴"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 252,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.556498102000035,
+                    30.498346194000078
+                ]
+            },
+            "properties": {
+                "FID": 252,
+                "所属河": "措普"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 253,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.39365232700004,
+                    29.524979587000075
+                ]
+            },
+            "properties": {
+                "FID": 253,
+                "所属河": "措然珠"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 254,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.563943701000085,
+                    30.176645284000074
+                ]
+            },
+            "properties": {
+                "FID": 254,
+                "所属河": "措纳学措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 255,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.38123437600007,
+                    29.470413102000066
+                ]
+            },
+            "properties": {
+                "FID": 255,
+                "所属河": "擦曲措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 256,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.119434780000063,
+                    31.83875762100007
+                ]
+            },
+            "properties": {
+                "FID": 256,
+                "所属河": "新路海"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 257,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.86362671100005,
+                    30.152760327000067
+                ]
+            },
+            "properties": {
+                "FID": 257,
+                "所属河": "木格措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 258,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.792699002000063,
+                    31.01353513600003
+                ]
+            },
+            "properties": {
+                "FID": 258,
+                "所属河": "相阳措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 259,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.494911246000072,
+                    30.397152611000024
+                ]
+            },
+            "properties": {
+                "FID": 259,
+                "所属河": "绒伊措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 260,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.978148001000079,
+                    31.127463456000044
+                ]
+            },
+            "properties": {
+                "FID": 260,
+                "所属河": "赞多措那玛"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 261,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.28067309000005,
+                    29.241385421000075
+                ]
+            },
+            "properties": {
+                "FID": 261,
+                "所属河": "银措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 262,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.28456404700006,
+                    30.023163404000059
+                ]
+            },
+            "properties": {
+                "FID": 262,
+                "所属河": "亚莫措根"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 263,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.10225770200003,
+                    29.401811826000028
+                ]
+            },
+            "properties": {
+                "FID": 263,
+                "所属河": "兴伊措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 264,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.257250025000076,
+                    28.428641221000078
+                ]
+            },
+            "properties": {
+                "FID": 264,
+                "所属河": "定曲"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 265,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    99.057452063000085,
+                    29.938572792000059
+                ]
+            },
+            "properties": {
+                "FID": 265,
+                "所属河": "那曲"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 266,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.26514622800005,
+                    31.653801689000034
+                ]
+            },
+            "properties": {
+                "FID": 266,
+                "所属河": "卡沙措"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 267,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    102.17493421300009,
+                    30.296297433000063
+                ]
+            },
+            "properties": {
+                "FID": 267,
+                "所属河": "金汤河"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 268,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.00474533100004,
+                    30.379087514000048
+                ]
+            },
+            "properties": {
+                "FID": 268,
+                "所属河": "白龙柯"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 269,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.28969057200004,
+                    30.393080009000073
+                ]
+            },
+            "properties": {
+                "FID": 269,
+                "所属河": "分区河"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 270,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.03491039500005,
+                    30.111327097000071
+                ]
+            },
+            "properties": {
+                "FID": 270,
+                "所属河": "苦乐沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 271,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.75416724900003,
+                    30.263088371000038
+                ]
+            },
+            "properties": {
+                "FID": 271,
+                "所属河": "郎村隆巴沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 272,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.98015605100005,
+                    30.296005269000034
+                ]
+            },
+            "properties": {
+                "FID": 272,
+                "所属河": "明贵柯"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 273,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.96627238300005,
+                    30.211172717000068
+                ]
+            },
+            "properties": {
+                "FID": 273,
+                "所属河": "尼吉隆巴沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 274,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.03525983600008,
+                    30.21576659200008
+                ]
+            },
+            "properties": {
+                "FID": 274,
+                "所属河": "特白沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 275,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.13253603600003,
+                    30.335241557000074
+                ]
+            },
+            "properties": {
+                "FID": 275,
+                "所属河": "同达沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 276,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.00433477900003,
+                    30.111628235000069
+                ]
+            },
+            "properties": {
+                "FID": 276,
+                "所属河": "弯地沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 277,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.00256909000007,
+                    30.345076739000035
+                ]
+            },
+            "properties": {
+                "FID": 277,
+                "所属河": "吴麦柯"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 278,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    100.18993961000007,
+                    30.880231755000068
+                ]
+            },
+            "properties": {
+                "FID": 278,
+                "所属河": "霍曲"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 279,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.04247816700007,
+                    29.288555360000032
+                ]
+            },
+            "properties": {
+                "FID": 279,
+                "所属河": "马岩沟"
+            }
+        },
+        {
+            "type": "Feature",
+            "id": 280,
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    101.00625310600009,
+                    30.20675476100007
+                ]
+            },
+            "properties": {
+                "FID": 280,
+                "所属河": "鲜水河"
+            }
+        }
+    ]
+}
