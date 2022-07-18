@@ -19,15 +19,15 @@ export default {
                 timeline: false,
                 vrButton: false,
                 animation: false,
-                terrainProvider: Cesium.createWorldTerrain({
-                    requestWaterMask: true,
-                    requestVertexNormals: true,
-                }),
-                // terrainProvider: new Cesium.CesiumTerrainProvider({
-                //     url: "http://localhost:8083/terrain/甘孜地形切片/巴塘县",
-                //     minimumLevel: 0,
-                //     maximumLevel: 15,
-                // })
+                // terrainProvider: Cesium.createWorldTerrain({
+                //     requestWaterMask: true,
+                //     requestVertexNormals: true,
+                // }),
+                terrainProvider: new Cesium.CesiumTerrainProvider({
+                    url: "http://localhost:8083/terrain/甘孜地形切片/巴塘县",
+                    minimumLevel: 0,
+                    maximumLevel: 15,
+                })
             });
             /*按平面点加载，用RELATIVE_TO_GROUND方法，加载慢 */
             // const promise = Cesium.GeoJsonDataSource.load("\\甘孜州数据\\positon.json");
@@ -88,7 +88,7 @@ export default {
                             radii: new Cesium.Cartesian3(10.0, 10.0, 10.0),
                             material: Cesium.Color.LIGHTSKYBLUE.withAlpha(1.0),
                             disableDepthTestDistance: Number.POSITIVE_INFINITY,
-                            distanceDisplayCondition: new Cesium.DistanceDisplayCondition(10.0, 200000.0),
+                            distanceDisplayCondition: new Cesium.DistanceDisplayCondition(10.0, 2000.0),
                             // scaleByDistance: new Cesium.NearFarScalar(1.5e2, 2.0, 1.5e7, 0.5),
                             // outline: true,
                             // outlineColor: Cesium.Color.BLACK,
@@ -109,6 +109,7 @@ export default {
                             style: Cesium.LabelStyle.FILL,
                             disableDepthTestDistance: Number.POSITIVE_INFINITY,
                             distanceDisplayCondition: new Cesium.DistanceDisplayCondition(10.0, 150000.0),
+                            scale:0.5
                         },
                     })
 
