@@ -19,15 +19,15 @@ export default {
                 timeline: false,
                 vrButton: false,
                 animation: false,
-                // terrainProvider: Cesium.createWorldTerrain({
-                //     requestWaterMask: true,
-                //     requestVertexNormals: true,
-                // }),
-                terrainProvider: new Cesium.CesiumTerrainProvider({
-                    url: "http://localhost:8083/terrain/甘孜地形切片/巴塘县",
-                    minimumLevel: 0,
-                    maximumLevel: 15,
-                })
+                terrainProvider: Cesium.createWorldTerrain({
+                    requestWaterMask: true,
+                    requestVertexNormals: true,
+                }),
+                // terrainProvider: new Cesium.CesiumTerrainProvider({
+                //     url: "http://localhost:8083/terrain/甘孜地形切片/巴塘县",
+                //     minimumLevel: 0,
+                //     maximumLevel: 15,
+                // })
             });
             /*按平面点加载，用RELATIVE_TO_GROUND方法，加载慢 */
             // const promise = Cesium.GeoJsonDataSource.load("\\甘孜州数据\\positon.json");
@@ -149,33 +149,6 @@ export default {
                     },
                 });
                 }
-                
-
-                // for (let i = 0; i < entities.length; i++) {
-                //     // for (let j = 0;j < entities[i].polyline.positions._value.length )
-                //     const zb_c3 =
-                //         state.viewer.scene.globe.ellipsoid.cartesianToCartographic(
-                //             entities[0].polyline.positions._value[i]
-                //         );
-                //     const zb_n = Cesium.Math.toDegrees(zb_c3.latitude);
-                //     const zb_e = Cesium.Math.toDegrees(zb_c3.longitude);
-                //     c.push(Number(zb_e));
-                //     c.push(Number(zb_n));
-                // }
-                // state.viewer.entities.add({
-                //     polyline: {
-                //         positions: Cesium.Cartesian3.fromDegreesArray(c),
-                //         clampToGround: true,
-                //         width: 30,
-
-                //         material: new Cesium.PolylineGlowMaterialProperty({
-                //             color: Cesium.Color.LIGHTCORAL,
-                //             // outlineWidth: 3,
-                //             // outlineColor: Cesium.Color.BLACK,
-                //             glowPower: 0.25,
-                //         }),
-                //     },
-                // });
             });
 
 

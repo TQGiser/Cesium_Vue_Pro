@@ -24,11 +24,11 @@ export default {
         //   requestWaterMask: true,
         //   requestVertexNormals: true,
         // }),
-         terrainProvider: new Cesium.CesiumTerrainProvider({
-                    url: "http://localhost:8083/terrain2",
-                    minimumLevel: 0,
-                    maximumLevel: 15,
-                }),
+        terrainProvider: new Cesium.CesiumTerrainProvider({
+          url: "http://localhost:8083/terrain/甘孜地形切片/巴塘县",
+          minimumLevel: 0,
+          maximumLevel: 15,
+        }),
       });
       /*加载hyda，生成湖面 */
       const b = new Array();
@@ -288,7 +288,14 @@ export default {
       });
       // Make the camera track this moving entity.
       state.viewer.trackedEntity = airplaneEntity;
-
+      state.viewer.scene.imageryLayers.addImageryProvider(
+        new Cesium.UrlTemplateImageryProvider({
+          url: "http://localhost:8083/dom/{z}/{x}/{y}.png",
+          tilingScheme: new Cesium.WebMercatorTilingScheme(),
+          minimumLevel: 0,
+          maximumLevel: 20
+        }),
+      )
     });
     return {
       ...toRefs(state),
