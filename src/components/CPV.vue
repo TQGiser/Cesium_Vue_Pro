@@ -343,8 +343,8 @@ export default {
             state.viewer.camera.flyTo({
                 destination: Cesium.Cartesian3.fromDegrees(
                     99.54714582,
-                    30.48131388,
-                    4700
+                    30.38131388,
+                    8000
                 ),
                 orientation: {
                     heading: Cesium.Math.toRadians(2.0),
