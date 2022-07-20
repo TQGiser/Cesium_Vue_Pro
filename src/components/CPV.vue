@@ -90,7 +90,7 @@ export default {
                         name: name,
                         position: Cesium.Cartesian3.fromDegrees(jd, wd, gd + 100),
                         ellipsoid: {
-                            radii: new Cesium.Cartesian3(100.0, 100.0, 100.0),
+                            radii: new Cesium.Cartesian3(50.0, 50.0, 50.0),
                             material: Cesium.Color.LIGHTSKYBLUE.withAlpha(1.0),
                             disableDepthTestDistance: Number.POSITIVE_INFINITY,
                             distanceDisplayCondition: new Cesium.DistanceDisplayCondition(10.0, 2000000.0),
@@ -256,7 +256,7 @@ export default {
                         polyline: {
                             positions: Cesium.Cartesian3.fromDegreesArray(e),
                             clampToGround: true,
-                            width: 50,
+                            width: 20,
                             material: new Cesium.PolylineGlowMaterialProperty({
                                 color: Cesium.Color.DODGERBLUE,
                                 // outlineWidth: 3,
