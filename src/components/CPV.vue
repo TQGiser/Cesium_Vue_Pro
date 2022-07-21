@@ -19,7 +19,7 @@ import * as Cesium from "cesium/Cesium";
 import * as widgets from "cesium\\Build\\Cesium\\Widgets\\widgets.css";
 import { onMounted, toRefs, reactive, ref } from "vue";
 import { ElButton } from "element-plus";
-
+var sf = require("shapefile");
 export default {
     setup() {
         const state = reactive({
@@ -34,10 +34,6 @@ export default {
             value: null,
             value2: null
         });
-        const test = () => {
-            console.log(state.value)
-            console.log(state.value2)
-        }
         Cesium.Ion.defaultAccessToken =
             "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0MjczNDgzMy1hYzE1LTRjNWYtODZhMS01MjZkNWRiMDc2MmUiLCJpZCI6ODIxMzAsImlhdCI6MTY0NDU0ODc0M30.LpGXXWsbQXucV5MTeC2g8BCAQWiZp612gosWcK-7ocE";
         onMounted(() => {
@@ -352,6 +348,12 @@ export default {
                 },
             });
         });
+        const test = () => {
+            console.log(state.value)
+            console.log(state.value2)
+        }
+        sf.open("\\SHP数据\\dmap.shp")
+            .then(source => console.log(source));
         return {
             test,
             ...toRefs(state),
