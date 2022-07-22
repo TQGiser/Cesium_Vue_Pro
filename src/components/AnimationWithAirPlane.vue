@@ -26,7 +26,7 @@ export default {
       });
       var JSONLength;
       const positionProperty = new Cesium.SampledPositionProperty();
-      const promise = Cesium.GeoJsonDataSource.load("仁达沟三维公里桩.json");
+      const promise = Cesium.GeoJsonDataSource.load("\\仁达沟\\仁达沟三维公里桩.json");
       promise.then(function (dataSource) {
         const entitys = dataSource.entities.values;
         JSONLength = dataSource.entities.values.length;
@@ -39,7 +39,7 @@ export default {
           const zb_n = Cesium.Math.toDegrees(zb_c3.latitude);
           const zb_e = Cesium.Math.toDegrees(zb_c3.longitude);
           const zb_h = Number(zb_c3.height);
-          const zb_h2 = Number(zb_c3.height)+100 /*提高点高度100米 */
+          const zb_h2 = Number(zb_c3.height)+10 /*提高点高度100米 */
           state.viewer.entities.add({
             position: Cesium.Cartesian3.fromDegrees(zb_e, zb_n, zb_h),
             point: {
@@ -84,7 +84,7 @@ export default {
         position: positionProperty,
         model: { 
           // uri: 'three官网glb模型\\Stork.glb',
-          uri: '\\模型\\wrj2_AnimationTest.glb',
+          uri: '\\模型\\无人机.glb',
           // minimumPixelSize: 3
           scale: 25
            },

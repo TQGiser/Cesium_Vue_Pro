@@ -3,9 +3,9 @@
   <MainMap />
 </template>
 <script>
-import MainMap from './components/CPV.vue'
-// import MainMap from './components/Test/PostionT.vue'
-// import MainMap from './components/Lake_P.vue'
+// import MainMap from './components/CPV.vue'
+// import MainMap from './components/Test/ButtonT2.vue'
+import MainMap from './components/AnimationWithAirPlane.vue'
 export default {
   components:{ 
     MainMap,
