@@ -398,6 +398,18 @@ export default {
           pitch: Cesium.Math.toRadians(-20.0),
         },
       });
+
+      /*加载RESA */
+      const tileset = new Cesium.Cesium3DTileset({
+        url: "http://localhost:8083/resa/tileset.json",
+      });
+      tileset.readyPromise
+        .then(function (tileset) {
+          state.viewer.scene.primitives.add(tileset);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
     });
 
     /*加载shape函数 */
@@ -458,6 +470,7 @@ export default {
         });
       // .catch((error) => console.error(error.stack));
     };
+
     return {
       readInputFile,
       upload,
