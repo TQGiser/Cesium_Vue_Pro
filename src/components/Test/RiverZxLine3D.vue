@@ -20,13 +20,14 @@ export default {
         timeline: false,
         vrButton: false,
         animation: false,
-        terrainProvider: Cesium.createWorldTerrain({
-          requestWaterMask: true,
-          requestVertexNormals: true,
-        }),
+       terrainProvider: new Cesium.CesiumTerrainProvider({
+            url: "http://localhost:8083/terrain/甘孜地形切片/理塘县",
+            minimumLevel: 0,
+            maximumLevel: 15,
+          }),
       });
       const b  = new Array();
-      const promise = Cesium.GeoJsonDataSource.load("丁曲三维中线.json");
+      const promise = Cesium.GeoJsonDataSource.load("\\理塘数据\\dmx_lt_M25.json");
       promise.then(function (dataSource) {
         state.viewer.dataSources.add(dataSource);
       });

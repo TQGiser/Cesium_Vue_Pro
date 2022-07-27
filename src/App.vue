@@ -3,8 +3,8 @@
   <MainMap />
 </template>
 <script>
+// import MainMap from './components/Test/RiverZxLine3D.vue'
 import MainMap from './components/CPV.vue'
-// import MainMap from './components/AnimationWithAirPlane.vue'
 export default {
   components:{ 
     MainMap,

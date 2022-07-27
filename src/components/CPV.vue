@@ -84,7 +84,7 @@ export default {
           //     requestVertexNormals: true,
           // }),
           terrainProvider: new Cesium.CesiumTerrainProvider({
-            url: "http://localhost:8083/terrain/甘孜地形切片/巴塘县",
+            url: "http://localhost:8083/terrain/甘孜地形切片/理塘县",
             minimumLevel: 0,
             maximumLevel: 15,
           }),
@@ -333,6 +333,55 @@ export default {
         }
       });
 
+      /*加载理塘三维断面线 */
+      const promise6 = Cesium.GeoJsonDataSource.load(
+        "\\理塘数据\\dmx_lt_M25.json"
+      );
+      promise6.then(function (dataSource) {
+        state.viewer.dataSources.add(dataSource);
+      });
+
+      /*加载理塘DMAL*/
+      const promise7 = Cesium.GeoJsonDataSource.load(
+        "\\理塘数据\\dmal_lt.json"
+      );
+      promise7.then(function (dataSource) {
+        const entities = dataSource.entities.values;
+        const len = entities.length;
+        for (let i = 0; i < len; i++) {
+          const RiverName = entities[i].properties.RIVER._value
+          const len2 = entities[i].polyline.positions._value.length;
+          const e = new Array();
+          for (let j = 0; j < len2; j++) {
+            const jd = Cesium.Math.toDegrees(
+              Cesium.Cartographic.fromCartesian(
+                entities[i].polyline.positions._value[j]
+              ).longitude
+            );
+            const wd = Cesium.Math.toDegrees(
+              Cesium.Cartographic.fromCartesian(
+                entities[i].polyline.positions._value[j]
+              ).latitude
+            );
+            e.push(Number(jd));
+            e.push(Number(wd));
+          }
+          state.viewer.entities.add({
+            name:RiverName,
+            polyline: {
+              positions: Cesium.Cartesian3.fromDegreesArray(e),
+              clampToGround: true,
+              width: 20,
+              material: new Cesium.PolylineGlowMaterialProperty({
+                color: Cesium.Color.DODGERBLUE,
+                glowPower: 0.25,
+                // taperPower:0.5                      /扩散渲染
+              }),
+            },
+          });
+        }
+      });
+
       /*获取视角高度，采用MOVEMENT事件驱动*/
       var handler = new Cesium.ScreenSpaceEventHandler(
         state.viewer.scene.canvas
@@ -388,11 +437,7 @@ export default {
 
       /*视角控制 */
       state.viewer.camera.flyTo({
-        destination: Cesium.Cartesian3.fromDegrees(
-          99.54714582,
-          30.38131388,
-          8000
-        ),
+        destination: Cesium.Cartesian3.fromDegrees(100.2185, 30.0259, 8000),
         orientation: {
           heading: Cesium.Math.toRadians(2.0),
           pitch: Cesium.Math.toRadians(-20.0),
