@@ -84,7 +84,8 @@ export default {
           //     requestVertexNormals: true,
           // }),
           terrainProvider: new Cesium.CesiumTerrainProvider({
-            url: "http://localhost:8083/terrain/甘孜地形切片/理塘县",
+            // url: "http://localhost:8083/terrain/甘孜地形切片/理塘县",
+            url: "http://192.168.0.122:8083/terrain/甘孜地形切片/理塘县",
             minimumLevel: 0,
             maximumLevel: 15,
           }),
@@ -149,44 +150,44 @@ export default {
       });
 
       /*加载行政区贴地线 */
-      const promise2 = Cesium.GeoJsonDataSource.load(
-        "\\甘孜州数据\\巴塘乡镇界.json"
-      );
-      promise2.then(function (dataSource) {
-        const entities = dataSource.entities.values;
-        const len = entities.length;
-        for (let i = 0; i < len; i++) {
-          const len2 = entities[i].polyline.positions._value.length;
-          const a = new Array();
-          for (let j = 0; j < len2; j++) {
-            const jd = Cesium.Math.toDegrees(
-              Cesium.Cartographic.fromCartesian(
-                entities[i].polyline.positions._value[j]
-              ).longitude
-            );
-            const wd = Cesium.Math.toDegrees(
-              Cesium.Cartographic.fromCartesian(
-                entities[i].polyline.positions._value[j]
-              ).latitude
-            );
-            a.push(Number(jd));
-            a.push(Number(wd));
-          }
-          state.viewer.entities.add({
-            polyline: {
-              positions: Cesium.Cartesian3.fromDegreesArray(a),
-              clampToGround: true,
-              width: 10,
-              material: new Cesium.PolylineGlowMaterialProperty({
-                color: Cesium.Color.DARKORANGE,
-                // outlineWidth: 3,
-                // outlineColor: Cesium.Color.BLACK,
-                glowPower: 0.25,
-              }),
-            },
-          });
-        }
-      });
+      // const promise2 = Cesium.GeoJsonDataSource.load(
+      //   "\\甘孜州数据\\巴塘乡镇界.json"
+      // );
+      // promise2.then(function (dataSource) {
+      //   const entities = dataSource.entities.values;
+      //   const len = entities.length;
+      //   for (let i = 0; i < len; i++) {
+      //     const len2 = entities[i].polyline.positions._value.length;
+      //     const a = new Array();
+      //     for (let j = 0; j < len2; j++) {
+      //       const jd = Cesium.Math.toDegrees(
+      //         Cesium.Cartographic.fromCartesian(
+      //           entities[i].polyline.positions._value[j]
+      //         ).longitude
+      //       );
+      //       const wd = Cesium.Math.toDegrees(
+      //         Cesium.Cartographic.fromCartesian(
+      //           entities[i].polyline.positions._value[j]
+      //         ).latitude
+      //       );
+      //       a.push(Number(jd));
+      //       a.push(Number(wd));
+      //     }
+      //     state.viewer.entities.add({
+      //       polyline: {
+      //         positions: Cesium.Cartesian3.fromDegreesArray(a),
+      //         clampToGround: true,
+      //         width: 10,
+      //         material: new Cesium.PolylineGlowMaterialProperty({
+      //           color: Cesium.Color.DARKORANGE,
+      //           // outlineWidth: 3,
+      //           // outlineColor: Cesium.Color.BLACK,
+      //           glowPower: 0.25,
+      //         }),
+      //       },
+      //     });
+      //   }
+      // });
 
       /*加载hyda，生成湖面 */
       const b = new Array();
@@ -276,71 +277,114 @@ export default {
       });
 
       /*加载巴塘河流中线 */
-      const promise5 =
-        Cesium.GeoJsonDataSource.load("\\巴塘数据\\河流中线.json");
-      promise5.then(function (dataSource) {
-        const entities = dataSource.entities.values;
-        const len = entities.length;
-        for (let i = 0; i < len; i++) {
-          const len2 = entities[i].polyline.positions._value.length;
-          const e = new Array();
-          for (let j = 0; j < len2; j++) {
-            const jd = Cesium.Math.toDegrees(
-              Cesium.Cartographic.fromCartesian(
-                entities[i].polyline.positions._value[j]
-              ).longitude
-            );
-            const wd = Cesium.Math.toDegrees(
-              Cesium.Cartographic.fromCartesian(
-                entities[i].polyline.positions._value[j]
-              ).latitude
-            );
-            e.push(Number(jd));
-            e.push(Number(wd));
-          }
-          state.viewer.entities.add({
-            polyline: {
-              positions: Cesium.Cartesian3.fromDegreesArray(e),
-              clampToGround: true,
-              width: 20,
-              material: new Cesium.PolylineGlowMaterialProperty({
-                color: Cesium.Color.DODGERBLUE,
-                // outlineWidth: 3,
-                // outlineColor: Cesium.Color.BLACK,
-                glowPower: 0.25,
-                // taperPower:0.5                      /扩散渲染
-              }),
-              // material: new Cesium.Material({
-              //     fabric: {
-              //         type: "Water",
-              //         uniforms: {
-              //             baseWaterColor: new Cesium.Color(
-              //                 115 / 255.0,
-              //                 178 / 255.0,
-              //                 255 / 255.0,
-              //                 0.5
-              //             ),
-              //             normalMap: "\\水体\\waterNormals.jpg",
-              //             frequency: 1000.0,
-              //             animationSpeed: 0.001,
-              //             amplitude: 10,
-              //             specularIntensity: 2,
-              //         },
-              //     },
-              // }),
-            },
-          });
-        }
-      });
+      // const promise5 =
+      //   Cesium.GeoJsonDataSource.load("\\巴塘数据\\河流中线.json");
+      // promise5.then(function (dataSource) {
+      //   const entities = dataSource.entities.values;
+      //   const len = entities.length;
+      //   for (let i = 0; i < len; i++) {
+      //     const len2 = entities[i].polyline.positions._value.length;
+      //     const e = new Array();
+      //     for (let j = 0; j < len2; j++) {
+      //       const jd = Cesium.Math.toDegrees(
+      //         Cesium.Cartographic.fromCartesian(
+      //           entities[i].polyline.positions._value[j]
+      //         ).longitude
+      //       );
+      //       const wd = Cesium.Math.toDegrees(
+      //         Cesium.Cartographic.fromCartesian(
+      //           entities[i].polyline.positions._value[j]
+      //         ).latitude
+      //       );
+      //       e.push(Number(jd));
+      //       e.push(Number(wd));
+      //     }
+      //     state.viewer.entities.add({
+      //       polyline: {
+      //         positions: Cesium.Cartesian3.fromDegreesArray(e),
+      //         clampToGround: true,
+      //         width: 20,
+      //         material: new Cesium.PolylineGlowMaterialProperty({
+      //           color: Cesium.Color.DODGERBLUE,
+      //           // outlineWidth: 3,
+      //           // outlineColor: Cesium.Color.BLACK,
+      //           glowPower: 0.25,
+      //           // taperPower:0.5                      /扩散渲染
+      //         }),
+      //         // material: new Cesium.Material({
+      //         //     fabric: {
+      //         //         type: "Water",
+      //         //         uniforms: {
+      //         //             baseWaterColor: new Cesium.Color(
+      //         //                 115 / 255.0,
+      //         //                 178 / 255.0,
+      //         //                 255 / 255.0,
+      //         //                 0.5
+      //         //             ),
+      //         //             normalMap: "\\水体\\waterNormals.jpg",
+      //         //             frequency: 1000.0,
+      //         //             animationSpeed: 0.001,
+      //         //             amplitude: 10,
+      //         //             specularIntensity: 2,
+      //         //         },
+      //         //     },
+      //         // }),
+      //       },
+      //     });
+      //   }
+      // });
 
       /*加载理塘三维断面线 */
       const promise6 = Cesium.GeoJsonDataSource.load(
-        "\\理塘数据\\dmx_lt_M25.json"
+        "\\理塘数据\\dmx2_m25.json"
       );
       promise6.then(function (dataSource) {
         state.viewer.dataSources.add(dataSource);
+        /*显示断面标注，太密集，取消 */
+        // const entities = dataSource.entities.values;
+        // const len = entities.length;
+        // for (let i = 0; i < len; i++) {
+        //   const label =
+        //     entities[i].properties.RIVER.valueOf() +
+        //     entities[i].properties.dmh.valueOf();
+        //   // console.log(entities[i].polyline.positions._value[0])
+        //   const jd = Cesium.Math.toDegrees(
+        //     Cesium.Cartographic.fromCartesian(
+        //       entities[i].polyline.positions._value[0]
+        //     ).longitude
+        //   );
+        //   const wd = Cesium.Math.toDegrees(
+        //     Cesium.Cartographic.fromCartesian(
+        //       entities[i].polyline.positions._value[0]
+        //     ).latitude
+        //   );
+        //   const gd = Cesium.Cartographic.fromCartesian(
+        //     entities[i].polyline.positions._value[0]
+        //   ).height;
+        //   state.viewer.entities.add({
+        //     position: Cesium.Cartesian3.fromDegrees(jd, wd, gd),
+        //     label: {
+        //       text: label /*注记名称 */,
+        //       fillColor: Cesium.Color.WHITE,
+        //       // heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
+        //       horizontalOrigin: Cesium.HorizontalOrigin.CENTER,
+        //       verticalOrigin: Cesium.VerticalOrigin.BASELINE,
+        //       showBackground: true,
+        //       backgroundColor: Cesium.Color.DEEPSKYBLUE,
+        //       backgroundPadding: Cesium.Cartesian2(30, 30),
+        //       style: Cesium.LabelStyle.FILL,
+        //       disableDepthTestDistance: Number.POSITIVE_INFINITY,
+        //       distanceDisplayCondition: new Cesium.DistanceDisplayCondition(
+        //         10.0,
+        //         120000.0
+        //       ),
+        //       scale: 0.5,
+        //     },
+        //   });
+        //   // console.log(label, jd, wd, gd);
+        // }
       });
-
+      
       /*加载理塘DMAL*/
       const promise7 = Cesium.GeoJsonDataSource.load(
         "\\理塘数据\\dmal_lt.json"
@@ -349,7 +393,7 @@ export default {
         const entities = dataSource.entities.values;
         const len = entities.length;
         for (let i = 0; i < len; i++) {
-          const RiverName = entities[i].properties.RIVER._value
+          const RiverName = entities[i].properties.RIVER._value;
           const len2 = entities[i].polyline.positions._value.length;
           const e = new Array();
           for (let j = 0; j < len2; j++) {
@@ -367,7 +411,7 @@ export default {
             e.push(Number(wd));
           }
           state.viewer.entities.add({
-            name:RiverName,
+            name: RiverName,
             polyline: {
               positions: Cesium.Cartesian3.fromDegreesArray(e),
               clampToGround: true,
@@ -377,6 +421,45 @@ export default {
                 glowPower: 0.25,
                 // taperPower:0.5                      /扩散渲染
               }),
+            },
+          });
+        }
+      });
+
+      /*加载理塘有断面的河流点*/
+      const promise8 = Cesium.GeoJsonDataSource.load("\\理塘数据\\dmaa_p.json");
+      promise8.then(function (dataSource) {
+        const entities = dataSource.entities.values;
+        for (let i = 0; i < entities.length; i++) {
+          const jd = Cesium.Math.toDegrees(
+            Cesium.Cartographic.fromCartesian(entities[i]._position._value)
+              .longitude
+          );
+          const wd = Cesium.Math.toDegrees(
+            Cesium.Cartographic.fromCartesian(entities[i]._position._value)
+              .latitude
+          );
+          const gd = entities[i].properties.ELEV.valueOf();
+          const label = entities[i].properties.RIVER.valueOf();
+          // console.log(jd, wd, gd);
+          state.viewer.entities.add({
+            position: Cesium.Cartesian3.fromDegrees(jd, wd, gd),
+            label: {
+              text: label/*注记名称 */,
+              fillColor: Cesium.Color.WHITE,
+              // heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
+              horizontalOrigin: Cesium.HorizontalOrigin.CENTER,
+              verticalOrigin: Cesium.VerticalOrigin.BASELINE,
+              showBackground: true,
+              backgroundColor: Cesium.Color.DEEPSKYBLUE,
+              backgroundPadding: Cesium.Cartesian2(30, 30),
+              style: Cesium.LabelStyle.FILL,
+              disableDepthTestDistance: Number.POSITIVE_INFINITY,
+              distanceDisplayCondition: new Cesium.DistanceDisplayCondition(
+                10.0,
+                120000.0
+              ),
+              scale: 0.7,
             },
           });
         }
@@ -446,7 +529,7 @@ export default {
 
       /*加载RESA */
       const tileset = new Cesium.Cesium3DTileset({
-        url: "http://localhost:8083/resa/tileset.json",
+        url: "http://192.168.0.122:8083/resa/tileset.json",
       });
       tileset.readyPromise
         .then(function (tileset) {
