@@ -427,43 +427,43 @@ export default {
       });
 
       /*加载理塘有断面的河流点*/
-      // const promise8 = Cesium.GeoJsonDataSource.load("\\理塘数据\\dmaa_p.json");
-      // promise8.then(function (dataSource) {
-      //   const entities = dataSource.entities.values;
-      //   for (let i = 0; i < entities.length; i++) {
-      //     const jd = Cesium.Math.toDegrees(
-      //       Cesium.Cartographic.fromCartesian(entities[i]._position._value)
-      //         .longitude
-      //     );
-      //     const wd = Cesium.Math.toDegrees(
-      //       Cesium.Cartographic.fromCartesian(entities[i]._position._value)
-      //         .latitude
-      //     );
-      //     const gd = entities[i].properties.ELEV.valueOf();
-      //     const label = entities[i].properties.RIVER.valueOf();
-      //     // console.log(jd, wd, gd);
-      //     state.viewer.entities.add({
-      //       position: Cesium.Cartesian3.fromDegrees(jd, wd, gd),
-      //       label: {
-      //         text: label/*注记名称 */,
-      //         fillColor: Cesium.Color.WHITE,
-      //         // heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
-      //         horizontalOrigin: Cesium.HorizontalOrigin.CENTER,
-      //         verticalOrigin: Cesium.VerticalOrigin.BASELINE,
-      //         showBackground: true,
-      //         backgroundColor: Cesium.Color.DEEPSKYBLUE,
-      //         backgroundPadding: Cesium.Cartesian2(30, 30),
-      //         style: Cesium.LabelStyle.FILL,
-      //         disableDepthTestDistance: Number.POSITIVE_INFINITY,
-      //         distanceDisplayCondition: new Cesium.DistanceDisplayCondition(
-      //           10.0,
-      //           120000.0
-      //         ),
-      //         scale: 0.7,
-      //       },
-      //     });
-      //   }
-      // });
+      const promise8 = Cesium.GeoJsonDataSource.load("\\理塘数据\\dmaa_p.json");
+      promise8.then(function (dataSource) {
+        const entities = dataSource.entities.values;
+        for (let i = 0; i < entities.length; i++) {
+          const jd = Cesium.Math.toDegrees(
+            Cesium.Cartographic.fromCartesian(entities[i]._position._value)
+              .longitude
+          );
+          const wd = Cesium.Math.toDegrees(
+            Cesium.Cartographic.fromCartesian(entities[i]._position._value)
+              .latitude
+          );
+          const gd = entities[i].properties.ELEV.valueOf();
+          const label = entities[i].properties.RIVER.valueOf();
+          // console.log(jd, wd, gd);
+          state.viewer.entities.add({
+            position: Cesium.Cartesian3.fromDegrees(jd, wd, gd),
+            label: {
+              text: label/*注记名称 */,
+              fillColor: Cesium.Color.WHITE,
+              // heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
+              horizontalOrigin: Cesium.HorizontalOrigin.CENTER,
+              verticalOrigin: Cesium.VerticalOrigin.BASELINE,
+              showBackground: true,
+              backgroundColor: Cesium.Color.DEEPSKYBLUE,
+              backgroundPadding: Cesium.Cartesian2(30, 30),
+              style: Cesium.LabelStyle.FILL,
+              disableDepthTestDistance: Number.POSITIVE_INFINITY,
+              distanceDisplayCondition: new Cesium.DistanceDisplayCondition(
+                10.0,
+                120000.0
+              ),
+              scale: 0.7,
+            },
+          });
+        }
+      });
 
       /*获取视角高度，采用MOVEMENT事件驱动*/
       var handler = new Cesium.ScreenSpaceEventHandler(
