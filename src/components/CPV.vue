@@ -85,7 +85,7 @@ export default {
           // }),
           terrainProvider: new Cesium.CesiumTerrainProvider({
             // url: "http://localhost:8083/terrain/甘孜地形切片/理塘县",
-            url: "http://192.168.0.122:8083/terrain/甘孜地形切片/理塘县",
+            url: "http://192.168.0.100:8083/terrain/甘孜地形切片/理塘县",
             minimumLevel: 0,
             maximumLevel: 15,
           }),
@@ -427,43 +427,43 @@ export default {
       });
 
       /*加载理塘有断面的河流点*/
-      const promise8 = Cesium.GeoJsonDataSource.load("\\理塘数据\\dmaa_p.json");
-      promise8.then(function (dataSource) {
-        const entities = dataSource.entities.values;
-        for (let i = 0; i < entities.length; i++) {
-          const jd = Cesium.Math.toDegrees(
-            Cesium.Cartographic.fromCartesian(entities[i]._position._value)
-              .longitude
-          );
-          const wd = Cesium.Math.toDegrees(
-            Cesium.Cartographic.fromCartesian(entities[i]._position._value)
-              .latitude
-          );
-          const gd = entities[i].properties.ELEV.valueOf();
-          const label = entities[i].properties.RIVER.valueOf();
-          // console.log(jd, wd, gd);
-          state.viewer.entities.add({
-            position: Cesium.Cartesian3.fromDegrees(jd, wd, gd),
-            label: {
-              text: label/*注记名称 */,
-              fillColor: Cesium.Color.WHITE,
-              // heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
-              horizontalOrigin: Cesium.HorizontalOrigin.CENTER,
-              verticalOrigin: Cesium.VerticalOrigin.BASELINE,
-              showBackground: true,
-              backgroundColor: Cesium.Color.DEEPSKYBLUE,
-              backgroundPadding: Cesium.Cartesian2(30, 30),
-              style: Cesium.LabelStyle.FILL,
-              disableDepthTestDistance: Number.POSITIVE_INFINITY,
-              distanceDisplayCondition: new Cesium.DistanceDisplayCondition(
-                10.0,
-                120000.0
-              ),
-              scale: 0.7,
-            },
-          });
-        }
-      });
+      // const promise8 = Cesium.GeoJsonDataSource.load("\\理塘数据\\dmaa_p.json");
+      // promise8.then(function (dataSource) {
+      //   const entities = dataSource.entities.values;
+      //   for (let i = 0; i < entities.length; i++) {
+      //     const jd = Cesium.Math.toDegrees(
+      //       Cesium.Cartographic.fromCartesian(entities[i]._position._value)
+      //         .longitude
+      //     );
+      //     const wd = Cesium.Math.toDegrees(
+      //       Cesium.Cartographic.fromCartesian(entities[i]._position._value)
+      //         .latitude
+      //     );
+      //     const gd = entities[i].properties.ELEV.valueOf();
+      //     const label = entities[i].properties.RIVER.valueOf();
+      //     // console.log(jd, wd, gd);
+      //     state.viewer.entities.add({
+      //       position: Cesium.Cartesian3.fromDegrees(jd, wd, gd),
+      //       label: {
+      //         text: label/*注记名称 */,
+      //         fillColor: Cesium.Color.WHITE,
+      //         // heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
+      //         horizontalOrigin: Cesium.HorizontalOrigin.CENTER,
+      //         verticalOrigin: Cesium.VerticalOrigin.BASELINE,
+      //         showBackground: true,
+      //         backgroundColor: Cesium.Color.DEEPSKYBLUE,
+      //         backgroundPadding: Cesium.Cartesian2(30, 30),
+      //         style: Cesium.LabelStyle.FILL,
+      //         disableDepthTestDistance: Number.POSITIVE_INFINITY,
+      //         distanceDisplayCondition: new Cesium.DistanceDisplayCondition(
+      //           10.0,
+      //           120000.0
+      //         ),
+      //         scale: 0.7,
+      //       },
+      //     });
+      //   }
+      // });
 
       /*获取视角高度，采用MOVEMENT事件驱动*/
       var handler = new Cesium.ScreenSpaceEventHandler(
@@ -497,7 +497,7 @@ export default {
       //     // state.ddg = state.viewer.scene.globe.getHeight(cartographic).toFixed(2)
       // }, Cesium.ScreenSpaceEventType.MOUSE_MOVE)
 
-      /*定义视角事件，采用CLICK事件驱动*/
+      /*定义查询平面及高程事件，采用CLICK事件驱动*/
       var handler2 = new Cesium.ScreenSpaceEventHandler(
         state.viewer.scene.canvas
       );
