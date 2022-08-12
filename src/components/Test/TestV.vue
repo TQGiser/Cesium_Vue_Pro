@@ -26,77 +26,95 @@ export default {
         //   requestVertexNormals: true,
         // }),
       });
-      var controls = []
-      controls.push(Cesium.Cartesian3.fromDegrees(-100.11551237582385,25.97934910503657))  
-      controls.push(Cesium.Cartesian3.fromDegrees(-101.1367529, 25.9629172))
-      controls.push(Cesium.Cartesian3.fromDegrees(-102.1367529, 26.9629172))   
-      controls.push(Cesium.Cartesian3.fromDegrees(-103.8632471,26.9629172))
-      controls.push(Cesium.Cartesian3.fromDegrees(-104.1367529, 25.9629172))
+//       var controls = []
+//       controls.push(Cesium.Cartesian3.fromDegrees(-100.11551237582385,25.97934910503657))  
+//       controls.push(Cesium.Cartesian3.fromDegrees(-101.1367529, 25.9629172))
+//       controls.push(Cesium.Cartesian3.fromDegrees(-102.1367529, 26.9629172))   
+//       controls.push(Cesium.Cartesian3.fromDegrees(-103.8632471,26.9629172))
+//       controls.push(Cesium.Cartesian3.fromDegrees(-104.1367529, 25.9629172))
       
-      for (var i = 0; i < controls.length; i++) {
-       state.viewer.entities.add({
-          position: controls[i],
-          point: {
-            color: Cesium.Color.RED,
-            pixelSize: 10,
-          },
-        });}
+//       for (var i = 0; i < controls.length; i++) {
+//        state.viewer.entities.add({
+//           position: controls[i],
+//           point: {
+//             color: Cesium.Color.RED,
+//             pixelSize: 10,
+//           },
+//         });}
   
-// CatmullRomSpline
-     var spline = new Cesium.CatmullRomSpline({
-        points: controls,
-        times: [0.0, 0.25, 0.5, 0.75, 1],
-      });
+// // CatmullRomSpline
+//      var spline = new Cesium.CatmullRomSpline({
+//         points: controls,
+//         times: [0.0, 0.25, 0.5, 0.75, 1],
+//       });
  
-      var positions = [];
-      for (var i = 0; i <= 50; i++) {
-        var cartesian3 = spline.evaluate(i / 50);
-        positions.push(cartesian3);
-        state.viewer.entities.add({
-          position: cartesian3,
-          point: {
-            color: Cesium.Color.BLUE,
-            pixelSize: 6,
-          },
-        });
-      }
+//       var positions = [];
+//       for (var i = 0; i <= 50; i++) {
+//         var cartesian3 = spline.evaluate(i / 50);
+//         positions.push(cartesian3);
+//         state.viewer.entities.add({
+//           position: cartesian3,
+//           point: {
+//             color: Cesium.Color.BLUE,
+//             pixelSize: 6,
+//           },
+//         });
+//       }
  
-      state.viewer.entities.add({
-        name: "CatmullRomSpline",
-        polyline: {
-          positions: positions,
-          width: 3,
-          material: Cesium.Color.WHITE,
-        },
-      });
+//       state.viewer.entities.add({
+//         name: "CatmullRomSpline",
+//         polyline: {
+//           positions: positions,
+//           width: 3,
+//           material: Cesium.Color.WHITE,
+//         },
+//       });
 
-// HermiteSpline
-      var spline = Cesium.HermiteSpline.createNaturalCubic({
-        times: [0.0, 0.25, 0.5, 0.75, 1],
-        points: controls,
-      });
+// // HermiteSpline
+//       var spline = Cesium.HermiteSpline.createNaturalCubic({
+//         times: [0.0, 0.25, 0.5, 0.75, 1],
+//         points: controls,
+//       });
  
-      var positions = [];
-      for (var i = 0; i <= 50; i++) {
-        var cartesian3 = spline.evaluate(i / 50);
-        positions.push(cartesian3);
-        state.viewer.entities.add({
-          position: cartesian3,
-          point: {
-            color: Cesium.Color.WHITE,
-            pixelSize: 6,
-          },
-        });
-      }
+//       var positions = [];
+//       for (var i = 0; i <= 50; i++) {
+//         var cartesian3 = spline.evaluate(i / 50);
+//         positions.push(cartesian3);
+//         state.viewer.entities.add({
+//           position: cartesian3,
+//           point: {
+//             color: Cesium.Color.WHITE,
+//             pixelSize: 6,
+//           },
+//         });
+//       }
  
+//       state.viewer.entities.add({
+//         name: "HermiteSpline",
+//         polyline: {
+//           positions: positions,
+//           width: 3,
+//           material: Cesium.Color.RED,
+//         },
+//       });
+
       state.viewer.entities.add({
-        name: "HermiteSpline",
-        polyline: {
-          positions: positions,
-          width: 3,
-          material: Cesium.Color.RED,
-        },
-      });
+        name:"testLine",
+        polyline:{
+          positions:new Cesium.Cartesian3.fromDegreesArray(
+            [
+              -135,25,-60,25
+            ]
+          ),
+           clampToGround: true,
+              width: 20,
+              material: new Cesium.PolylineGlowMaterialProperty({
+                color: Cesium.Color.DODGERBLUE,
+                glowPower: 0.25,
+                // taperPower:0.5                      /扩散渲染
+              }),
+        }
+      })
     });
     return {
       ...toRefs(state),

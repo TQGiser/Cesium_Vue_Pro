@@ -3,8 +3,8 @@
   <MainMap />
 </template>
 <script>
-// import MainMap from './components/Test/AnimationT.vue'
-import MainMap from './components/CPV.vue'
+// import MainMap from './components/Test/LineMaterialTest.vue'
+import MainMap from './components/JKPJ.vue'
 export default {
   components:{ 
     MainMap,

@@ -4,17 +4,15 @@
     <el-tag size="large" effect="dark">纬度：{{ wd }}</el-tag>
     <el-tag size="large" effect="dark">大地高：{{ ddg }}</el-tag>
     <el-tag size="large" effect="dark">视角高：{{ sjg }}</el-tag>
-    <el-select v-model="value" class="m-2" placeholder="Select" size="small">
+    <el-select
+      v-model="value"
+      class="m-2"
+      placeholder="请选择地形显示行政区"
+      @change="selectterrain"
+      size="small"
+    >
       <el-option
         v-for="item in op"
-        :key="item.value"
-        :label="item.label"
-        :value="item.value"
-      />
-    </el-select>
-    <el-select v-model="value2" class="m-2" placeholder="Select" size="small">
-      <el-option
-        v-for="item in op2"
         :key="item.value"
         :label="item.label"
         :value="item.value"
@@ -49,47 +47,106 @@ export default {
       op: null,
       op2: null,
       value: null,
-      value2: null,
     });
     Cesium.Ion.defaultAccessToken =
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0MjczNDgzMy1hYzE1LTRjNWYtODZhMS01MjZkNWRiMDc2MmUiLCJpZCI6ODIxMzAsImlhdCI6MTY0NDU0ODc0M30.LpGXXWsbQXucV5MTeC2g8BCAQWiZp612gosWcK-7ocE";
     onMounted(() => {
       (state.op = [
         {
-          value: "巴塘县",
-          label: "巴塘县",
+          value: "康定市",
+          label: "康定市",
+        },
+        {
+          value: "泸定县",
+          label: "泸定县",
         },
         {
           value: "丹巴县",
           label: "丹巴县",
         },
+        {
+          value: "九龙县",
+          label: "九龙县",
+        },
+        {
+          value: "雅江县",
+          label: "雅江县",
+        },
+        {
+          value: "道孚县",
+          label: "道孚县",
+        },
+        {
+          value: "炉霍县",
+          label: "炉霍县",
+        },
+        {
+          value: "甘孜县",
+          label: "甘孜县",
+        },
+        {
+          value: "新龙县",
+          label: "新龙县",
+        },
+        {
+          value: "德格县",
+          label: "德格县",
+        },
+        {
+          value: "白玉县",
+          label: "白玉县",
+        },
+        {
+          value: "石渠县",
+          label: "石渠县",
+        },
+        {
+          value: "色达县",
+          label: "色达县",
+        },
+        {
+          value: "理塘县",
+          label: "理塘县",
+        },
+        {
+          value: "巴塘县",
+          label: "巴塘县",
+        },
+        {
+          value: "乡城县",
+          label: "乡城县",
+        },
+        {
+          value: "稻城县",
+          label: "稻城县",
+        },
+        {
+          value: "得荣县",
+          label: "得荣县",
+        },
+        {
+          value: "鲜水河",
+          label: "鲜水河",
+        },
       ]),
-        (state.op2 = [
-          {
-            value: "乡1",
-            label: "乡1",
-          },
-          {
-            value: "乡2",
-            label: "乡2",
-          },
-        ]),
         (state.value = ref("")),
         (state.viewer = new Cesium.Viewer("map", {
           timeline: false,
           vrButton: false,
-          animation: false,
+          animation: true,
+          shouldAnimate: true,
           // terrainProvider: Cesium.createWorldTerrain({
           //     requestWaterMask: true,
           //     requestVertexNormals: true,
           // }),
           terrainProvider: new Cesium.CesiumTerrainProvider({
             // url: "http://localhost:8083/terrain/甘孜地形切片/理塘县",
-            url: "http://192.168.0.100:8083/terrain/甘孜地形切片/理塘县",
+            url: "http://192.168.0.211:8083/terrain/甘孜地形切片/理塘县",
             minimumLevel: 0,
             maximumLevel: 15,
           }),
         }));
+
       /*按三维点加载，速度快 */
       const promise =
         Cesium.GeoJsonDataSource.load("\\甘孜州数据\\3维点位.json");
@@ -189,9 +246,64 @@ export default {
       //   }
       // });
 
-      /*加载hyda，生成湖面 */
+      /*加载措普hyda，生成湖面 */
+      // const b = new Array();
+      // const promise3 = Cesium.GeoJsonDataSource.load("\\措普\\hyda.json");
+      // promise3.then(function (dataSource) {
+      //   // state.viewer.dataSources.add(dataSource);
+      //   const entities = dataSource.entities.values;
+      //   // const color = Cesium.Color.GREEN.withAlpha(0.1);
+      //   // entities[0].polygon.material = color;
+      //   const len = entities[0].polygon.hierarchy._value.positions.length;
+      //   for (let i = 0; i < len; i++) {
+      //     const zb_c3 =
+      //       state.viewer.scene.globe.ellipsoid.cartesianToCartographic(
+      //         entities[0].polygon.hierarchy._value.positions[i]
+      //       );
+      //     const zb_n = Cesium.Math.toDegrees(zb_c3.latitude);
+      //     const zb_e = Cesium.Math.toDegrees(zb_c3.longitude);
+      //     b.push(Number(zb_e));
+      //     b.push(Number(zb_n));
+      //   }
+      //   state.viewer.scene.primitives.add(
+      //     new Cesium.Primitive({
+      //       geometryInstances: new Cesium.GeometryInstance({
+      //         geometry: new Cesium.PolygonGeometry({
+      //           polygonHierarchy: new Cesium.PolygonHierarchy(
+      //             Cesium.Cartesian3.fromDegreesArray(b)
+      //           ),
+      //           height: 4108,
+      //           //   perPositionHeight:true,
+      //           // extrudedHeight: 4090,
+      //         }),
+      //       }),
+      //       appearance: new Cesium.EllipsoidSurfaceAppearance({
+      //         material: new Cesium.Material({
+      //           fabric: {
+      //             type: "Water",
+      //             uniforms: {
+      //               baseWaterColor: new Cesium.Color(
+      //                 115 / 255.0,
+      //                 178 / 255.0,
+      //                 255 / 255.0,
+      //                 0.5
+      //               ),
+      //               normalMap: "\\水体\\waterNormals.jpg",
+      //               frequency: 1000.0,
+      //               animationSpeed: 0.001,
+      //               amplitude: 10,
+      //               specularIntensity: 2,
+      //             },
+      //           },
+      //         }),
+      //       }),
+      //     })
+      //   );
+      // });
+
+      /*加载鲜水河hyda，生成湖面 */
       const b = new Array();
-      const promise3 = Cesium.GeoJsonDataSource.load("\\措普\\hyda.json");
+      const promise3 = Cesium.GeoJsonDataSource.load("\\鲜水河\\hyda.json");
       promise3.then(function (dataSource) {
         // state.viewer.dataSources.add(dataSource);
         const entities = dataSource.entities.values;
@@ -208,40 +320,15 @@ export default {
           b.push(Number(zb_e));
           b.push(Number(zb_n));
         }
-        state.viewer.scene.primitives.add(
-          new Cesium.Primitive({
-            geometryInstances: new Cesium.GeometryInstance({
-              geometry: new Cesium.PolygonGeometry({
-                polygonHierarchy: new Cesium.PolygonHierarchy(
-                  Cesium.Cartesian3.fromDegreesArray(b)
-                ),
-                height: 4108,
-                //   perPositionHeight:true,
-                // extrudedHeight: 4090,
-              }),
-            }),
-            appearance: new Cesium.EllipsoidSurfaceAppearance({
-              material: new Cesium.Material({
-                fabric: {
-                  type: "Water",
-                  uniforms: {
-                    baseWaterColor: new Cesium.Color(
-                      115 / 255.0,
-                      178 / 255.0,
-                      255 / 255.0,
-                      0.5
-                    ),
-                    normalMap: "\\水体\\waterNormals.jpg",
-                    frequency: 1000.0,
-                    animationSpeed: 0.001,
-                    amplitude: 10,
-                    specularIntensity: 2,
-                  },
-                },
-              }),
-            }),
-          })
-        );
+        state.viewer.entities.add({
+          polygon: {
+            hierarchy: new Cesium.PolygonHierarchy(
+              Cesium.Cartesian3.fromDegreesArray(b)
+            ),
+            classificationType: Cesium.ClassificationType.TERRAIN,
+            material: new Cesium.Color.fromBytes(0, 191, 255, 100),
+          },
+        });
       });
 
       /*加载管理范围线*/
@@ -384,7 +471,7 @@ export default {
         //   // console.log(label, jd, wd, gd);
         // }
       });
-      
+
       /*加载理塘DMAL*/
       const promise7 = Cesium.GeoJsonDataSource.load(
         "\\理塘数据\\dmal_lt.json"
@@ -445,7 +532,7 @@ export default {
           state.viewer.entities.add({
             position: Cesium.Cartesian3.fromDegrees(jd, wd, gd),
             label: {
-              text: label/*注记名称 */,
+              text: label /*注记名称 */,
               fillColor: Cesium.Color.WHITE,
               // heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
               horizontalOrigin: Cesium.HorizontalOrigin.CENTER,
@@ -520,7 +607,11 @@ export default {
 
       /*视角控制 */
       state.viewer.camera.flyTo({
-        destination: Cesium.Cartesian3.fromDegrees(100.2185, 30.0259, 8000),
+        destination: Cesium.Cartesian3.fromDegrees(
+          99.867587762902474,
+          32.497249457826968,
+          4400
+        ),
         orientation: {
           heading: Cesium.Math.toRadians(2.0),
           pitch: Cesium.Math.toRadians(-20.0),
@@ -529,7 +620,7 @@ export default {
 
       /*加载RESA */
       const tileset = new Cesium.Cesium3DTileset({
-        url: "http://192.168.0.122:8083/resa/tileset.json",
+        url: "http://192.168.0.211:8083/resa/tileset.json",
       });
       tileset.readyPromise
         .then(function (tileset) {
@@ -537,6 +628,13 @@ export default {
         })
         .catch(function (error) {
           console.log(error);
+        });
+
+      /*加载鲜水河中线动画*/
+      state.viewer.dataSources
+        .add(Cesium.CzmlDataSource.load("\\CZML\\XSH.json"))
+        .then(function (ds) {
+          state.viewer.trackedEntity = ds.entities.getById("path");
         });
     });
 
@@ -599,7 +697,17 @@ export default {
       // .catch((error) => console.error(error.stack));
     };
 
+    /*Terrain县区选择 */
+    const selectterrain = () => {
+      state.viewer.terrainProvider = new Cesium.CesiumTerrainProvider({
+        url: `http://192.168.0.211:8083/terrain/甘孜地形切片/${state.value}`,
+        minimumLevel: 0,
+        maximumLevel: 15,
+      });
+    };
+
     return {
+      selectterrain,
       readInputFile,
       upload,
       ...toRefs(state),
