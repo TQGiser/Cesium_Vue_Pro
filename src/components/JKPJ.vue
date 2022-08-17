@@ -35,10 +35,10 @@ export default {
     /*俯视函数 */
     const viewTopDown = () => {
       state.viewer.trackedEntity = undefined;
-      state.viewer.zoomTo(
-        state.viewer.entities,
-        new Cesium.HeadingPitchRange(0, Cesium.Math.toRadians(-90))
-      );
+      // state.viewer.zoomTo(
+      //   state.viewer.entities,
+      //   new Cesium.HeadingPitchRange(0, Cesium.Math.toRadians(-90))
+      // );
     }
 
     /*建立查询点id列表 */

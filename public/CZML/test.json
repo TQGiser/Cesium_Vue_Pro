@@ -4,9 +4,9 @@
       "name": "CZML Custom Properties",
       "version": "1.0",
       "clock": {
-        "interval": "1970/2010",
+        "interval": "1970/2020",
         "currentTime": "1970",
-        "multiplier": 5000
+        "multiplier":  500000000
         }
     },
     {
@@ -43,7 +43,9 @@
                     "2000",
                     4326900,
                     "2010",
-                    5049100
+                    5049100,
+                    "2020",
+                    2209600
                 ]
             }
         }
