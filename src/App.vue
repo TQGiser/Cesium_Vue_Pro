@@ -3,8 +3,8 @@
   <MainMap />
 </template>
 <script>
-// import MainMap from './components/Test/LineMaterialTest.vue'
-import MainMap from './components/JKPJ.vue'
+import MainMap from './components/Test/AFC.vue'
+// import MainMap from './components/JKPJ.vue'
 export default {
   components:{ 
     MainMap,
@@ -15,6 +15,7 @@ export default {
 <style>
 
 #app{
-  width:100%;
+  width:90%;
+
 }
 </style>

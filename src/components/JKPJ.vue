@@ -49,7 +49,7 @@ export default {
 
     /*动画视角函数 */
     const viewWithAnimate = () => {
-      state.viewer.trackedEntity=entity_zx
+      state.viewer.trackedEntity = entity_zx
     }
 
 
@@ -229,7 +229,7 @@ export default {
           },
         });
         ecList.push(QueryLabel.id)
-      }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
+      }, Cesium.ScreenSpaceEventType.LEFT_DOUBLE_CLICK);
 
       /*加载鲜水河中线动画*/
       state.viewer.dataSources
@@ -238,6 +238,70 @@ export default {
           entity_zx = ds.entities.getById("path")
           state.viewer.trackedEntity = ds.entities.getById("path");
         });
+      /*加载RESA */
+      const tileset = new Cesium.Cesium3DTileset({
+        url: "http://192.168.0.211:8083/resa/鲜水河/tileset.json",
+      });
+      tileset.readyPromise
+        .then(function (tileset) {
+          state.viewer.scene.primitives.add(tileset);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+
+      /*加载鲜水河中线点*/
+      const promise8 = Cesium.GeoJsonDataSource.load("\\鲜水河\\zx.json");
+      promise8.then(function (dataSource) {
+        const entities = dataSource.entities.values;
+        // console.log(entities[0])
+        for (let i = 0; i < entities.length; i++) {
+          const jd = Cesium.Math.toDegrees(
+            Cesium.Cartographic.fromCartesian(entities[i]._position._value)
+              .longitude
+          );
+          const wd = Cesium.Math.toDegrees(
+            Cesium.Cartographic.fromCartesian(entities[i]._position._value)
+              .latitude
+          );
+          const gd = Cesium.Cartographic.fromCartesian(entities[i]._position._value).height;
+          const label = entities[i].properties.里程.valueOf() +
+            entities[i].properties.XZQMC.valueOf() +
+            entities[i].properties.XJQYMC.valueOf();
+          // console.log(jd, wd, gd);
+          state.viewer.entities.add({
+            position: Cesium.Cartesian3.fromDegrees(jd, wd, gd + 100),
+            cylinder: {
+              length: 100.0,
+              topRadius: 1.0,
+              bottomRadius: 1.0,
+              material: Cesium.Color.AQUA.withAlpha(0.7),
+              heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
+              distanceDisplayCondition: new Cesium.DistanceDisplayCondition(
+                10.0,
+                6000.0
+              ),
+            },
+            label: {
+              text: label /*注记名称 */,
+              fillColor: Cesium.Color.WHITE,
+              // heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
+              horizontalOrigin: Cesium.HorizontalOrigin.CENTER,
+              verticalOrigin: Cesium.VerticalOrigin.BASELINE,
+              showBackground: true,
+              backgroundColor: Cesium.Color.DEEPSKYBLUE,
+              backgroundPadding: Cesium.Cartesian2(30, 30),
+              style: Cesium.LabelStyle.FILL,
+              disableDepthTestDistance: Number.POSITIVE_INFINITY,
+              distanceDisplayCondition: new Cesium.DistanceDisplayCondition(
+                10.0,
+                5000.0
+              ),
+              scale: 0.7,
+            },
+          });
+        }
+      });
     });
 
     /*Terrain县区选择 */
