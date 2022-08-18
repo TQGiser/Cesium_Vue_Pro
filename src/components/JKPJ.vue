@@ -232,12 +232,22 @@ export default {
       }, Cesium.ScreenSpaceEventType.LEFT_DOUBLE_CLICK);
 
       /*加载鲜水河中线动画*/
+      let minR3 = 20;
+      function changeRadiaus() {
+        minR3 += 0.5;
+        if (minR3 > 50) {
+          minR3 = 20;
+        }
+        return `${minR3}`;
+      }
       state.viewer.dataSources
         .add(Cesium.CzmlDataSource.load("\\CZML\\XSH2.json"))
         .then(function (ds) {
           entity_zx = ds.entities.getById("path")
           state.viewer.trackedEntity = ds.entities.getById("path");
-        });
+          entity_zx.point.pixelSize = new Cesium.CallbackProperty(changeRadiaus, false);
+        })
+       
       /*加载RESA */
       const tileset = new Cesium.Cesium3DTileset({
         url: "http://192.168.0.211:8083/resa/鲜水河/tileset.json",

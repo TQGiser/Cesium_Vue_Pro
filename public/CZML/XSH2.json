@@ -39,27 +39,20 @@
       "width": 8,
       "leadTime": 5,
       "trailTime": 5,
-      "resolution": 500
+      "resolution": 1,
+      "clampToGround": true
     },
     "point": {
       "color": {
         "rgba": [
-          255,
-          255,
-          255,
-          255
+          131,
+          248,
+          170,
+          102
         ]
       },
-      "outlineColor": {
-        "rgba": [
-          255,
-          0,
-          0,
-          255
-        ]
-      },
-      "outlineWidth": 4,
-      "pixelSize": 10
+      "pixelSize": 10,
+      "clampToGround": true
     },
     "position": {
       "epoch": "2012-08-04T10:00:00Z",

@@ -91,32 +91,62 @@ export default {
 
             // });
 
-            const dataSource = new Cesium.CzmlDataSource();
-            const loadedPromise = dataSource.load("\\CZML\\test.json");
 
-            function scaleProperty(property) {
-                // returns a property that scales another property by a constant factor.
-                return new Cesium.CallbackProperty(function (time, result) {
-                    result = property.getValue(time, result);
+            // let minR3 = 100001;
+            // function changeHeight() {
+            //     minR3 += 1000;
+            //     if (minR3 > 401000) {
+            //         minR3 = 100001;
+            //     }
+            //     return `${minR3}`;
+            // }
 
-                    // console.log(result)
-                    return result;
-                }, false);
+            // const dataSource = new Cesium.CzmlDataSource();
+            // const loadedPromise = dataSource.load("\\CZML\\test2.json");
+            // function setExtrudedHeight() {
+            //     loadedPromise.then(function () {
+
+            //         const colorado = dataSource.entities.getById("colorado");
+            //         colorado.polygon.extrudedHeight = new Cesium.CallbackProperty(changeHeight, false);
+            //     });
+            // }
+
+            // const e = viewer.dataSources.add(dataSource)
+            //     .then(setExtrudedHeight());
+
+            // viewer.zoomTo(e)
+
+            let minR3 = 10;
+            function changeRadiaus() {
+                minR3 += 0.1;
+                if (minR3 > 40) {
+                    minR3 = 10;
+                }
+                return `${minR3}`;
             }
 
-            function setExtrudedHeight(propertyName) {
+            const dataSource = new Cesium.CzmlDataSource();
+            const loadedPromise = dataSource.load("\\CZML\\XSH2.json")
+            function setPointRadius() {
                 loadedPromise.then(function () {
-                    const customPropertyObject = dataSource.entities.getById(
-                        "custom_property_object"
-                    );
-                    const property = customPropertyObject.properties[propertyName];
-                    const colorado = dataSource.entities.getById("colorado");
-                    colorado.polygon.extrudedHeight = scaleProperty(property);
+                    // console.log(dataSource.entities)
+                    const enty = dataSource.entities.getById("path");
+                    enty.point.pixelSize = new Cesium.CallbackProperty(changeRadiaus, false);
+                    // const colorado = dataSource.entities.getById("colorado");
+                    // colorado.polygon.extrudedHeight = new Cesium.CallbackProperty(changeHeight, false);
                 });
             }
 
-            viewer.dataSources.add(dataSource)
-                .then(setExtrudedHeight("population_sampled"));
+
+            const e = viewer.dataSources.add(dataSource).then(setPointRadius());
+            const hp = new Cesium.HeadingPitchRange(-0.2, -0.7, 20000)
+            viewer.zoomTo(e, hp)
+            //     .then(setExtrudedHeight());
+
+
+
+
+
 
         });
         return {
