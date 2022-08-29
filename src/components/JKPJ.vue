@@ -35,6 +35,17 @@ export default {
     /*俯视函数 */
     const viewTopDown = () => {
       state.viewer.trackedEntity = undefined;
+      state.viewer.camera.flyTo({
+        destination: Cesium.Cartesian3.fromDegrees(
+          101.02082271,
+          30.73508266,
+          6400
+        ),
+        orientation: {
+          heading: Cesium.Math.toRadians(2.0),
+          pitch: Cesium.Math.toRadians(-70.0),
+        },
+      });
       // state.viewer.zoomTo(
       //   state.viewer.entities,
       //   new Cesium.HeadingPitchRange(0, Cesium.Math.toRadians(-90))
@@ -50,6 +61,7 @@ export default {
     /*动画视角函数 */
     const viewWithAnimate = () => {
       state.viewer.trackedEntity = entity_zx
+
     }
 
 
@@ -240,14 +252,14 @@ export default {
         }
         return `${minR3}`;
       }
-      state.viewer.dataSources
+      const e = state.viewer.dataSources
         .add(Cesium.CzmlDataSource.load("\\CZML\\XSH2.json"))
         .then(function (ds) {
           entity_zx = ds.entities.getById("path")
-          state.viewer.trackedEntity = ds.entities.getById("path");
+
           entity_zx.point.pixelSize = new Cesium.CallbackProperty(changeRadiaus, false);
         })
-       
+
       /*加载RESA */
       const tileset = new Cesium.Cesium3DTileset({
         url: "http://192.168.0.211:8083/resa/鲜水河/tileset.json",
@@ -312,7 +324,54 @@ export default {
           });
         }
       });
+
+      /*加载照片 */
+      const promise9 = Cesium.GeoJsonDataSource.load("\\鲜水河\\photo_position.json");
+      const pList = new Array();
+      promise9.then(function (ds) {
+        const entities = ds.entities.values;
+        for (let i = 0; i < entities.length; i++) {
+          const jd = Cesium.Math.toDegrees(
+            Cesium.Cartographic.fromCartesian(entities[i]._position._value)
+              .longitude
+          );
+          const wd = Cesium.Math.toDegrees(
+            Cesium.Cartographic.fromCartesian(entities[i]._position._value)
+              .latitude
+          );
+          const pn = i + 1
+          const imageName = `\\pic\\photo\\A${pn}.JPG`
+          state.viewer.entities.add({
+            position: Cesium.Cartesian3.fromDegrees(jd, wd),
+            name: pn,
+            billboard: {
+              // image: `\\pic\\photo\\A${pn}.jpg`,
+              image:imageName,
+              heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
+              scale: 1,
+              height:200.0,
+              width:200.0,
+              sizeInMeters: true,
+            },
+            // ellipsoid: {
+            //   radii: new Cesium.Cartesian3(50.0, 50.0, 50.0),
+            //   material: Cesium.Color.FUCHSIA.withAlpha(1.0),
+            //   disableDepthTestDistance: Number.POSITIVE_INFINITY,
+            //   distanceDisplayCondition: new Cesium.DistanceDisplayCondition(
+            //     10.0,
+            //     2000000.0
+            //   ),
+            //   heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
+            //   // scaleByDistance: new Cesium.NearFarScalar(1.5e2, 2.0, 1.5e7, 0.5),
+            //   // outline: true,
+            //   // outlineColor: Cesium.Color.BLACK,
+            // },
+          });
+        }
+      })
     });
+
+
 
     /*Terrain县区选择 */
     const selectterrain = () => {
@@ -329,6 +388,7 @@ export default {
         state.viewer.entities.removeById(ecList[i])
       }
     }
+
     return {
       viewWithAnimate,
       viewTopDown,
