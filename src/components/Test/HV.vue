@@ -78,7 +78,7 @@ export default {
 
             });
             const hp = new Cesium.HeadingPitchRange(-0.2, -0.7, 200)
-            viewer.zoomTo(e, hp);
+            viewer.zoomTo(e2, hp);
         });
 
         return {

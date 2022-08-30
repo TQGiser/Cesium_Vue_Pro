@@ -50,7 +50,7 @@ export default {
       //   state.viewer.entities,
       //   new Cesium.HeadingPitchRange(0, Cesium.Math.toRadians(-90))
       // );
-    }
+    };
 
     /*建立查询点id列表 */
     var ecList = new Array();
@@ -60,16 +60,13 @@ export default {
 
     /*动画视角函数 */
     const viewWithAnimate = () => {
-      state.viewer.trackedEntity = entity_zx
-
-    }
-
-
+      state.viewer.trackedEntity = entity_zx;
+    };
 
     Cesium.Ion.defaultAccessToken =
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0MjczNDgzMy1hYzE1LTRjNWYtODZhMS01MjZkNWRiMDc2MmUiLCJpZCI6ODIxMzAsImlhdCI6MTY0NDU0ODc0M30.LpGXXWsbQXucV5MTeC2g8BCAQWiZp612gosWcK-7ocE";
     onMounted(() => {
-      state.op = [
+      (state.op = [
         {
           value: "康定市",
           label: "康定市",
@@ -146,9 +143,9 @@ export default {
           value: "鲜水河",
           label: "鲜水河",
         },
-      ],
-        state.value = ref(""),
-        state.viewer = new Cesium.Viewer("map", {
+      ]),
+        (state.value = ref("")),
+        (state.viewer = new Cesium.Viewer("map", {
           timeline: false,
           vrButton: false,
           animation: true,
@@ -158,7 +155,7 @@ export default {
             minimumLevel: 0,
             maximumLevel: 15,
           }),
-        })
+        }));
       /*加载鲜水河hyda，生成湖面 */
       const b = new Array();
       const promise3 = Cesium.GeoJsonDataSource.load("\\鲜水河\\hyda.json");
@@ -217,7 +214,11 @@ export default {
         state.jd = jd;
         state.wd = wd;
         const QueryPoint = state.viewer.entities.add({
-          position: Cesium.Cartesian3.fromDegrees(Number(jd), Number(wd), Number(height) + 1.0),
+          position: Cesium.Cartesian3.fromDegrees(
+            Number(jd),
+            Number(wd),
+            Number(height) + 1.0
+          ),
           point: {
             color: Cesium.Color.SKYBLUE,
             pixelSize: 3,
@@ -225,9 +226,13 @@ export default {
             outlineWidth: 1,
           },
         });
-        ecList.push(QueryPoint.id)
+        ecList.push(QueryPoint.id);
         const QueryLabel = state.viewer.entities.add({
-          position: Cesium.Cartesian3.fromDegrees(Number(jd), Number(wd), Number(height) + 3.0),
+          position: Cesium.Cartesian3.fromDegrees(
+            Number(jd),
+            Number(wd),
+            Number(height) + 3.0
+          ),
           label: {
             text: "大地高:" + height + "米",
             font: "4pt sans-serif",
@@ -240,7 +245,7 @@ export default {
             disableDepthTestDistance: Number.POSITIVE_INFINITY, // draws the label in front of terrain
           },
         });
-        ecList.push(QueryLabel.id)
+        ecList.push(QueryLabel.id);
       }, Cesium.ScreenSpaceEventType.LEFT_DOUBLE_CLICK);
 
       /*加载鲜水河中线动画*/
@@ -255,10 +260,13 @@ export default {
       const e = state.viewer.dataSources
         .add(Cesium.CzmlDataSource.load("\\CZML\\XSH2.json"))
         .then(function (ds) {
-          entity_zx = ds.entities.getById("path")
+          entity_zx = ds.entities.getById("path");
 
-          entity_zx.point.pixelSize = new Cesium.CallbackProperty(changeRadiaus, false);
-        })
+          entity_zx.point.pixelSize = new Cesium.CallbackProperty(
+            changeRadiaus,
+            false
+          );
+        });
 
       /*加载RESA */
       const tileset = new Cesium.Cesium3DTileset({
@@ -286,8 +294,11 @@ export default {
             Cesium.Cartographic.fromCartesian(entities[i]._position._value)
               .latitude
           );
-          const gd = Cesium.Cartographic.fromCartesian(entities[i]._position._value).height;
-          const label = entities[i].properties.里程.valueOf() +
+          const gd = Cesium.Cartographic.fromCartesian(
+            entities[i]._position._value
+          ).height;
+          const label =
+            entities[i].properties.里程.valueOf() +
             entities[i].properties.XZQMC.valueOf() +
             entities[i].properties.XJQYMC.valueOf();
           // console.log(jd, wd, gd);
@@ -326,52 +337,55 @@ export default {
       });
 
       /*加载照片 */
-      const promise9 = Cesium.GeoJsonDataSource.load("\\鲜水河\\photo_position.json");
-      const pList = new Array();
-      promise9.then(function (ds) {
-        const entities = ds.entities.values;
-        for (let i = 0; i < entities.length; i++) {
-          const jd = Cesium.Math.toDegrees(
-            Cesium.Cartographic.fromCartesian(entities[i]._position._value)
-              .longitude
-          );
-          const wd = Cesium.Math.toDegrees(
-            Cesium.Cartographic.fromCartesian(entities[i]._position._value)
-              .latitude
-          );
-          const pn = i + 1
-          const imageName = `\\pic\\photo\\A${pn}.JPG`
-          state.viewer.entities.add({
-            position: Cesium.Cartesian3.fromDegrees(jd, wd),
-            name: pn,
-            billboard: {
-              // image: `\\pic\\photo\\A${pn}.jpg`,
-              image:imageName,
-              heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
-              scale: 1,
-              height:200.0,
-              width:200.0,
-              sizeInMeters: true,
-            },
-            // ellipsoid: {
-            //   radii: new Cesium.Cartesian3(50.0, 50.0, 50.0),
-            //   material: Cesium.Color.FUCHSIA.withAlpha(1.0),
-            //   disableDepthTestDistance: Number.POSITIVE_INFINITY,
-            //   distanceDisplayCondition: new Cesium.DistanceDisplayCondition(
-            //     10.0,
-            //     2000000.0
-            //   ),
-            //   heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
-            //   // scaleByDistance: new Cesium.NearFarScalar(1.5e2, 2.0, 1.5e7, 0.5),
-            //   // outline: true,
-            //   // outlineColor: Cesium.Color.BLACK,
-            // },
-          });
+      const promise9 = Cesium.GeoJsonDataSource.load(
+        "\\鲜水河\\photo_position2.json"
+      );
+      promise9.then(
+        function (ds) {
+          const entities = ds.entities.values;
+          for (let i = 0; i < entities.length; i++) {
+            const jd = Cesium.Math.toDegrees(
+              Cesium.Cartographic.fromCartesian(entities[i]._position._value)
+                .longitude
+            );
+            const wd = Cesium.Math.toDegrees(
+              Cesium.Cartographic.fromCartesian(entities[i]._position._value)
+                .latitude
+            );
+            const pNum = Number(entities[i]._properties.name.valueOf())
+            
+            console.log(pNum)
+            const imageName = `\\pic\\photo\\A${pNum}.JPG`
+            state.viewer.entities.add({
+              position: Cesium.Cartesian3.fromDegrees(jd, wd),
+              name: pNum,
+              billboard: {
+                // image: `\\pic\\photo\\A${pn}.jpg`,
+                image:imageName,
+                heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
+                scale: 1,
+                height:200.0,
+                width:200.0,
+                sizeInMeters: true,
+              },
+              // ellipsoid: {
+              //   radii: new Cesium.Cartesian3(50.0, 50.0, 50.0),
+              //   material: Cesium.Color.FUCHSIA.withAlpha(1.0),
+              //   disableDepthTestDistance: Number.POSITIVE_INFINITY,
+              //   distanceDisplayCondition: new Cesium.DistanceDisplayCondition(
+              //     10.0,
+              //     2000000.0
+              //   ),
+              //   heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
+              //   // scaleByDistance: new Cesium.NearFarScalar(1.5e2, 2.0, 1.5e7, 0.5),
+              //   // outline: true,
+              //   // outlineColor: Cesium.Color.BLACK,
+              // },
+            });
+          }
         }
-      })
+      )
     });
-
-
 
     /*Terrain县区选择 */
     const selectterrain = () => {
@@ -385,9 +399,9 @@ export default {
     /*清除查询点位*/
     const cleanQueryPoint = () => {
       for (let i = 0; i < ecList.length; i++) {
-        state.viewer.entities.removeById(ecList[i])
+        state.viewer.entities.removeById(ecList[i]);
       }
-    }
+    };
 
     return {
       viewWithAnimate,
