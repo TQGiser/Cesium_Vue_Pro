@@ -338,11 +338,12 @@ export default {
 
       /*加载照片 */
       const promise9 = Cesium.GeoJsonDataSource.load(
-        "\\鲜水河\\photo_position2.json"
+        "\\鲜水河\\photo_position3.json"
       );
       promise9.then(
         function (ds) {
           const entities = ds.entities.values;
+          
           for (let i = 0; i < entities.length; i++) {
             const jd = Cesium.Math.toDegrees(
               Cesium.Cartographic.fromCartesian(entities[i]._position._value)
@@ -352,39 +353,44 @@ export default {
               Cesium.Cartographic.fromCartesian(entities[i]._position._value)
                 .latitude
             );
-            const pNum = Number(entities[i]._properties.name.valueOf())
+            const gd = parseInt(Cesium.Cartographic.fromCartesian(entities[i]._position._value)
+                .height)
+            // console.log(entities[i])
+            const pNum = Number(entities[i]._properties.Id.valueOf())
             
-            console.log(pNum)
-            const imageName = `\\pic\\photo\\A${pNum}.JPG`
+            // console.log(pNum)
+            const imageName = `\\pic\\photo_half\\${pNum}.jpg`
             state.viewer.entities.add({
-              position: Cesium.Cartesian3.fromDegrees(jd, wd),
+              position: Cesium.Cartesian3.fromDegrees(jd, wd,gd + 150.0),
               name: pNum,
               billboard: {
-                // image: `\\pic\\photo\\A${pn}.jpg`,
+                // image: "\\pic\\photo\\A1.jpg",
                 image:imageName,
-                heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
                 scale: 1,
                 height:200.0,
                 width:200.0,
                 sizeInMeters: true,
               },
-              // ellipsoid: {
-              //   radii: new Cesium.Cartesian3(50.0, 50.0, 50.0),
-              //   material: Cesium.Color.FUCHSIA.withAlpha(1.0),
-              //   disableDepthTestDistance: Number.POSITIVE_INFINITY,
-              //   distanceDisplayCondition: new Cesium.DistanceDisplayCondition(
-              //     10.0,
-              //     2000000.0
-              //   ),
-              //   heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
-              //   // scaleByDistance: new Cesium.NearFarScalar(1.5e2, 2.0, 1.5e7, 0.5),
-              //   // outline: true,
-              //   // outlineColor: Cesium.Color.BLACK,
-              // },
+            })
+            state.viewer.entities.add({
+              position: Cesium.Cartesian3.fromDegrees(jd, wd,gd +5),
+              name: pNum,
+              ellipsoid: {
+                radii: new Cesium.Cartesian3(20.0, 20.0, 20.0),
+                material: Cesium.Color.LIME.withAlpha(0.9),
+                disableDepthTestDistance: Number.POSITIVE_INFINITY,
+                distanceDisplayCondition: new Cesium.DistanceDisplayCondition(
+                  10.0,
+                  2000000.0
+                ),
+                // scaleByDistance: new Cesium.NearFarScalar(1.5e2, 2.0, 1.5e7, 0.5),
+                // outline: true,
+                // outlineColor: Cesium.Color.BLACK,
+              },
             });
           }
         }
-      )
+      );
     });
 
     /*Terrain县区选择 */
