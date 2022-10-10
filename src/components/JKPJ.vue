@@ -151,7 +151,7 @@ export default {
           animation: true,
           shouldAnimate: true,
           terrainProvider: new Cesium.CesiumTerrainProvider({
-            url: "http://192.168.0.194:8083/terrain/甘孜地形切片/鲜水河",
+            url: "http://192.168.0.211:8083/terrain/甘孜地形切片/鲜水河",
             minimumLevel: 0,
             maximumLevel: 15,
           }),
@@ -270,7 +270,7 @@ export default {
 
       /*加载RESA */
       const tileset = new Cesium.Cesium3DTileset({
-        url: "http://192.168.0.194:8083/resa/鲜水河/tileset.json",
+        url: "http://192.168.0.211:8083/resa/鲜水河/tileset.json",
       });
       tileset.readyPromise
         .then(function (tileset) {
@@ -396,7 +396,7 @@ export default {
     /*Terrain县区选择 */
     const selectterrain = () => {
       state.viewer.terrainProvider = new Cesium.CesiumTerrainProvider({
-        url: `http://192.168.0.194:8083/terrain/甘孜地形切片/${state.value}`,
+        url: `http://192.168.0.211:8083/terrain/甘孜地形切片/${state.value}`,
         minimumLevel: 0,
         maximumLevel: 15,
       });
