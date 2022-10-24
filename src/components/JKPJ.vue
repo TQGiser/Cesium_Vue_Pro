@@ -186,6 +186,38 @@ export default {
         });
       });
 
+      /*加载鲜水河dmaa，生成管理范围面 */
+      const c = new Array();
+      const promise10 = Cesium.GeoJsonDataSource.load("\\鲜水河\\dmaa.json");
+      promise10.then(function (dataSource) {
+        // state.viewer.dataSources.add(dataSource);
+        const entities = dataSource.entities.values;
+        // const color = Cesium.Color.GREEN.withAlpha(0.1);
+        // entities[0].polygon.material = color;
+        const len = entities[0].polygon.hierarchy._value.positions.length;
+        for (let i = 0; i < len; i++) {
+          const zb_c3 =
+            state.viewer.scene.globe.ellipsoid.cartesianToCartographic(
+              entities[0].polygon.hierarchy._value.positions[i]
+            );
+          const zb_n = Cesium.Math.toDegrees(zb_c3.latitude);
+          const zb_e = Cesium.Math.toDegrees(zb_c3.longitude);
+          c.push(Number(zb_e));
+          c.push(Number(zb_n));
+        }
+        state.viewer.entities.add({
+          polygon: {
+            hierarchy: new Cesium.PolygonHierarchy(
+              Cesium.Cartesian3.fromDegreesArray(c)
+            ),
+            classificationType: Cesium.ClassificationType.TERRAIN,
+            material: new Cesium.Color.fromBytes(135, 191, 255, 100),
+          },
+        });
+      });
+
+
+
       /*获取视角高度，采用MOVEMENT事件驱动*/
       var handler = new Cesium.ScreenSpaceEventHandler(
         state.viewer.scene.canvas
