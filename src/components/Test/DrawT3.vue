@@ -1,33 +1,52 @@
 <template>
     <div id="map"> </div>
     <el-button type="warning" plain @click="drawRange">划定范围</el-button>
+    <input id='slider1' ref='slider' type="range" min="2000" max="5000" step="1" v-model="elev"
+        data-bind="value: elev, valueUpdate: 'input'">
+    <input type="text" size="5" v-model="elev">
     <el-button type="warning" plain @click="cleanRange">清除洪水面</el-button>
+
 </template>
 <script>
 import * as Cesium from "cesium/Cesium";
 import * as widgets from "cesium\\Build\\Cesium\\Widgets\\widgets.css";
-import { onMounted, toRefs, reactive,ref } from "vue";
+import { onMounted, toRefs, reactive, ref } from "vue";
 
 export default {
     setup() {
-        let state = reactive({
+        const state = reactive({
             viewer: null,
-            handler:null
+            slider: null,
+            elev: 2000,
+            handler: null,
+            cn: null,
         });
         Cesium.Ion.defaultAccessToken =
             "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0MjczNDgzMy1hYzE1LTRjNWYtODZhMS01MjZkNWRiMDc2MmUiLCJpZCI6ODIxMzAsImlhdCI6MTY0NDU0ODc0M30.LpGXXWsbQXucV5MTeC2g8BCAQWiZp612gosWcK-7ocE";
         onMounted(() => {
             state.viewer = new Cesium.Viewer("map", {
-                // timeline: false,
-                // vrButton: false,
-                // animation: false,
+                timeline: false,
+                vrButton: false,
+                animation: false,
                 terrainProvider: Cesium.createWorldTerrain({
                     requestWaterMask: true,
                     requestVertexNormals: true,
                 }),
             });
 
-            state.viewer.camera.flyTo({
+            // state.viewer.camera.flyTo({
+            //     destination: Cesium.Cartesian3.fromDegrees(
+            //         101.02082271,
+            //         30.73508266,
+            //         6400
+            //     ),
+            //     orientation: {
+            //         heading: Cesium.Math.toRadians(2.0),
+            //         pitch: Cesium.Math.toRadians(-70.0),
+            //     },
+            // });
+
+            state.viewer.camera.setView({
                 destination: Cesium.Cartesian3.fromDegrees(
                     101.02082271,
                     30.73508266,
@@ -42,8 +61,18 @@ export default {
             state.handler = new Cesium.ScreenSpaceEventHandler(state.viewer.scene.canvas);
         });
 
+        let cn = new Array();
 
+
+
+
+        /*设置默认洪水面高度*/
+        const num = ref(2000);
+
+        /*画洪水面函数*/
         const drawRange = () => {
+            state.viewer.scene.primitives.removeAll()
+
             state.viewer.cesiumWidget.screenSpaceEventHandler.removeInputAction(
                 Cesium.ScreenSpaceEventType.LEFT_DOUBLE_CLICK
             );
@@ -55,7 +84,7 @@ export default {
                         pixelSize: 5,
                         heightReference: Cesium.HeightReference.NONE,
                     },
-                    name:"洪水淹没面"
+                    name: "洪水淹没面"
                 });
                 return point;
             }
@@ -67,18 +96,53 @@ export default {
                         material: new Cesium.ColorMaterialProperty(
                             Cesium.Color.WHITE.withAlpha(0.7)
                         ),
-                        
+
                     },
-                    
+
                 });
                 return shape;
+            }
+            function drawPlant(cnArray, plantHeight) {
+                let plant;
+                plant = state.viewer.scene.primitives.add(
+                    new Cesium.Primitive({
+                        geometryInstances: new Cesium.GeometryInstance({
+                            geometry: new Cesium.PolygonGeometry({
+                                polygonHierarchy: new Cesium.PolygonHierarchy(
+                                    Cesium.Cartesian3.fromDegreesArray(cnArray)
+                                ),
+                                height: plantHeight,
+                            }),
+                        }),
+                        appearance: new Cesium.EllipsoidSurfaceAppearance({
+                            material: new Cesium.Material({
+                                fabric: {
+                                    type: "Water",
+                                    uniforms: {
+                                        baseWaterColor: new Cesium.Color(
+                                            115 / 255.0,
+                                            178 / 255.0,
+                                            255 / 255.0,
+                                            0.5
+                                        ),
+                                        normalMap: "\\水体\\waterNormals.jpg",
+                                        frequency: 1000.0,
+                                        animationSpeed: 0.001,
+                                        amplitude: 10,
+                                        specularIntensity: 2,
+                                    },
+                                },
+                            }),
+                        }),
+                        name: '洪水淹没面'
+                    })
+                );
+                return plant;
             }
             let activeShapePoints = [];
             let activeShape;
             let floatingPoint;
-            let d = new Array();
-            // let plantheigt;
-            // let handler = new Cesium.ScreenSpaceEventHandler(state.viewer.canvas);
+            // let d = new Array();
             state.handler.setInputAction(function (event) {
 
                 // We use `viewer.scene.pickPosition` here instead of `viewer.camera.pickEllipsoid` so that
@@ -92,8 +156,8 @@ export default {
                 );
                 // plantheigt =
                 //     Cesium.Cartographic.fromCartesian(earthPosition).height
-                d.push(Number(zb_n));
-                d.push(Number(zb_e));
+                cn.push(Number(zb_n));
+                cn.push(Number(zb_e));
 
                 // `earthPosition` will be undefined if our mouse is not over the globe.
                 if (Cesium.defined(earthPosition)) {
@@ -122,11 +186,94 @@ export default {
             }, Cesium.ScreenSpaceEventType.MOUSE_MOVE);
             // Redraw the shape so it's not dynamic and remove the dynamic shape.
             function terminateShape() {
-                
-                // activeShapePoints.pop();
+                const plant = drawPlant(cn, num.value);
+                if (state.viewer.scene.primitives.length == 2) {
+                    const viewModel = {
+                        elev: 0
+                    };
+                    Cesium.knockout.track(viewModel);
+                    const slider = state.slider;
+                    Cesium.knockout.applyBindings(viewModel, slider);
+                    Cesium.knockout
+                        .getObservable(viewModel, "elev")
+                        .subscribe(function (height) {
+                            for (let i = 0; i < state.viewer.scene.primitives.length; i++) {
+                                state.viewer.scene.primitives.get(i).show = false
+                            }
+                            state.viewer.scene.primitives.add(
+                                new Cesium.Primitive({
+                                    geometryInstances: new Cesium.GeometryInstance({
+                                        geometry: new Cesium.PolygonGeometry({
+                                            polygonHierarchy: new Cesium.PolygonHierarchy(
+                                                Cesium.Cartesian3.fromDegreesArray(cn)
+                                            ),
+                                            height: height,
+                                            //   perPositionHeight:true,
+                                            // extrudedHeight: 4090,
+                                        }),
+                                    }),
+                                    appearance: new Cesium.EllipsoidSurfaceAppearance({
+                                        material: new Cesium.Material({
+                                            fabric: {
+                                                type: "Water",
+                                                uniforms: {
+                                                    baseWaterColor: new Cesium.Color(
+                                                        115 / 255.0,
+                                                        178 / 255.0,
+                                                        255 / 255.0,
+                                                        0.5
+                                                    ),
+                                                    normalMap: "\\水体\\waterNormals.jpg",
+                                                    frequency: 1000.0,
+                                                    animationSpeed: 0.001,
+                                                    amplitude: 10,
+                                                    specularIntensity: 2,
+                                                },
+                                            },
+                                        }),
+                                    }),
+                                })
+                            );
+
+                            const band1Position = Number(height);
+                            const bandThickness = 10;
+                            const bandTransparency = 1.0;
+                            const antialias = Math.min(10.0, bandThickness * 0.1);
+                            const layers = [];
+                            const band1 = {
+                                entries: [
+                                    {
+                                        height: band1Position - bandThickness * 0.5 - antialias,
+                                        color: Cesium.Color.AQUA.withAlpha(0.0),
+                                    },
+                                    {
+                                        height: band1Position - bandThickness * 0.5,
+                                        color: Cesium.Color.AQUA.withAlpha(1.0),
+                                    },
+                                    {
+                                        height: band1Position + bandThickness * 0.5,
+                                        color: Cesium.Color.AQUA.withAlpha(1.0),
+                                    },
+                                    {
+                                        height: band1Position + bandThickness * 0.5 + antialias,
+                                        color: Cesium.Color.AQUA.withAlpha(0.0),
+                                    },
+                                ],
+                            };
+                            layers.push(band1);
+                            const material = Cesium.createElevationBandMaterial({
+                                scene: state.viewer.scene,
+                                layers: layers,
+                            });
+                            state.viewer.scene.globe.material = material;
+
+                        });
+
+                }
+                activeShapePoints.pop();
                 floatingPoint = undefined;
                 activeShape = undefined;
-                // activeShapePoints = [];
+                activeShapePoints = [];
             }
             state.handler.setInputAction(function (event) {
                 terminateShape();
@@ -134,10 +281,40 @@ export default {
         };
         const cleanRange = () => {
             state.handler.removeInputAction(Cesium.ScreenSpaceEventType.LEFT_CLICK)
+            state.viewer.scene.primitives.removeAll()
+            const layers = []
+            const emptyBand = {
+                                entries: [
+                                    {
+                                        height:1,
+                                        color: Cesium.Color.AQUA.withAlpha(0.0),
+                                    },
+                                    {
+                                        height:2,
+                                        color: Cesium.Color.AQUA.withAlpha(0.0),
+                                    },
+                                    {
+                                        height:2,
+                                        color: Cesium.Color.AQUA.withAlpha(0.0),
+                                    },
+                                    {
+                                        height:1,
+                                        color: Cesium.Color.AQUA.withAlpha(0.0),
+                                    },
+                                ],
+                            };
+            layers.push(emptyBand)
+            const material = Cesium.createElevationBandMaterial({
+                scene: state.viewer.scene,
+                layers: layers,
+            });
+            state.viewer.scene.globe.material = material;
+            cn = []
         }
         return {
-            cleanRange,
+            num,
             drawRange,
+            cleanRange,
             ...toRefs(state),
         };
     },
@@ -145,7 +322,7 @@ export default {
 </script>
 <style>
 #slider1 {
-    width: 50%;
+    width: 1200px;
 }
 </style>
 

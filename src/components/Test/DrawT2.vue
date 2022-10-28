@@ -1,7 +1,7 @@
 <template>
     <div id="map"> </div>
     <el-button type="warning" plain @click="drawRange">划定范围</el-button>
-    <input ref='slider' type="range" min="2000" max="5000" step="1" v-model="length"
+    <input id= 'slider1' ref='slider' type="range" min="2000" max="5000" step="1" v-model="length"
         data-bind="value: length, valueUpdate: 'input'">
     <input type="text" size="5" v-model="length">
     <el-button type="warning" plain @click="cleanRange">清除洪水面</el-button>
@@ -22,12 +22,12 @@ export default {
             cn:null,
         });
         Cesium.Ion.defaultAccessToken =
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJmM2RjZjY4MC04NmI3LTQwY2YtOTgwMi1iMjM2ZDA1OTQ5ZTQiLCJpZCI6ODIxMzAsImlhdCI6MTY2NjkxOTY4NX0.kiq34pQuaRwXQwJb5rpi23zNt_ZjE1I745dIgO4-CeM";
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0MjczNDgzMy1hYzE1LTRjNWYtODZhMS01MjZkNWRiMDc2MmUiLCJpZCI6ODIxMzAsImlhdCI6MTY0NDU0ODc0M30.LpGXXWsbQXucV5MTeC2g8BCAQWiZp612gosWcK-7ocE";
         onMounted(() => {
             state.viewer = new Cesium.Viewer("map", {
-                // timeline: false,
-                // vrButton: false,
-                // animation: false,
+                timeline: false,
+                vrButton: false,
+                animation: false,
                 terrainProvider: Cesium.createWorldTerrain({
                     requestWaterMask: true,
                     requestVertexNormals: true,
@@ -250,7 +250,7 @@ export default {
 </script>
 <style>
 #slider1 {
-    width: 50%;
+    width: 1200px;
 }
 </style>
 
