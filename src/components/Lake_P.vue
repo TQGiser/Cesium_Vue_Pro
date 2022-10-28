@@ -25,7 +25,7 @@ export default {
         //   requestVertexNormals: true,
         // }),
         terrainProvider: new Cesium.CesiumTerrainProvider({
-          url: "http://localhost:8083/terrain/甘孜地形切片/巴塘县",
+          url: "http://192.168.0.211:8083/terrain/甘孜地形切片/巴塘县",
           minimumLevel: 0,
           maximumLevel: 15,
         }),
@@ -290,7 +290,7 @@ export default {
       state.viewer.trackedEntity = airplaneEntity;
       state.viewer.scene.imageryLayers.addImageryProvider(
         new Cesium.UrlTemplateImageryProvider({
-          url: "http://localhost:8083/dom/{z}/{x}/{y}.png",
+          url: "http://192.168.0.211:8083/dom/{z}/{x}/{y}.png",
           tilingScheme: new Cesium.WebMercatorTilingScheme(),
           minimumLevel: 0,
           maximumLevel: 20

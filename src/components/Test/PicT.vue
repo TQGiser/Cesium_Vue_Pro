@@ -41,7 +41,7 @@ export default {
             state.viewer.entities.add({
             position: Cesium.Cartesian3.fromDegrees(101.02082271, 30.73508266),
             billboard: {
-              image: "\\pic\\photo\\6.JPG",
+              image: "\\pic\\photo\\A6.JPG",
               heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
               scale:1,
               height:200.0,

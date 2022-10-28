@@ -241,10 +241,10 @@ export default {
         ).toFixed(8);
         const height =
           Cesium.Cartographic.fromCartesian(earthPosition).height.toFixed(2);
-        state.ddg = height;
+        // state.ddg = height;
         // state.sjg = state.viewer.camera.positionCartographic.height.toFixed(0);
-        state.jd = jd;
-        state.wd = wd;
+        // state.jd = jd;
+        // state.wd = wd;
         const QueryPoint = state.viewer.entities.add({
           position: Cesium.Cartesian3.fromDegrees(
             Number(jd),
