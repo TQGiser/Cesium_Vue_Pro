@@ -22,7 +22,7 @@ export default {
             cn:null,
         });
         Cesium.Ion.defaultAccessToken =
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0MjczNDgzMy1hYzE1LTRjNWYtODZhMS01MjZkNWRiMDc2MmUiLCJpZCI6ODIxMzAsImlhdCI6MTY0NDU0ODc0M30.LpGXXWsbQXucV5MTeC2g8BCAQWiZp612gosWcK-7ocE";
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJmM2RjZjY4MC04NmI3LTQwY2YtOTgwMi1iMjM2ZDA1OTQ5ZTQiLCJpZCI6ODIxMzAsImlhdCI6MTY2NjkxOTY4NX0.kiq34pQuaRwXQwJb5rpi23zNt_ZjE1I745dIgO4-CeM";
         onMounted(() => {
             state.viewer = new Cesium.Viewer("map", {
                 // timeline: false,
