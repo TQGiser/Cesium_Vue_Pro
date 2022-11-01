@@ -1,3 +1,4 @@
+<!-- 按输入高程划定面 -->
 <template>
     <div id="map">
         <el-button type="warning" plain @click="drawRange">划定范围</el-button>
