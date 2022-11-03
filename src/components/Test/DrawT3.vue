@@ -7,9 +7,9 @@
         <el-select v-model="value" class="m-2" placeholder="请选择地形显示行政区" @change="selectterrain" size="small">
             <el-option v-for="item in op" :key="item.value" :label="item.label" :value="item.value" />
         </el-select>
+        <el-button type="warning" plain @click="viewWithAnimate">巡游</el-button>
         <el-button type="warning" plain @click="QueryPoint">查询高程点</el-button>
         <el-button type="warning" plain @click="cleanQueryPoint">清除查询点</el-button>
-        <el-button type="warning" plain @click="viewWithAnimate">巡游</el-button>
         <el-button type="warning" plain @click="viewTopDown">俯视</el-button>
         <el-button type="warning" plain @click="drawRange">划定范围</el-button>
         <input id='slider1' ref='slider' type="range" min="2000" max="5000" step="1" v-model="elev"
@@ -41,7 +41,8 @@ export default {
             handler2: null,
             ko: null,
             ecList: [],
-            hsmPList: []
+            hsmPList: [],
+            entity_zx: null
 
         });
         Cesium.Ion.defaultAccessToken =
@@ -129,7 +130,8 @@ export default {
             state.viewer = new Cesium.Viewer("map", {
                 timeline: false,
                 vrButton: false,
-                animation: false,
+                animation: true,
+                shouldAnimate: true,
                 terrainProvider: new Cesium.CesiumTerrainProvider({
                     url: "http://192.168.0.211:8083/terrain/甘孜地形切片/鲜水河",
                     minimumLevel: 0,
@@ -155,7 +157,219 @@ export default {
             state.handler2 = new Cesium.ScreenSpaceEventHandler(state.viewer.scene.canvas);
             /*primivates增加要素的BUG，前置ecList不为空*/
             state.ecList.push('A')
+
         });
+        /*加载巡游鲜水河函数 */
+        const viewWithAnimate = () => {
+
+            let minR3 = 20;
+            function changeRadiaus() {
+                minR3 += 0.5;
+                if (minR3 > 50) {
+                    minR3 = 20;
+                }
+                return `${minR3}`;
+            }
+            const e = state.viewer.dataSources
+                .add(Cesium.CzmlDataSource.load("\\CZML\\XSH2.json"))
+                .then(function (ds) {
+                    state.entity_zx = ds.entities.getById("path");
+
+                    state.entity_zx.point.pixelSize = new Cesium.CallbackProperty(
+                        changeRadiaus,
+                        false
+                    );
+                    return state.entity_zx
+                })
+                .then(function(res){
+                    state.viewer.trackedEntity =res
+                });
+        };
+
+
+        /*加载鲜水河hyda，生成湖面 */
+        const hyda_cn = new Array();
+        const promise3 = Cesium.GeoJsonDataSource.load("\\鲜水河\\hyda.json");
+        promise3.then(function (dataSource) {
+            // state.viewer.dataSources.add(dataSource);
+            const entities = dataSource.entities.values;
+            // const color = Cesium.Color.GREEN.withAlpha(0.1);
+            // entities[0].polygon.material = color;
+            const len = entities[0].polygon.hierarchy._value.positions.length;
+            for (let i = 0; i < len; i++) {
+                const zb_c3 =
+                    state.viewer.scene.globe.ellipsoid.cartesianToCartographic(
+                        entities[0].polygon.hierarchy._value.positions[i]
+                    );
+                const zb_n = Cesium.Math.toDegrees(zb_c3.latitude);
+                const zb_e = Cesium.Math.toDegrees(zb_c3.longitude);
+                hyda_cn.push(Number(zb_e));
+                hyda_cn.push(Number(zb_n));
+            }
+            state.viewer.entities.add({
+                polygon: {
+                    hierarchy: new Cesium.PolygonHierarchy(
+                        Cesium.Cartesian3.fromDegreesArray(hyda_cn)
+                    ),
+                    classificationType: Cesium.ClassificationType.TERRAIN,
+                    material: new Cesium.Color.fromBytes(0, 191, 255, 100),
+                },
+            });
+        });
+
+        /*加载鲜水河dmaa，生成管理范围面 */
+        const dmaa_cn = new Array();
+        const promise10 = Cesium.GeoJsonDataSource.load("\\鲜水河\\dmaa.json");
+        promise10.then(function (dataSource) {
+            // state.viewer.dataSources.add(dataSource);
+            const entities = dataSource.entities.values;
+            // const color = Cesium.Color.GREEN.withAlpha(0.1);
+            // entities[0].polygon.material = color;
+            const len = entities[0].polygon.hierarchy._value.positions.length;
+            for (let i = 0; i < len; i++) {
+                const zb_c3 =
+                    state.viewer.scene.globe.ellipsoid.cartesianToCartographic(
+                        entities[0].polygon.hierarchy._value.positions[i]
+                    );
+                const zb_n = Cesium.Math.toDegrees(zb_c3.latitude);
+                const zb_e = Cesium.Math.toDegrees(zb_c3.longitude);
+                dmaa_cn.push(Number(zb_e));
+                dmaa_cn.push(Number(zb_n));
+            }
+            state.viewer.entities.add({
+                polygon: {
+                    hierarchy: new Cesium.PolygonHierarchy(
+                        Cesium.Cartesian3.fromDegreesArray(dmaa_cn)
+                    ),
+                    classificationType: Cesium.ClassificationType.TERRAIN,
+                    material: new Cesium.Color.fromBytes(135, 191, 255, 100),
+                },
+            });
+        });
+
+        /*加载鲜水河RESA 与划洪水面功能primitives冲突，暂时不用 */
+        // const tileset = new Cesium.Cesium3DTileset({
+        //     url: "http://192.168.0.211:8083/resa/鲜水河/tileset.json",
+        // });
+        // tileset.readyPromise
+        //     .then(function (tileset) {
+        //         state.viewer.scene.primitives.add(tileset);
+        //     })
+        //     .catch(function (error) {
+        //         console.log(error);
+        //     });
+
+        /*加载鲜水河中线点*/
+        const promise8 = Cesium.GeoJsonDataSource.load("\\鲜水河\\zx.json");
+        promise8.then(function (dataSource) {
+            const entities = dataSource.entities.values;
+            // console.log(entities[0])
+            for (let i = 0; i < entities.length; i++) {
+                const jd = Cesium.Math.toDegrees(
+                    Cesium.Cartographic.fromCartesian(entities[i]._position._value)
+                        .longitude
+                );
+                const wd = Cesium.Math.toDegrees(
+                    Cesium.Cartographic.fromCartesian(entities[i]._position._value)
+                        .latitude
+                );
+                const gd = Cesium.Cartographic.fromCartesian(
+                    entities[i]._position._value
+                ).height;
+                const label =
+                    entities[i].properties.里程.valueOf() +
+                    entities[i].properties.XZQMC.valueOf() +
+                    entities[i].properties.XJQYMC.valueOf();
+                // console.log(jd, wd, gd);
+                state.viewer.entities.add({
+                    position: Cesium.Cartesian3.fromDegrees(jd, wd, gd + 100),
+                    cylinder: {
+                        length: 100.0,
+                        topRadius: 1.0,
+                        bottomRadius: 1.0,
+                        material: Cesium.Color.AQUA.withAlpha(0.7),
+                        heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
+                        distanceDisplayCondition: new Cesium.DistanceDisplayCondition(
+                            10.0,
+                            6000.0
+                        ),
+                    },
+                    label: {
+                        text: label /*注记名称 */,
+                        fillColor: Cesium.Color.WHITE,
+                        // heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
+                        horizontalOrigin: Cesium.HorizontalOrigin.CENTER,
+                        verticalOrigin: Cesium.VerticalOrigin.BASELINE,
+                        showBackground: true,
+                        backgroundColor: Cesium.Color.DEEPSKYBLUE,
+                        backgroundPadding: Cesium.Cartesian2(30, 30),
+                        style: Cesium.LabelStyle.FILL,
+                        disableDepthTestDistance: Number.POSITIVE_INFINITY,
+                        distanceDisplayCondition: new Cesium.DistanceDisplayCondition(
+                            10.0,
+                            5000.0
+                        ),
+                        scale: 0.7,
+                    },
+                });
+            }
+        });
+
+        /*加载鲜水河照片 */
+        const promise9 = Cesium.GeoJsonDataSource.load(
+            "\\鲜水河\\photo_position3.json"
+        );
+        promise9.then(
+            function (ds) {
+                const entities = ds.entities.values;
+
+                for (let i = 0; i < entities.length; i++) {
+                    const jd = Cesium.Math.toDegrees(
+                        Cesium.Cartographic.fromCartesian(entities[i]._position._value)
+                            .longitude
+                    );
+                    const wd = Cesium.Math.toDegrees(
+                        Cesium.Cartographic.fromCartesian(entities[i]._position._value)
+                            .latitude
+                    );
+                    const gd = parseInt(Cesium.Cartographic.fromCartesian(entities[i]._position._value)
+                        .height)
+                    // console.log(entities[i])
+                    const pNum = Number(entities[i]._properties.Id.valueOf())
+
+                    // console.log(pNum)
+                    const imageName = `\\pic\\photo_half\\${pNum}.jpg`
+                    state.viewer.entities.add({
+                        position: Cesium.Cartesian3.fromDegrees(jd, wd, gd + 150.0),
+                        name: pNum,
+                        billboard: {
+                            // image: "\\pic\\photo\\A1.jpg",
+                            image: imageName,
+                            scale: 1,
+                            height: 200.0,
+                            width: 200.0,
+                            sizeInMeters: true,
+                        },
+                    })
+                    state.viewer.entities.add({
+                        position: Cesium.Cartesian3.fromDegrees(jd, wd, gd + 5),
+                        name: pNum,
+                        ellipsoid: {
+                            radii: new Cesium.Cartesian3(20.0, 20.0, 20.0),
+                            material: Cesium.Color.LIME.withAlpha(0.9),
+                            disableDepthTestDistance: Number.POSITIVE_INFINITY,
+                            distanceDisplayCondition: new Cesium.DistanceDisplayCondition(
+                                10.0,
+                                2000000.0
+                            ),
+                            // scaleByDistance: new Cesium.NearFarScalar(1.5e2, 2.0, 1.5e7, 0.5),
+                            // outline: true,
+                            // outlineColor: Cesium.Color.BLACK,
+                        },
+                    });
+                }
+            }
+        );
 
         /*俯视函数 */
         const viewTopDown = () => {
@@ -173,22 +387,12 @@ export default {
             });
         };
 
-        /*动画视角函数 */
-        const viewWithAnimate = () => {
-            state.viewer.trackedEntity = entity_zx;
-        };
-
         /*点击划洪水面时获取坐标列表*/
         let cn = new Array();
 
         /*设置默认洪水面高度*/
         const num = ref(2000);
 
-        /*建立查询点id列表 */
-        // let ecList = new Array();
-
-        /*建立动画entity */
-        var entity_zx;
 
         /*高程查询函数*/
         const QueryPoint = () => {
@@ -199,10 +403,10 @@ export default {
                 const earthPosition = state.viewer.scene.pickPosition(event.position);
                 const jd = Cesium.Math.toDegrees(
                     Cesium.Cartographic.fromCartesian(earthPosition).longitude
-                ).toFixed(8);
+                ).toFixed(4);
                 const wd = Cesium.Math.toDegrees(
                     Cesium.Cartographic.fromCartesian(earthPosition).latitude
-                ).toFixed(8);
+                ).toFixed(4);
                 const height =
                     Cesium.Cartographic.fromCartesian(earthPosition).height.toFixed(2);
 
@@ -219,6 +423,10 @@ export default {
                         outlineWidth: 1,
                     },
                 });
+                state.ddg = height;
+                state.sjg = state.viewer.camera.positionCartographic.height.toFixed(0);
+                state.jd = jd;
+                state.wd = wd;
 
                 state.ecList.push(QueryPoint.id);
                 const QueryLabel = state.viewer.entities.add({
@@ -275,7 +483,7 @@ export default {
                 });
                 state.hsmPList.push(point.id)
                 return point;
-                
+
             }
             function drawShape(positionData) {
                 let shape;
@@ -283,7 +491,7 @@ export default {
                     polygon: {
                         hierarchy: positionData,
                         material: new Cesium.ColorMaterialProperty(
-                            Cesium.Color.WHITE.withAlpha(0.7)
+                            Cesium.Color.CORNFLOWERBLUE .withAlpha(0.7)
                         ),
 
                     },
@@ -365,7 +573,7 @@ export default {
             }, Cesium.ScreenSpaceEventType.MOUSE_MOVE);
             function terminateShape() {
                 drawPlant(cn, num.value);
-                if (state.viewer.scene.primitives.length < 3) {
+                if (state.viewer.scene.primitives.length < 4) {
                     const viewModel = {
                         elev: 0
                     };
@@ -524,7 +732,7 @@ export default {
 </script>
 <style>
 #slider1 {
-    width: 300px;
+    width: 120px;
 }
 </style>
 
