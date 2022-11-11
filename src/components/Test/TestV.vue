@@ -1,12 +1,9 @@
 <template>
-
+        
     <div id="map">
-        <div id='el'>
-            <el-switch v-model="show" active-text="DMAA显示" inactive-text="DMAA隐藏" @change="showPic">
-            </el-switch>
-            <el-switch v-model="show" active-text="DMAA显示" inactive-text="DMAA隐藏" @change="showPic">
-            </el-switch>
-        </div>
+        <input type="text" size="5" v-model="e">
+        <input type="text" size="5" v-model="n">
+        <el-button type="warning" plain @click="viewTO">至</el-button>
     </div>
 
 </template>
@@ -19,8 +16,8 @@ export default {
     setup() {
         const state = reactive({
             viewer: null,
-            show: true,
-
+            e:null,
+            n:null
         });
         Cesium.Ion.defaultAccessToken =
             "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0MjczNDgzMy1hYzE1LTRjNWYtODZhMS01MjZkNWRiMDc2MmUiLCJpZCI6ODIxMzAsImlhdCI6MTY0NDU0ODc0M30.LpGXXWsbQXucV5MTeC2g8BCAQWiZp612gosWcK-7ocE";
@@ -52,48 +49,23 @@ export default {
 
         });
 
-        /*加载鲜水河dmaa，生成管理范围面 */
-
-        const dmaa_cn = new Array();
-        const promise10 = Cesium.GeoJsonDataSource.load("\\鲜水河\\dmaa.json");
-        promise10.then(function (dataSource) {
-            // state.viewer.dataSources.add(dataSource);
-            const entities = dataSource.entities.values;
-            // const color = Cesium.Color.GREEN.withAlpha(0.1);
-            // entities[0].polygon.material = color;
-            const len = entities[0].polygon.hierarchy._value.positions.length;
-            for (let i = 0; i < len; i++) {
-                const zb_c3 =
-                    state.viewer.scene.globe.ellipsoid.cartesianToCartographic(
-                        entities[0].polygon.hierarchy._value.positions[i]
-                    );
-                const zb_n = Cesium.Math.toDegrees(zb_c3.latitude);
-                const zb_e = Cesium.Math.toDegrees(zb_c3.longitude);
-                dmaa_cn.push(Number(zb_e));
-                dmaa_cn.push(Number(zb_n));
-            }
-            state.viewer.entities.add({
-                id: 'XSH_dmaa',
-                polygon: {
-                    hierarchy: new Cesium.PolygonHierarchy(
-                        Cesium.Cartesian3.fromDegreesArray(dmaa_cn)
-                    ),
-                    classificationType: Cesium.ClassificationType.TERRAIN,
-                    material: new Cesium.Color.fromBytes(135, 191, 255, 100),
+        const viewTO = ()=>{
+            console.log(state.e,state.n)
+            state.viewer.camera.setView({
+                destination: Cesium.Cartesian3.fromDegrees(
+                    Number(state.e),
+                    Number(state.n),
+                    6400
+                ),
+                orientation: {
+                    heading: Cesium.Math.toRadians(2.0),
+                    pitch: Cesium.Math.toRadians(-70.0),
                 },
             });
-        });
-
-
-        const showPic = () => {
-            if (state.show == true) {
-                state.viewer.entities.getById('XSH_dmaa').show = true
-            } else {
-                state.viewer.entities.getById('XSH_dmaa').show = false
-            }
+            
         }
         return {
-            showPic,
+            viewTO,
             ...toRefs(state),
         };
     },
@@ -101,7 +73,7 @@ export default {
 </script>
 <style>
 #el {
-    width: 210px;
+    width: 100px;
     background-color: rgba(226, 208, 208, 0.671);
     position: fixed;
     left: 20px;

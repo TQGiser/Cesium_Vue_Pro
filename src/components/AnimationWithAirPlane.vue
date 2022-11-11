@@ -67,7 +67,7 @@ export default {
       const start = Cesium.JulianDate.fromDate(new Date(2021, 6, 27, 16));
       const stop = Cesium.JulianDate.addSeconds(
         start,
-        3600,
+        100000000000000,
         new Cesium.JulianDate()
       );
       state.viewer.clock.startTime = start.clone();

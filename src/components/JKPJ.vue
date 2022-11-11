@@ -1,29 +1,53 @@
 <template>
-    <el-tag size="large" effect="dark">经度：{{ jd }}</el-tag>
-    <el-tag size="large" effect="dark">纬度：{{ wd }}</el-tag>
-    <el-tag size="large" effect="dark">大地高：{{ ddg }}</el-tag>
-    <el-tag size="large" effect="dark">视角高：{{ sjg }}</el-tag>
-    <el-select v-model="value" class="m-2" placeholder="请选择地形显示行政区" @change="selectterrain" size="small">
-        <el-option v-for="item in op" :key="item.value" :label="item.label" :value="item.value" />
-    </el-select>
-    <el-button type="warning" plain @click="viewWithAnimate">巡游</el-button>
-    <el-button type="warning" plain @click="QueryPoint">查询高程点</el-button>
-    <el-button type="warning" plain @click="cleanQueryPoint">清除查询点</el-button>
-    <el-button type="warning" plain @click="viewTopDown">俯视</el-button>
-    <el-button type="warning" plain @click="drawRange">划定范围</el-button>
-    <input id='slider1' ref='slider' type="range" min="2000" max="5000" step="1" v-model="elev"
-        data-bind="value: elev, valueUpdate: 'input'">
-    <input type="text" size="5" v-model="elev">
-    <el-button type="warning" plain @click="cleanRange">清除洪水面</el-button>
-    <el-button type="warning" plain @click="test">test</el-button>
+    <div id='panal'>
+        <el-tag size="large" effect="dark">经度：&nbsp;&nbsp;&nbsp;</el-tag>&nbsp;&nbsp;&nbsp;{{ jd }}<br>
+        <el-tag size="large" effect="dark">纬度：&nbsp;&nbsp;&nbsp;</el-tag>&nbsp;&nbsp;&nbsp;{{ wd }}<br>
+        <el-tag size="large" effect="dark">大地高：</el-tag>&nbsp;&nbsp;&nbsp;{{ ddg }}<br>
+        <el-tag size="large" effect="dark">视角高：</el-tag>&nbsp;&nbsp;&nbsp;{{ sjg }}
+    </div>
+    <div id='demSwitch'>
+        <el-select v-model="value" class="m-2" placeholder="请选择地形显示行政区" @change="selectterrain" size="small">
+            <el-option v-for="item in op" :key="item.value" :label="item.label" :value="item.value" />
+        </el-select>
+    </div>
+    <div id='animate'>
+        <el-button type="success" plain @click="viewWithAnimate">巡游</el-button>
+        <el-button type="success" plain @click="viewTopDown">俯视</el-button>
+    </div>
+    <div id='query'>
+        <el-button type="success" plain @click="QueryPoint">查询高程点</el-button>
+        <el-button type="success" plain @click="cleanQueryPoint">清除查询点</el-button>
+    </div>
+    <div id='drawPlant'>
+        <el-button type="success" plain @click="drawRange">划定范围</el-button>
+
+        <input id='slider1' ref='slider' type="range" min="2000" max="5000" step="1" v-model="elev"
+            data-bind="value: elev, valueUpdate: 'input'">
+        <input type="text" size="5" v-model="elev">
+
+        <el-button type="success" plain @click="cleanRange">清除洪水面</el-button>
+    </div>
+    <div id="view">
+        <input type="text" size="5" v-model="e">
+        <input type="text" size="5" v-model="n">
+        <el-button type="success" plain @click="viewTO">至</el-button>
+    </div>
+    <div id='test'>
+        <el-button type="success" plain @click="test">test</el-button>
+    </div>
+
     <div id="map">
         <div id='el'>
-            <el-switch v-model="show_dmaa" active-text="DMAA显示" inactive-text="DMAA隐藏" @change="fn_show_dmaa">
-            </el-switch>
-            <el-switch v-model="show_hyda" active-text="HYDA显示" inactive-text="HYDA隐藏" @change="fn_show_hyda">
-            </el-switch>
-            <el-switch v-model="show_zxlcd" active-text="里程点显示" inactive-text="里程点隐藏" @change="fn_show_zxlcd">
-            </el-switch>
+            <span>DMAA</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<el-switch v-model="show_dmaa"
+                @change="fn_show_dmaa"></el-switch><br>
+            <span>HYDA</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<el-switch v-model="show_hyda"
+                @change="fn_show_hyda"></el-switch><br>
+            <span>中线里程点</span>&nbsp;&nbsp;&nbsp;<el-switch v-model="show_zxlcd" @change="fn_show_zxlcd"></el-switch><br>
+            <span>踏勘照片</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<el-switch v-model="show_pic_1"
+                @change="fn_show_pic_1"></el-switch><br>
+            <span>航飞照片</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<el-switch v-model="show_pic_2"
+                @change="fn_show_pic_2"></el-switch>
+
         </div>
     </div>
 
@@ -52,10 +76,17 @@ export default {
             ko: null,
             ecList: [],
             hsmPList: [],
+            zxlcdList: [],
+            tkpic_billboard_List: [],
+            hfpic_billboard_List: [],
             entity_zx: null,
-            show_dmaa:true,
-            show_hyda:true,
-            show_zxlcd:true,
+            show_dmaa: true,
+            show_hyda: true,
+            show_zxlcd: true,
+            show_pic_1: true,
+            show_pic_2: true,
+            e: null,
+            n: null
         });
         Cesium.Ion.defaultAccessToken =
             "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI0MjczNDgzMy1hYzE1LTRjNWYtODZhMS01MjZkNWRiMDc2MmUiLCJpZCI6ODIxMzAsImlhdCI6MTY0NDU0ODc0M30.LpGXXWsbQXucV5MTeC2g8BCAQWiZp612gosWcK-7ocE";
@@ -140,7 +171,7 @@ export default {
                 },
             ]
             state.viewer = new Cesium.Viewer("map", {
-                timeline: false,
+                timeline: true,
                 vrButton: false,
                 animation: true,
                 shouldAnimate: true,
@@ -171,33 +202,93 @@ export default {
             state.ecList.push('A')
 
         });
-        /*加载巡游鲜水河函数 */
+        /*加载巡游鲜水河函数-沿河流中线 */
+        // const viewWithAnimate = () => {
+
+        //     let minR3 = 20;
+        //     function changeRadiaus() {
+        //         minR3 += 0.5;
+        //         if (minR3 > 50) {
+        //             minR3 = 20;
+        //         }
+        //         return `${minR3}`;
+        //     }
+        //     state.viewer.dataSources
+        //         .add(Cesium.CzmlDataSource.load("\\CZML\\zxCx.json"))
+        //         .then(function (ds) {
+        //             state.entity_zx = ds.entities.getById("path");
+
+        //             state.entity_zx.point.pixelSize = new Cesium.CallbackProperty(
+        //                 changeRadiaus,
+        //                 false
+        //             );
+        //             return state.entity_zx
+        //         })
+        //         .then(function (res) {
+        //             state.viewer.trackedEntity = res
+        //         });
+        // };
+
+        /*加载巡游鲜水河函数-沿空中 */
         const viewWithAnimate = () => {
-
-            let minR3 = 20;
-            function changeRadiaus() {
-                minR3 += 0.5;
-                if (minR3 > 50) {
-                    minR3 = 20;
-                }
-                return `${minR3}`;
-            }
-            const e = state.viewer.dataSources
-                .add(Cesium.CzmlDataSource.load("\\CZML\\XSH2.json"))
-                .then(function (ds) {
-                    state.entity_zx = ds.entities.getById("path");
-
-                    state.entity_zx.point.pixelSize = new Cesium.CallbackProperty(
-                        changeRadiaus,
-                        false
+            const positionProperty = new Cesium.SampledPositionProperty();
+            const addZxJSON = Cesium.GeoJsonDataSource.load("\\鲜水河\\zx.json")
+            addZxJSON.then(function (ds) {
+                const entities = ds.entities.values
+                for (let i = 0; i < entities.length; i++) {
+                    const zb_c3 =
+                        state.viewer.scene.globe.ellipsoid.cartesianToCartographic(
+                            entities[i].position._value
+                        );
+                    const zb_n = Cesium.Math.toDegrees(zb_c3.latitude);
+                    const zb_e = Cesium.Math.toDegrees(zb_c3.longitude);
+                    const zb_h = Number(zb_c3.height) + 400.0;
+                    const time = Cesium.JulianDate.addSeconds(
+                        start,
+                        i * timeStepInSeconds,
+                        new Cesium.JulianDate()
                     );
-                    return state.entity_zx
-                })
-                .then(function (res) {
-                    state.viewer.trackedEntity = res
-                });
+                    const position = Cesium.Cartesian3.fromDegrees(zb_e, zb_n, zb_h);
+                    positionProperty.addSample(time, position);
+                }
+            })
+            const timeStepInSeconds = 60;
+            const start = Cesium.JulianDate.fromDate(new Date(2021, 6, 27, 16));
+            const stop = Cesium.JulianDate.addSeconds(
+                start,
+                26000,
+                new Cesium.JulianDate()
+            );
+            state.viewer.clock.startTime = start.clone();
+            state.viewer.clock.stopTime = stop.clone();
+            state.viewer.clock.currentTime = start.clone();
+            // state.viewer.timeline.zoomTo(start, stop);
+            state.viewer.clock.multiplier = 0.5;
+            state.viewer.clock.shouldAnimate = true;
+            state.viewer.clock.clockRange = Cesium.ClockRange.LOOP_STOP;
+            const airplaneEntity = state.viewer.entities.add({
+                availability: new Cesium.TimeIntervalCollection([
+                    new Cesium.TimeInterval({ start: start, stop: stop }),
+                ]),
+                position: positionProperty,
+                model: {
+                    uri: '\\模型\\drone-sccs.glb',
+                    scale: 10
+                },
+                orientation: new Cesium.VelocityOrientationProperty(positionProperty),
+
+                path: new Cesium.PathGraphics({ width: 0 }),
+            });
+            state.viewer.trackedEntity = airplaneEntity;
         };
 
+        /*加载鲜水河断面示意线*/
+        const addXshDmx = Cesium.GeoJsonDataSource.load(
+            "\\鲜水河\\xshDmx.json"
+        );
+        addXshDmx.then(function (dataSource) {
+            state.viewer.dataSources.add(dataSource)
+        });
 
         /*加载鲜水河hyda，生成湖面 */
         const hyda_cn = new Array();
@@ -219,7 +310,7 @@ export default {
                 hyda_cn.push(Number(zb_n));
             }
             state.viewer.entities.add({
-                id:'XSH_hyda',
+                id: 'XSH_hyda',
                 polygon: {
                     hierarchy: new Cesium.PolygonHierarchy(
                         Cesium.Cartesian3.fromDegreesArray(hyda_cn)
@@ -250,7 +341,7 @@ export default {
                 dmaa_cn.push(Number(zb_n));
             }
             state.viewer.entities.add({
-                id:'XSH_dmaa',
+                id: 'XSH_dmaa',
                 polygon: {
                     hierarchy: new Cesium.PolygonHierarchy(
                         Cesium.Cartesian3.fromDegreesArray(dmaa_cn)
@@ -295,7 +386,7 @@ export default {
                     entities[i].properties.XZQMC.valueOf() +
                     entities[i].properties.XJQYMC.valueOf();
                 // console.log(jd, wd, gd);
-                state.viewer.entities.add({
+                const zxlcd = state.viewer.entities.add({
                     position: Cesium.Cartesian3.fromDegrees(jd, wd, gd + 100),
                     cylinder: {
                         length: 100.0,
@@ -305,7 +396,7 @@ export default {
                         heightReference: Cesium.HeightReference.CLAMP_TO_GROUND,
                         distanceDisplayCondition: new Cesium.DistanceDisplayCondition(
                             10.0,
-                            4000.0
+                            6000.0
                         ),
                     },
                     label: {
@@ -326,6 +417,7 @@ export default {
                         scale: 0.7,
                     },
                 });
+                state.zxlcdList.push(zxlcd.id)
             }
         });
 
@@ -354,7 +446,7 @@ export default {
 
                     // console.log(pNum)
                     const imageName = `\\pic\\photo_half\\${pNum}.jpg`
-                    state.viewer.entities.add({
+                    const tkpic_1_billboard = state.viewer.entities.add({
                         position: Cesium.Cartesian3.fromDegrees(jd, wd, gd + 150.0),
                         name: pNum,
                         billboard: {
@@ -366,6 +458,8 @@ export default {
                             sizeInMeters: true,
                         },
                     })
+                    state.tkpic_billboard_List.push(tkpic_1_billboard.id)
+
                     state.viewer.entities.add({
                         position: Cesium.Cartesian3.fromDegrees(jd, wd, gd + 5),
                         name: pNum,
@@ -382,6 +476,7 @@ export default {
                             // outlineColor: Cesium.Color.BLACK,
                         },
                     });
+
                 }
             }
         );
@@ -406,14 +501,12 @@ export default {
                     );
                     const gd = parseInt(Cesium.Cartographic.fromCartesian(entities[i]._position._value)
                         .height)
-                    // console.log(entities[i])
                     const pNum = entities[i]._properties._name._value
                     const imageName = `\\pic\\1103HF\\${pNum}.jpg`
-                    state.viewer.entities.add({
-                        position: Cesium.Cartesian3.fromDegrees(jd, wd, gd + 150.0),
+                    const hfpic_billboard = state.viewer.entities.add({
+                        position: Cesium.Cartesian3.fromDegrees(jd, wd, gd + 180.0),
                         name: pNum,
                         billboard: {
-                            // image: "\\pic\\photo\\A1.jpg",
                             image: imageName,
                             scale: 1,
                             height: 200.0,
@@ -421,6 +514,7 @@ export default {
                             sizeInMeters: true,
                         },
                     })
+                    state.hfpic_billboard_List.push(hfpic_billboard.id)
                     state.viewer.entities.add({
                         position: Cesium.Cartesian3.fromDegrees(jd, wd, gd + 5),
                         name: pNum,
@@ -438,9 +532,9 @@ export default {
                         // },
                         model: {
                             // uri: 'three官网glb模型\\Stork.glb',
-                            uri: '\\模型\\无人机.glb',
+                            uri: '\\模型\\drone-sccs.glb',
                             // minimumPixelSize: 3
-                            scale: 100
+                            scale: 20
                         },
                     });
                 }
@@ -524,6 +618,7 @@ export default {
                     },
                 });
                 state.ecList.push(QueryLabel.id);
+                console.log(jd, wd, height)
             }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
         }
 
@@ -649,7 +744,7 @@ export default {
             }, Cesium.ScreenSpaceEventType.MOUSE_MOVE);
             function terminateShape() {
                 drawPlant(cn, num.value);
-                if (state.viewer.scene.primitives.length < 12) {
+                if (state.viewer.scene.primitives.length < 13) {
                     const viewModel = {
                         elev: 0
                     };
@@ -784,7 +879,7 @@ export default {
         }
 
         const test = () => {
-            console.log(state.viewer.scene.primitives.length)
+            console.log(state.zxlcdList.length)
         }
 
         /*Terrain县区选择 */
@@ -799,26 +894,76 @@ export default {
         /*el开关*/
         const fn_show_dmaa = () => {
             if (state.show_dmaa == true) {
-                state.viewer.entities.getById('XSH_dmaa').show= true
+                state.viewer.entities.getById('XSH_dmaa').show = true
             } else {
                 state.viewer.entities.getById('XSH_dmaa').show = false
             }
         }
         const fn_show_hyda = () => {
             if (state.show_hyda == true) {
-                state.viewer.entities.getById('XSH_hyda').show= true
+                state.viewer.entities.getById('XSH_hyda').show = true
             } else {
                 state.viewer.entities.getById('XSH_hyda').show = false
             }
         }
         const fn_show_zxlcd = () => {
             if (state.show_zxlcd == true) {
-                state.viewer.entities.getById('XSH_zxlcd').show= true
+                for (let i = 0; i < state.zxlcdList.length; i++) {
+                    state.viewer.entities.getById(state.zxlcdList[i]).show = true
+                }
+
             } else {
-                state.viewer.entities.getById('XSH_zxlcd').show = false
+                for (let i = 0; i < state.zxlcdList.length; i++) {
+                    state.viewer.entities.getById(state.zxlcdList[i]).show = false
+                }
             }
         }
+        const fn_show_pic_1 = () => {
+            if (state.show_pic_1 == true) {
+                for (let i = 0; i < state.tkpic_billboard_List.length; i++) {
+                    state.viewer.entities.getById(state.tkpic_billboard_List[i]).show = true
+                }
+            } else {
+                for (let i = 0; i < state.tkpic_billboard_List.length; i++) {
+                    state.viewer.entities.getById(state.tkpic_billboard_List[i]).show = false
+                }
+            }
+        }
+        const fn_show_pic_2 = () => {
+            if (state.show_pic_2 == true) {
+                for (let i = 0; i < state.hfpic_billboard_List.length; i++) {
+                    state.viewer.entities.getById(state.hfpic_billboard_List[i]).show = true
+                }
+            } else {
+                for (let i = 0; i < state.hfpic_billboard_List.length; i++) {
+                    state.viewer.entities.getById(state.hfpic_billboard_List[i]).show = false
+                }
+            }
+
+
+
+        }
+
+        /*位置查询*/
+        const viewTO = () => {
+            console.log(state.e, state.n)
+            state.viewer.camera.setView({
+                destination: Cesium.Cartesian3.fromDegrees(
+                    Number(state.e),
+                    Number(state.n),
+                    6400
+                ),
+                orientation: {
+                    heading: Cesium.Math.toRadians(2.0),
+                    pitch: Cesium.Math.toRadians(-70.0),
+                },
+            });
+
+        }
         return {
+            viewTO,
+            fn_show_pic_2,
+            fn_show_pic_1,
             fn_show_zxlcd,
             fn_show_dmaa,
             fn_show_hyda,
@@ -842,14 +987,85 @@ export default {
     width: 120px;
 
 }
+
 #el {
-    width: 210px;
+    width: 150px;
     background-color: rgba(226, 208, 208, 0.671);
     position: fixed;
     left: 20px;
-    top: 50px;
+    top: 15px;
     z-index: 100;
     padding-left: 10px;
+}
+
+#panal {
+    width: 200px;
+    background-color: rgba(226, 208, 208, 0.671);
+    position: fixed;
+    left: 20px;
+    top: 200px;
+    z-index: 100;
+    padding-left: 10px;
+}
+
+#demSwitch {
+    width: 150px;
+    background-color: rgba(226, 208, 208, 0.671);
+    position: fixed;
+    left: 200px;
+    top: 15px;
+    z-index: 100;
+    padding-left: 10px;
+}
+
+#animate {
+    width: 135px;
+    background-color: rgba(226, 208, 208, 0.671);
+    position: fixed;
+    left: 380px;
+    top: 15px;
+    z-index: 100;
+    padding-left: 1px;
+}
+
+#query {
+    width: 220px;
+    background-color: rgba(226, 208, 208, 0.671);
+    position: fixed;
+    left: 530px;
+    top: 15px;
+    z-index: 100;
+    padding-left: 1px;
+}
+
+#drawPlant {
+    width: 400px;
+    background-color: rgba(226, 208, 208, 0.671);
+    position: fixed;
+    left: 800px;
+    top: 15px;
+    z-index: 100;
+    padding-left: 1px;
+}
+
+#view {
+    width: 200px;
+    background-color: rgba(226, 208, 208, 0.671);
+    position: fixed;
+    left: 1240px;
+    top: 15px;
+    z-index: 100;
+    padding-left: 1px;
+}
+
+#test {
+    width: 50px;
+    background-color: rgba(226, 208, 208, 0.671);
+    position: fixed;
+    left: 1500px;
+    top: 15px;
+    z-index: 100;
+    padding-left: 1px;
 }
 </style>
 
