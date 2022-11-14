@@ -534,7 +534,7 @@ export default {
                             // uri: 'three官网glb模型\\Stork.glb',
                             uri: '\\模型\\drone-sccs.glb',
                             // minimumPixelSize: 3
-                            scale: 20
+                            scale: 10
                         },
                     });
                 }
