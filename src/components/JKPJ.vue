@@ -1,5 +1,5 @@
 <template>
-    <div id='panal'>
+    <div id='panal' v-if="query_panel_show">
         <el-tag size="large" effect="dark">经度：&nbsp;&nbsp;&nbsp;</el-tag>&nbsp;&nbsp;&nbsp;{{ jd }}<br>
         <el-tag size="large" effect="dark">纬度：&nbsp;&nbsp;&nbsp;</el-tag>&nbsp;&nbsp;&nbsp;{{ wd }}<br>
         <el-tag size="large" effect="dark">大地高：</el-tag>&nbsp;&nbsp;&nbsp;{{ ddg }}<br>
@@ -27,14 +27,18 @@
 
         <el-button type="success" plain @click="cleanRange">清除洪水面</el-button>
     </div>
+    <div id='dmxpj'>
+        <el-button type="success" plain @click="drawDmx">划断面线</el-button>
+        <el-button type="success" plain @click="cleanDmx">清除断面线</el-button>
+    </div>
     <div id="view">
         <input type="text" size="5" v-model="e">
         <input type="text" size="5" v-model="n">
         <el-button type="success" plain @click="viewTO">至</el-button>
     </div>
-    <div id='test'>
+    <!-- <div id='test'>
         <el-button type="success" plain @click="test">test</el-button>
-    </div>
+    </div> -->
 
     <div id="map">
         <div id='el'>
@@ -61,6 +65,7 @@ export default {
     setup() {
         const state = reactive({
             viewer: null,
+            query_panel_show: false,
             jd: null,
             wd: null,
             sjg: null,
@@ -73,12 +78,17 @@ export default {
             cn: null,
             handler1: null,
             handler2: null,
+            handler3: null,
             ko: null,
             ecList: [],
             hsmPList: [],
             zxlcdList: [],
             tkpic_billboard_List: [],
             hfpic_billboard_List: [],
+            dmxList: [],
+            dmx_pointList: [],
+            dmx_fdxList: [],
+            dmx_labelList: [],
             entity_zx: null,
             show_dmaa: true,
             show_hyda: true,
@@ -184,8 +194,8 @@ export default {
 
             state.viewer.camera.setView({
                 destination: Cesium.Cartesian3.fromDegrees(
-                    101.02082271,
-                    30.73508266,
+                    101.116466,
+                    30.849248,
                     6400
                 ),
                 orientation: {
@@ -198,39 +208,11 @@ export default {
 
             state.handler1 = new Cesium.ScreenSpaceEventHandler(state.viewer.scene.canvas);
             state.handler2 = new Cesium.ScreenSpaceEventHandler(state.viewer.scene.canvas);
+            state.handler3 = new Cesium.ScreenSpaceEventHandler(state.viewer.scene.canvas);
             /*primivates增加要素的BUG，前置ecList不为空*/
             state.ecList.push('A')
 
-        });
-        /*加载巡游鲜水河函数-沿河流中线 */
-        // const viewWithAnimate = () => {
-
-        //     let minR3 = 20;
-        //     function changeRadiaus() {
-        //         minR3 += 0.5;
-        //         if (minR3 > 50) {
-        //             minR3 = 20;
-        //         }
-        //         return `${minR3}`;
-        //     }
-        //     state.viewer.dataSources
-        //         .add(Cesium.CzmlDataSource.load("\\CZML\\zxCx.json"))
-        //         .then(function (ds) {
-        //             state.entity_zx = ds.entities.getById("path");
-
-        //             state.entity_zx.point.pixelSize = new Cesium.CallbackProperty(
-        //                 changeRadiaus,
-        //                 false
-        //             );
-        //             return state.entity_zx
-        //         })
-        //         .then(function (res) {
-        //             state.viewer.trackedEntity = res
-        //         });
-        // };
-
-        /*加载巡游鲜水河函数-沿空中 */
-        const viewWithAnimate = () => {
+            /*加载巡游鲜水河函数-沿空中 */
             const positionProperty = new Cesium.SampledPositionProperty();
             const addZxJSON = Cesium.GeoJsonDataSource.load("\\鲜水河\\zx.json")
             addZxJSON.then(function (ds) {
@@ -266,11 +248,12 @@ export default {
             state.viewer.clock.multiplier = 0.5;
             state.viewer.clock.shouldAnimate = true;
             state.viewer.clock.clockRange = Cesium.ClockRange.LOOP_STOP;
-            const airplaneEntity = state.viewer.entities.add({
+            state.viewer.entities.add({
                 availability: new Cesium.TimeIntervalCollection([
                     new Cesium.TimeInterval({ start: start, stop: stop }),
                 ]),
                 position: positionProperty,
+                id: 'airPlane',
                 model: {
                     uri: '\\模型\\drone-sccs.glb',
                     scale: 10
@@ -279,7 +262,38 @@ export default {
 
                 path: new Cesium.PathGraphics({ width: 0 }),
             });
-            state.viewer.trackedEntity = airplaneEntity;
+
+        });
+        /*加载巡游鲜水河函数-沿河流中线 */
+        // const viewWithAnimate = () => {
+
+        //     let minR3 = 20;
+        //     function changeRadiaus() {
+        //         minR3 += 0.5;
+        //         if (minR3 > 50) {
+        //             minR3 = 20;
+        //         }
+        //         return `${minR3}`;
+        //     }
+        //     state.viewer.dataSources
+        //         .add(Cesium.CzmlDataSource.load("\\CZML\\zxCx.json"))
+        //         .then(function (ds) {
+        //             state.entity_zx = ds.entities.getById("path");
+
+        //             state.entity_zx.point.pixelSize = new Cesium.CallbackProperty(
+        //                 changeRadiaus,
+        //                 false
+        //             );
+        //             return state.entity_zx
+        //         })
+        //         .then(function (res) {
+        //             state.viewer.trackedEntity = res
+        //         });
+        // };
+
+
+        const viewWithAnimate = () => {
+            state.viewer.trackedEntity = state.viewer.entities.getById('airPlane');
         };
 
         /*加载鲜水河断面示意线*/
@@ -566,6 +580,7 @@ export default {
 
         /*高程查询函数*/
         const QueryPoint = () => {
+
             state.handler1.setInputAction(function (movement) {
                 state.sjg = state.viewer.camera.positionCartographic.height.toFixed(0);
             }, Cesium.ScreenSpaceEventType.MOUSE_MOVE);
@@ -618,9 +633,19 @@ export default {
                     },
                 });
                 state.ecList.push(QueryLabel.id);
-                console.log(jd, wd, height)
+                // console.log(jd, wd, height)
+                state.query_panel_show = true
             }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
         }
+
+        /*清除高程查询*/
+        const cleanQueryPoint = () => {
+            qcsj();
+            state.query_panel_show = false
+            for (let i = 0; i < state.ecList.length; i++) {
+                state.viewer.entities.removeById(state.ecList[i]);
+            }
+        };
 
         /*清除事件函数*/
         const qcsj = () => {
@@ -631,13 +656,7 @@ export default {
             state.handler2.removeInputAction(Cesium.ScreenSpaceEventType.RIGHT_CLICK)
             state.handler2.removeInputAction(Cesium.ScreenSpaceEventType.MOUSE_MOVE)
         }
-        /*清除高程查询*/
-        const cleanQueryPoint = () => {
-            qcsj();
-            for (let i = 0; i < state.ecList.length; i++) {
-                state.viewer.entities.removeById(state.ecList[i]);
-            }
-        };
+
 
         /*画洪水面函数*/
         const drawRange = () => {
@@ -687,9 +706,9 @@ export default {
                                     type: "Water",
                                     uniforms: {
                                         baseWaterColor: new Cesium.Color(
-                                            115 / 255.0,
-                                            178 / 255.0,
-                                            255 / 255.0,
+                                            204 / 255.0,
+                                            207 / 255.0,
+                                            105 / 255.0,
                                             0.5
                                         ),
                                         normalMap: "\\水体\\waterNormals.jpg",
@@ -774,14 +793,14 @@ export default {
                                                 type: "Water",
                                                 uniforms: {
                                                     baseWaterColor: new Cesium.Color(
-                                                        115 / 255.0,
-                                                        178 / 255.0,
-                                                        255 / 255.0,
-                                                        0.5
+                                                        219 / 255.0,
+                                                        207 / 255.0,
+                                                        105 / 255.0,
+                                                        0.6
                                                     ),
                                                     normalMap: "\\水体\\waterNormals.jpg",
                                                     frequency: 1000.0,
-                                                    animationSpeed: 0.001,
+                                                    animationSpeed: 0.01,
                                                     amplitude: 10,
                                                     specularIntensity: 2,
                                                 },
@@ -792,27 +811,27 @@ export default {
                             );
 
                             const band1Position = Number(height);
-                            const bandThickness = 10;
-                            const bandTransparency = 1.0;
+                            const bandThickness = 3;
+                            // const bandTransparency = 1.0;
                             const antialias = Math.min(10.0, bandThickness * 0.1);
                             const layers = [];
                             const band1 = {
                                 entries: [
                                     {
                                         height: band1Position - bandThickness * 0.5 - antialias,
-                                        color: Cesium.Color.AQUA.withAlpha(0.0),
+                                        color: Cesium.Color.GOLDENROD .withAlpha(0.0),
                                     },
                                     {
                                         height: band1Position - bandThickness * 0.5,
-                                        color: Cesium.Color.AQUA.withAlpha(1.0),
+                                        color: Cesium.Color.GOLDENROD .withAlpha(1.0),
                                     },
                                     {
                                         height: band1Position + bandThickness * 0.5,
-                                        color: Cesium.Color.AQUA.withAlpha(1.0),
+                                        color: Cesium.Color.GOLDENROD .withAlpha(1.0),
                                     },
                                     {
                                         height: band1Position + bandThickness * 0.5 + antialias,
-                                        color: Cesium.Color.AQUA.withAlpha(0.0),
+                                        color: Cesium.Color.GOLDENROD .withAlpha(0.0),
                                     },
                                 ],
                             };
@@ -878,6 +897,232 @@ export default {
             cn = []
         }
 
+        /*画断面线函数*/
+        const drawDmx = () => {
+            state.dmxList = []
+            function createPoint(worldPosition) {
+                const point = state.viewer.entities.add({
+                    position: worldPosition,
+                    point: {
+                        color: Cesium.Color.WHITE,
+                        pixelSize: 5,
+                        heightReference: Cesium.HeightReference.NONE,
+                    },
+
+                });
+                state.dmx_pointList.push(point.id)
+                return point;
+
+            }
+            function drawShape(positionData) {
+                let shape;
+                shape = state.viewer.entities.add({
+                    polyline: {
+                        positions: positionData,
+                        clampToGround: true,
+                        width: 3,
+                    },
+                });
+                state.dmxList.push(shape.id)
+
+                return shape;
+            }
+
+            function terminateShape() {
+                activeShapePoints.pop();
+                drawShape(activeShapePoints);
+                state.viewer.entities.remove(floatingPoint);
+                state.viewer.entities.remove(activeShape);
+                floatingPoint = undefined;
+                activeShape = undefined;
+                activeShapePoints = [];
+            }
+
+            let activeShapePoints = [];
+            let activeShape;
+            let floatingPoint;
+
+            state.handler3.setInputAction(function (event) {
+                const earthPosition = state.viewer.scene.pickPosition(event.position);
+                if (Cesium.defined(earthPosition)) {
+                    if (activeShapePoints.length === 0) {
+                        floatingPoint = createPoint(earthPosition);
+                        activeShapePoints.push(earthPosition);
+                        const dynamicPositions = new Cesium.CallbackProperty(function () {
+                            return activeShapePoints;
+                        }, false);
+                        activeShape = drawShape(dynamicPositions);
+                    }
+                    activeShapePoints.push(earthPosition);
+                    createPoint(earthPosition);
+                }
+            }, Cesium.ScreenSpaceEventType.LEFT_CLICK)
+
+            state.handler3.setInputAction(function (event) {
+                if (Cesium.defined(floatingPoint)) {
+                    const newPosition = state.viewer.scene.pickPosition(event.endPosition);
+                    if (Cesium.defined(newPosition)) {
+                        floatingPoint.position.setValue(newPosition);
+                        activeShapePoints.pop();
+                        activeShapePoints.push(newPosition);
+                    }
+                }
+            }, Cesium.ScreenSpaceEventType.MOUSE_MOVE);
+
+            state.handler3.setInputAction(function (event) {
+                terminateShape();
+                const all_score = new Array();
+                const pl = state.viewer.entities.getById(state.dmxList[1]).polyline
+                const pl_sp = pl.positions._value[0]
+                const pl_ep = pl.positions._value[1]
+                const pl_dis = Cesium.Cartesian3.distance(pl_sp, pl_ep)
+                const count = parseInt(pl_dis / 5);
+                const cartesians = new Array();
+                for (let i = 0; i < count; ++i) {
+                    const offset = i / (count - 1);
+                    const cartesian = Cesium.Cartesian3.lerp(
+                        pl_sp,
+                        pl_ep,
+                        offset,
+                        new Cesium.Cartesian3()
+                    )
+                    cartesians.push(cartesian)
+                }
+                state.viewer.scene
+                    .clampToHeightMostDetailed(cartesians)
+                    .then(function (clampedCartesians) {
+                        for (let j = 0; j < count - 1; j++) {
+                            var score;
+                            const sp = clampedCartesians[j]
+                            const ep = clampedCartesians[j + 1]
+                            const pl_part_dis = Cesium.Cartesian3.distance(sp, ep)
+                            const pl_sp_height = Cesium.Cartographic.fromCartesian(sp).height
+                            const pl_ep_height = Cesium.Cartographic.fromCartesian(ep).height
+                            const pl_height = Math.abs(pl_sp_height - pl_ep_height);
+                            const ang2 = Math.asin(pl_height / pl_part_dis) * 180 / 3.1415926
+                            if (ang2 < 15) {
+                                score = ((15 - ang2) / 15) * 25 + 75
+                                const dmx_fdx = state.viewer.entities.add({
+                                    polyline: {
+                                        positions: [clampedCartesians[j], clampedCartesians[j + 1]],
+                                        arcType: Cesium.ArcType.NONE,
+                                        width: 5,
+                                        material: new Cesium.PolylineOutlineMaterialProperty({
+                                            color: Cesium.Color.WHITE,
+                                        }),
+                                        depthFailMaterial: new Cesium.PolylineOutlineMaterialProperty(
+                                            {
+                                                color: Cesium.Color.WHITE,
+                                            }
+                                        ),
+                                    },
+                                });
+                                state.dmx_fdxList.push(dmx_fdx.id)
+
+                            } else if (ang2 < 30) {
+                                score = ((ang2 - 15) / 15) * 25 + 25
+                                const dmx_fdx = state.viewer.entities.add({
+                                    polyline: {
+                                        positions: [clampedCartesians[j], clampedCartesians[j + 1]],
+                                        arcType: Cesium.ArcType.NONE,
+                                        width: 5,
+                                        material: new Cesium.PolylineOutlineMaterialProperty({
+                                            color: Cesium.Color.GREEN,
+                                        }),
+                                        depthFailMaterial: new Cesium.PolylineOutlineMaterialProperty(
+                                            {
+                                                color: Cesium.Color.GREEN,
+                                            }
+                                        ),
+                                    },
+                                });
+                                state.dmx_fdxList.push(dmx_fdx.id)
+                            } else if (ang2 < 45) {
+                                score = ((ang2 - 30) / 15) * 25
+                                const dmx_fdx = state.viewer.entities.add({
+                                    polyline: {
+                                        positions: [clampedCartesians[j], clampedCartesians[j + 1]],
+                                        arcType: Cesium.ArcType.NONE,
+                                        width: 5,
+                                        material: new Cesium.PolylineOutlineMaterialProperty({
+                                            color: Cesium.Color.BLUE,
+                                        }),
+                                        depthFailMaterial: new Cesium.PolylineOutlineMaterialProperty(
+                                            {
+                                                color: Cesium.Color.BLUE,
+                                            }
+                                        ),
+                                    },
+                                });
+                                state.dmx_fdxList.push(dmx_fdx.id)
+                            } else {
+                                score = 0
+                                const dmx_fdx = state.viewer.entities.add({
+                                    polyline: {
+                                        positions: [clampedCartesians[j], clampedCartesians[j + 1]],
+                                        arcType: Cesium.ArcType.NONE,
+                                        width: 5,
+                                        material: new Cesium.PolylineOutlineMaterialProperty({
+                                            color: Cesium.Color.RED,
+                                        }),
+                                        depthFailMaterial: new Cesium.PolylineOutlineMaterialProperty(
+                                            {
+                                                color: Cesium.Color.RED,
+                                            }
+                                        ),
+                                    },
+                                });
+                                state.dmx_fdxList.push(dmx_fdx.id)
+                            }
+
+                            all_score.push(score)
+                        }
+                        let a = 0
+                        for (let i = 0; i < all_score.length; i++) {
+                            a += all_score[i]
+                        }
+                        const billboard_cn_x = Number(pl.positions._value[0].x + pl.positions._value[1].x) / 2
+                        const billboard_cn_y = Number(pl.positions._value[0].y + pl.positions._value[1].y) / 2
+                        const billboard_cn_z = Number(pl.positions._value[0].z + pl.positions._value[1].z) / 2
+                        const billboard_cn = new Cesium.Cartesian3(billboard_cn_x, billboard_cn_y, billboard_cn_z)
+                        const dmx_label = state.viewer.entities.add({
+                            position: billboard_cn,
+                            label: {
+                                text: "岸坡评价分数:" + parseInt(a / count),
+                                font: "4pt sans-serif",
+                                horizontalOrigin: Cesium.HorizontalOrigin.LEFT,
+                                verticalOrigin: Cesium.VerticalOrigin.BOTTOM,
+                                fillColor: Cesium.Color.BLACK,
+                                showBackground: true,
+                                backgroundColor: new Cesium.Color(1, 1, 1, 0.7),
+                                backgroundPadding: new Cesium.Cartesian2(8, 4),
+                                disableDepthTestDistance: Number.POSITIVE_INFINITY, // draws the label in front of terrain
+                            },
+                        });
+                        state.dmx_labelList.push(dmx_label.id)
+                    });
+                pl.show = false
+                state.handler3.removeInputAction(Cesium.ScreenSpaceEventType.LEFT_CLICK)
+
+            }, Cesium.ScreenSpaceEventType.RIGHT_CLICK)
+
+
+
+        };
+
+        /*清除断面线函数*/
+        const cleanDmx = () => {
+            for (let i = 0; i < state.dmx_fdxList.length; i++) {
+                state.viewer.entities.removeById(state.dmx_fdxList[i]);
+            }
+            for (let i = 0; i < state.dmx_labelList.length; i++) {
+                state.viewer.entities.removeById(state.dmx_labelList[i]);
+            }
+            for (let i = 0; i < state.dmx_pointList.length; i++) {
+                state.viewer.entities.removeById(state.dmx_pointList[i]);
+            }
+        }
+
         const test = () => {
             console.log(state.zxlcdList.length)
         }
@@ -890,6 +1135,7 @@ export default {
                 maximumLevel: 15,
             });
         };
+
 
         /*el开关*/
         const fn_show_dmaa = () => {
@@ -961,6 +1207,8 @@ export default {
 
         }
         return {
+            drawDmx,
+            cleanDmx,
             viewTO,
             fn_show_pic_2,
             fn_show_pic_1,
@@ -993,7 +1241,7 @@ export default {
     background-color: rgba(226, 208, 208, 0.671);
     position: fixed;
     left: 20px;
-    top: 15px;
+    top: 60px;
     z-index: 100;
     padding-left: 10px;
 }
@@ -1003,7 +1251,7 @@ export default {
     background-color: rgba(226, 208, 208, 0.671);
     position: fixed;
     left: 20px;
-    top: 200px;
+    top: 230px;
     z-index: 100;
     padding-left: 10px;
 }
@@ -1012,7 +1260,7 @@ export default {
     width: 150px;
     background-color: rgba(226, 208, 208, 0.671);
     position: fixed;
-    left: 200px;
+    left: 20px;
     top: 15px;
     z-index: 100;
     padding-left: 10px;
@@ -1022,7 +1270,7 @@ export default {
     width: 135px;
     background-color: rgba(226, 208, 208, 0.671);
     position: fixed;
-    left: 380px;
+    left: 200px;
     top: 15px;
     z-index: 100;
     padding-left: 1px;
@@ -1032,7 +1280,7 @@ export default {
     width: 220px;
     background-color: rgba(226, 208, 208, 0.671);
     position: fixed;
-    left: 530px;
+    left: 350px;
     top: 15px;
     z-index: 100;
     padding-left: 1px;
@@ -1042,7 +1290,7 @@ export default {
     width: 400px;
     background-color: rgba(226, 208, 208, 0.671);
     position: fixed;
-    left: 800px;
+    left: 580px;
     top: 15px;
     z-index: 100;
     padding-left: 1px;
@@ -1052,21 +1300,31 @@ export default {
     width: 200px;
     background-color: rgba(226, 208, 208, 0.671);
     position: fixed;
-    left: 1240px;
+    left: 990px;
     top: 15px;
     z-index: 100;
     padding-left: 1px;
 }
 
-#test {
-    width: 50px;
+#dmxpj {
+    width: 205px;
     background-color: rgba(226, 208, 208, 0.671);
     position: fixed;
-    left: 1500px;
+    left: 1200px;
     top: 15px;
     z-index: 100;
     padding-left: 1px;
 }
+
+/* #test {
+    width: 50px;
+    background-color: rgba(226, 208, 208, 0.671);
+    position: fixed;
+    left: 1700px;
+    top: 15px;
+    z-index: 100;
+    padding-left: 1px;
+} */
 </style>
 
 
