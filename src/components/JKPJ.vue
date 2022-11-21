@@ -64,6 +64,7 @@ import { onMounted, toRefs, reactive, ref } from "vue";
 export default {
     setup() {
         const state = reactive({
+            ip:null,
             viewer: null,
             query_panel_show: false,
             jd: null,
@@ -186,7 +187,7 @@ export default {
                 animation: true,
                 shouldAnimate: true,
                 terrainProvider: new Cesium.CesiumTerrainProvider({
-                    url: "http://192.168.0.211:8083/terrain/甘孜地形切片/鲜水河",
+                    url:`http://${state.ip}/terrain/甘孜地形切片/鲜水河`,
                     minimumLevel: 0,
                     maximumLevel: 15,
                 }),
@@ -291,6 +292,8 @@ export default {
         //         });
         // };
 
+        /*获取ip*/
+        state.ip = window.location.host.split(':')[0]+':8083'
 
         const viewWithAnimate = () => {
             state.viewer.trackedEntity = state.viewer.entities.getById('airPlane');
@@ -1130,7 +1133,7 @@ export default {
         /*Terrain县区选择 */
         const selectterrain = () => {
             state.viewer.terrainProvider = new Cesium.CesiumTerrainProvider({
-                url: `http://192.168.0.211:8083/terrain/甘孜地形切片/${state.value}`,
+                url: `http://${state.ip}/terrain/甘孜地形切片/${state.value}`,
                 minimumLevel: 0,
                 maximumLevel: 15,
             });
