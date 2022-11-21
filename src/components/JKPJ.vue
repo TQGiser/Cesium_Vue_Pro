@@ -21,7 +21,7 @@
     <div id='drawPlant'>
         <el-button type="success" plain @click="drawRange">划定范围</el-button>
 
-        <input id='slider1' ref='slider' type="range" min="2000" max="5000" step="1" v-model="elev"
+        <input id='slider1' ref='slider' type="range" min="2800" max="3800" step="1" v-model="elev"
             data-bind="value: elev, valueUpdate: 'input'">
         <input type="text" size="5" v-model="elev">
 
@@ -75,7 +75,7 @@ export default {
             op2: null,
             value: null,
             slider: null,
-            elev: 2000,
+            elev: 2800,
             cn: null,
             handler1: null,
             handler2: null,
@@ -1099,7 +1099,7 @@ export default {
                                 showBackground: true,
                                 backgroundColor: new Cesium.Color(1, 1, 1, 0.7),
                                 backgroundPadding: new Cesium.Cartesian2(8, 4),
-                                disableDepthTestDistance: Number.POSITIVE_INFINITY, // draws the label in front of terrain
+                                // disableDepthTestDistance: Number.POSITIVE_INFINITY, // draws the label in front of terrain
                             },
                         });
                         state.dmx_labelList.push(dmx_label.id)
