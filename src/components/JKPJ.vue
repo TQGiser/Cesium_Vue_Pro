@@ -64,7 +64,7 @@ import { onMounted, toRefs, reactive, ref } from "vue";
 export default {
     setup() {
         const state = reactive({
-            ip:null,
+            ip: null,
             viewer: null,
             query_panel_show: false,
             jd: null,
@@ -186,12 +186,23 @@ export default {
                 vrButton: false,
                 animation: true,
                 shouldAnimate: true,
-                terrainProvider: new Cesium.CesiumTerrainProvider({
-                    url:`http://${state.ip}/terrain/甘孜地形切片/鲜水河`,
-                    minimumLevel: 0,
-                    maximumLevel: 15,
+                terrainProvider: Cesium.createWorldTerrain({
+                    requestWaterMask: true,
+                    requestVertexNormals: true,
                 }),
             });
+
+            // state.viewer = new Cesium.Viewer("map", {
+            //     timeline: true,
+            //     vrButton: false,
+            //     animation: true,
+            //     shouldAnimate: true,
+            //     terrainProvider: new Cesium.CesiumTerrainProvider({
+            //         url:`http://${state.ip}/terrain/甘孜地形切片/鲜水河`,
+            //         minimumLevel: 0,
+            //         maximumLevel: 15,
+            //     }),
+            // });
 
             state.viewer.camera.setView({
                 destination: Cesium.Cartesian3.fromDegrees(
@@ -215,7 +226,7 @@ export default {
 
             /*加载巡游鲜水河函数-沿空中 */
             const positionProperty = new Cesium.SampledPositionProperty();
-            const addZxJSON = Cesium.GeoJsonDataSource.load("\\鲜水河\\zx.json")
+            const addZxJSON = Cesium.GeoJsonDataSource.load("static/鲜水河/zx.json")
             addZxJSON.then(function (ds) {
                 const entities = ds.entities.values
                 for (let i = 0; i < entities.length; i++) {
@@ -256,7 +267,7 @@ export default {
                 position: positionProperty,
                 id: 'airPlane',
                 model: {
-                    uri: '\\模型\\drone-sccs.glb',
+                    uri: 'static/模型/drone-sccs.glb',
                     scale: 10
                 },
                 orientation: new Cesium.VelocityOrientationProperty(positionProperty),
@@ -293,7 +304,7 @@ export default {
         // };
 
         /*获取ip*/
-        state.ip = window.location.host.split(':')[0]+':8083'
+        state.ip = window.location.host.split(':')[0] + ':8083'
 
         const viewWithAnimate = () => {
             state.viewer.trackedEntity = state.viewer.entities.getById('airPlane');
@@ -301,7 +312,7 @@ export default {
 
         /*加载鲜水河断面示意线*/
         const addXshDmx = Cesium.GeoJsonDataSource.load(
-            "\\鲜水河\\xshDmx.json"
+            "static/鲜水河/xshDmx.json"
         );
         addXshDmx.then(function (dataSource) {
             state.viewer.dataSources.add(dataSource)
@@ -309,7 +320,7 @@ export default {
 
         /*加载鲜水河hyda，生成湖面 */
         const hyda_cn = new Array();
-        const promise3 = Cesium.GeoJsonDataSource.load("\\鲜水河\\hyda.json");
+        const promise3 = Cesium.GeoJsonDataSource.load("static/鲜水河/hyda.json");
         promise3.then(function (dataSource) {
             // state.viewer.dataSources.add(dataSource);
             const entities = dataSource.entities.values;
@@ -340,7 +351,7 @@ export default {
 
         /*加载鲜水河dmaa，生成管理范围面 */
         const dmaa_cn = new Array();
-        const promise10 = Cesium.GeoJsonDataSource.load("\\鲜水河\\dmaa.json");
+        const promise10 = Cesium.GeoJsonDataSource.load("static/鲜水河/dmaa.json");
         promise10.then(function (dataSource) {
             // state.viewer.dataSources.add(dataSource);
             const entities = dataSource.entities.values;
@@ -382,7 +393,7 @@ export default {
         //     });
 
         /*加载鲜水河中线点*/
-        const promise8 = Cesium.GeoJsonDataSource.load("\\鲜水河\\zx.json");
+        const promise8 = Cesium.GeoJsonDataSource.load("static/鲜水河/zx.json");
         promise8.then(function (dataSource) {
             const entities = dataSource.entities.values;
             // console.log(entities[0])
@@ -441,7 +452,7 @@ export default {
 
         /*加载鲜水河照片 */
         const promise9 = Cesium.GeoJsonDataSource.load(
-            "\\鲜水河\\photo_position3.json"
+            "static/鲜水河/photo_position3.json"
         );
         promise9.then(
             function (ds) {
@@ -462,7 +473,7 @@ export default {
                     const pNum = Number(entities[i]._properties.Id.valueOf())
 
                     // console.log(pNum)
-                    const imageName = `\\pic\\photo_half\\${pNum}.jpg`
+                    const imageName = `static/pic/photo_half/${pNum}.jpg`
                     const tkpic_1_billboard = state.viewer.entities.add({
                         position: Cesium.Cartesian3.fromDegrees(jd, wd, gd + 150.0),
                         name: pNum,
@@ -499,9 +510,9 @@ export default {
         );
 
 
-        /*加载鲜水河--航飞照片 */
+        // /*加载鲜水河--航飞照片 */
         const addPic_HF = Cesium.GeoJsonDataSource.load(
-            "\\鲜水河\\photo_position_HF.json"
+            "static/鲜水河/photo_position_HF.json"
         );
         addPic_HF.then(
             function (ds) {
@@ -519,7 +530,7 @@ export default {
                     const gd = parseInt(Cesium.Cartographic.fromCartesian(entities[i]._position._value)
                         .height)
                     const pNum = entities[i]._properties._name._value
-                    const imageName = `\\pic\\1103HF\\${pNum}.jpg`
+                    const imageName = `static/pic/1103HF/${pNum}.jpg`
                     const hfpic_billboard = state.viewer.entities.add({
                         position: Cesium.Cartesian3.fromDegrees(jd, wd, gd + 180.0),
                         name: pNum,
@@ -549,7 +560,7 @@ export default {
                         // },
                         model: {
                             // uri: 'three官网glb模型\\Stork.glb',
-                            uri: '\\模型\\drone-sccs.glb',
+                            uri: 'static/模型/drone-sccs.glb',
                             // minimumPixelSize: 3
                             scale: 10
                         },
@@ -714,7 +725,7 @@ export default {
                                             105 / 255.0,
                                             0.5
                                         ),
-                                        normalMap: "\\水体\\waterNormals.jpg",
+                                        normalMap: "static/水体/waterNormals.jpg",
                                         frequency: 1000.0,
                                         animationSpeed: 0.001,
                                         amplitude: 10,
@@ -801,7 +812,7 @@ export default {
                                                         105 / 255.0,
                                                         0.6
                                                     ),
-                                                    normalMap: "\\水体\\waterNormals.jpg",
+                                                    normalMap: "static/水体/waterNormals.jpg",
                                                     frequency: 1000.0,
                                                     animationSpeed: 0.01,
                                                     amplitude: 10,
@@ -822,19 +833,19 @@ export default {
                                 entries: [
                                     {
                                         height: band1Position - bandThickness * 0.5 - antialias,
-                                        color: Cesium.Color.GOLDENROD .withAlpha(0.0),
+                                        color: Cesium.Color.GOLDENROD.withAlpha(0.0),
                                     },
                                     {
                                         height: band1Position - bandThickness * 0.5,
-                                        color: Cesium.Color.GOLDENROD .withAlpha(1.0),
+                                        color: Cesium.Color.GOLDENROD.withAlpha(1.0),
                                     },
                                     {
                                         height: band1Position + bandThickness * 0.5,
-                                        color: Cesium.Color.GOLDENROD .withAlpha(1.0),
+                                        color: Cesium.Color.GOLDENROD.withAlpha(1.0),
                                     },
                                     {
                                         height: band1Position + bandThickness * 0.5 + antialias,
-                                        color: Cesium.Color.GOLDENROD .withAlpha(0.0),
+                                        color: Cesium.Color.GOLDENROD.withAlpha(0.0),
                                     },
                                 ],
                             };

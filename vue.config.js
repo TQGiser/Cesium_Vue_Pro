@@ -10,6 +10,9 @@ function resolve(dir) {
 }
 
 module.exports = {
+  publicPath:'./',
+  outputDir:'csp1',
+  assetsDir:'static',
   devServer: {
     // host:'192.168.0.171',
     host:'0.0.0.0',

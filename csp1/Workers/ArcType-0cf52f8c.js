@@ -1,0 +1,1 @@
+define(["exports"],(function(e){"use strict";const t={NONE:0,GEODESIC:1,RHUMB:2};var c=Object.freeze(t);e.ArcType=c}));
